@@ -1,0 +1,9 @@
+title: Progalap_06
+language: English
+summary: "Sorozatok, rekurzió"
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

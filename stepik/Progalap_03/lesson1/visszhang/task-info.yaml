@@ -1,0 +1,109 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-visszhang)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/visszhang.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/visszhang.c
+  visible: true
+  placeholders:
+  - offset: 38
+    length: 14
+    placeholder_text: // letrehozas
+    initial_state:
+      length: 13
+      offset: 38
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: "char str[101];"
+  text: |-
+    #include <stdio.h>
+
+    void echo() {
+        // letrehozas
+        scanf("%[^\n]s", str);
+        printf("%s", str);
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/visszhang.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("macska", echo(), str);
+        ASSERT_STREQ(str, "macska");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("?", echo(), str);
+        ASSERT_STREQ(str, "?");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("a", echo(), str);
+        ASSERT_STREQ(str, "a");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("3525252", echo(), str);
+        ASSERT_STREQ(str, "3525252");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", echo(), str);
+        ASSERT_STREQ(str, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", echo(), str);
+        ASSERT_STREQ(str, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[200];
+        IO("egy kiscica ul a fan", echo(), str);
+        ASSERT_STREQ(str, "egy kiscica ul a fan");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 04 Oct 2023 14:37:33 UTC"
+record: -1
+solution_hidden: true

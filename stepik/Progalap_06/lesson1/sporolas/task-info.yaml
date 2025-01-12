@@ -1,0 +1,81 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-sporolas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/sporolas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/sporolas.c
+  visible: true
+  placeholders:
+  - offset: 48
+    length: 29
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 48
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: return felretettOsszeg * 12 * ev;
+  text: |-
+    int sporolas(int felretettOsszeg, int ev) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/sporolas.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(sporolas(100, 1), 1200);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(sporolas(1000, 3), 36000);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(sporolas(50000, 10), 6000000);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(sporolas(1400, 0), 0);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(sporolas(100000, 100), 120000000);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 14:07:30 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,129 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-ajto)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/ajto.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/ajto.c
+  visible: true
+  placeholders:
+  - offset: 89
+    length: 99
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 69
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      Ajto ajtotLetrehoz() {
+          Ajto a;
+          scanf("%lf %lf", &a.szelesseg, &a.magassag);
+          return a;
+      }
+  text: |-
+    typedef struct {
+        double szelesseg;
+        double magassag;
+    } Ajto;
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+    #include <cstdio>
+
+    #define main main_0
+    #include "../src/ajto.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+
+        double szelesseg = 5;
+        double magassag = 4;
+
+        char input[100];
+        sprintf(input, "%lf %lf", szelesseg, magassag);
+
+        IO(input, Ajto a = ajtotLetrehoz(), str);
+        ASSERT_NEAR(a.szelesseg, szelesseg, 0.0001);
+        ASSERT_NEAR(a.magassag, magassag, 0.0001);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+
+        double szelesseg = 5.32;
+        double magassag = 4.77;
+
+        char input[100];
+        sprintf(input, "%lf %lf", szelesseg, magassag);
+
+        IO(input, Ajto a = ajtotLetrehoz(), str);
+        ASSERT_NEAR(a.szelesseg, szelesseg, 0.0001);
+        ASSERT_NEAR(a.magassag, magassag, 0.0001);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+
+        double szelesseg = 5;
+        double magassag = 0.014;
+
+        char input[100];
+        sprintf(input, "%lf %lf", szelesseg, magassag);
+
+        IO(input, Ajto a = ajtotLetrehoz(), str);
+        ASSERT_NEAR(a.szelesseg, szelesseg, 0.0001);
+        ASSERT_NEAR(a.magassag, magassag, 0.0001);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+
+        double szelesseg = 0.734;
+        double magassag = 25112;
+
+        char input[100];
+        sprintf(input, "%lf %lf", szelesseg, magassag);
+
+        IO(input, Ajto a = ajtotLetrehoz(), str);
+        ASSERT_NEAR(a.szelesseg, szelesseg, 0.0001);
+        ASSERT_NEAR(a.magassag, magassag, 0.0001);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 06:51:52 UTC"
+record: -1
+solution_hidden: true

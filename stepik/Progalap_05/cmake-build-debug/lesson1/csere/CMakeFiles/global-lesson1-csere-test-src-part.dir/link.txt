@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libglobal-lesson1-csere-test-src-part.a "CMakeFiles/global-lesson1-csere-test-src-part.dir/src/eltolas.c.obj"
+C:\MinGW\bin\ranlib.exe libglobal-lesson1-csere-test-src-part.a

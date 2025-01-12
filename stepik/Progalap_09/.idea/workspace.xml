@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Progalap_09" targetName="global-lesson1-negativ-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-titkositas-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-sakk-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-forditott-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-bastya-test-src-part" />
+      <config projectName="Progalap_09" targetName="gtest" />
+      <config projectName="Progalap_09" targetName="global-lesson1-task1-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-osszeg-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-hisztogram-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-vilagos-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-bastya-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tomorites-test" />
+      <config projectName="Progalap_09" targetName="gtest_main" />
+      <config projectName="Progalap_09" targetName="global-lesson1-bastya-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-szamrendszer-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-nagyitas-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tomorites-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-task1-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-osszeg-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-nagyitas-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-keptipus-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-napoleon-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-binaris-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-task1-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-forditott-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-napoleon-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-qr-test-src-part" />
+      <config projectName="Progalap_09" targetName="gmock" />
+      <config projectName="Progalap_09" targetName="global-lesson1-vilagos-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tarigeny-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-negativ-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-forditott-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-titkositas-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-nagyitas-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-titkositas-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-sakk-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-binaris-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tomorites-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-hisztogram-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-szamrendszer-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-keptipus-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-qr-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-kocsi-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tarigeny-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-negativ-test" />
+      <config projectName="Progalap_09" targetName="gmock_main" />
+      <config projectName="Progalap_09" targetName="global-lesson1-szamrendszer-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-vilagos-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-kocsi-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-keptipus-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-kocsi-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-osszeg-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-napoleon-run" />
+      <config projectName="Progalap_09" targetName="global-lesson1-hisztogram-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-tarigeny-test-src-part" />
+      <config projectName="Progalap_09" targetName="global-lesson1-sakk-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-qr-test" />
+      <config projectName="Progalap_09" targetName="global-lesson1-binaris-run" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="372044f1-da45-4db5-8f19-72685a2126ff" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/test-framework/googletest-src" />
+  </component>
+  <component name="ProjectId" id="2XX4PKgvP7enbJzGFaAE3md4nP0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Edu.Yaml.Migrate": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="CMake Application.global-lesson1-bastya-run">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-bastya-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-bastya-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-bastya-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-binaris-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-binaris-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-binaris-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-forditott-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-forditott-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-forditott-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-hisztogram-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-hisztogram-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-hisztogram-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-keptipus-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-keptipus-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-keptipus-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-kocsi-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-kocsi-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-kocsi-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-nagyitas-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-nagyitas-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-nagyitas-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-napoleon-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-napoleon-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-napoleon-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-negativ-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-negativ-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-negativ-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-osszeg-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-osszeg-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-osszeg-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-qr-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-qr-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-qr-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-sakk-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-sakk-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-sakk-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-szamrendszer-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-szamrendszer-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-szamrendszer-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tarigeny-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tarigeny-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-tarigeny-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-task1-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-task1-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-task1-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-titkositas-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-titkositas-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-titkositas-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tomorites-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tomorites-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-tomorites-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-vilagos-test" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-vilagos-test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-vilagos-test" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-bastya-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-bastya-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-bastya-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-bastya-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-bastya-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-binaris-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-binaris-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-binaris-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-binaris-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-binaris-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-forditott-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-forditott-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-forditott-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-forditott-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-forditott-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-hisztogram-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-hisztogram-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-hisztogram-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-hisztogram-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-hisztogram-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-keptipus-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-keptipus-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-keptipus-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-keptipus-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-keptipus-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-kocsi-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-kocsi-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-kocsi-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-kocsi-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-kocsi-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-nagyitas-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-nagyitas-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-nagyitas-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-nagyitas-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-nagyitas-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-napoleon-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-napoleon-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-napoleon-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-napoleon-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-napoleon-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-negativ-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-negativ-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-negativ-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-negativ-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-negativ-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-osszeg-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-osszeg-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-osszeg-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-osszeg-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-osszeg-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-qr-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-qr-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-qr-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-qr-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-qr-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-sakk-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-sakk-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-sakk-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-sakk-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-sakk-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-szamrendszer-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-szamrendszer-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-szamrendszer-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-szamrendszer-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-szamrendszer-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tarigeny-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tarigeny-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-tarigeny-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tarigeny-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tarigeny-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-task1-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-task1-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-task1-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-task1-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-task1-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-titkositas-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-titkositas-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-titkositas-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-titkositas-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-titkositas-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tomorites-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tomorites-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-tomorites-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-tomorites-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-tomorites-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-vilagos-run" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-vilagos-run" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Progalap_09" RUN_TARGET_NAME="global-lesson1-vilagos-run">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="global-lesson1-vilagos-test-src-part" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="global-lesson1-vilagos-test-src-part" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="gmock" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gmock_main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="gmock_main" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="gtest" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Progalap_09" TARGET_NAME="gtest_main" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.global-lesson1-bastya-run" />
+      <item itemvalue="CMake Application.global-lesson1-bastya-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-binaris-run" />
+      <item itemvalue="CMake Application.global-lesson1-binaris-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-hisztogram-run" />
+      <item itemvalue="CMake Application.global-lesson1-hisztogram-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-keptipus-run" />
+      <item itemvalue="CMake Application.global-lesson1-keptipus-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-osszeg-run" />
+      <item itemvalue="CMake Application.global-lesson1-osszeg-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-kocsi-run" />
+      <item itemvalue="CMake Application.global-lesson1-kocsi-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-nagyitas-run" />
+      <item itemvalue="CMake Application.global-lesson1-nagyitas-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-napoleon-run" />
+      <item itemvalue="CMake Application.global-lesson1-napoleon-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-negativ-run" />
+      <item itemvalue="CMake Application.global-lesson1-negativ-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-task1-run" />
+      <item itemvalue="CMake Application.global-lesson1-task1-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-qr-run" />
+      <item itemvalue="CMake Application.global-lesson1-qr-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-sakk-run" />
+      <item itemvalue="CMake Application.global-lesson1-sakk-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-szamrendszer-run" />
+      <item itemvalue="CMake Application.global-lesson1-szamrendszer-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-tarigeny-run" />
+      <item itemvalue="CMake Application.global-lesson1-tarigeny-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-titkositas-run" />
+      <item itemvalue="CMake Application.global-lesson1-titkositas-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-tomorites-run" />
+      <item itemvalue="CMake Application.global-lesson1-tomorites-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-forditott-run" />
+      <item itemvalue="CMake Application.global-lesson1-forditott-test-src-part" />
+      <item itemvalue="CMake Application.global-lesson1-vilagos-run" />
+      <item itemvalue="CMake Application.global-lesson1-vilagos-test-src-part" />
+      <item itemvalue="CMake Application.gmock" />
+      <item itemvalue="CMake Application.gmock_main" />
+      <item itemvalue="CMake Application.gtest" />
+      <item itemvalue="CMake Application.gtest_main" />
+      <item itemvalue="Google Test.global-lesson1-bastya-test" />
+      <item itemvalue="Google Test.global-lesson1-binaris-test" />
+      <item itemvalue="Google Test.global-lesson1-hisztogram-test" />
+      <item itemvalue="Google Test.global-lesson1-keptipus-test" />
+      <item itemvalue="Google Test.global-lesson1-osszeg-test" />
+      <item itemvalue="Google Test.global-lesson1-kocsi-test" />
+      <item itemvalue="Google Test.global-lesson1-nagyitas-test" />
+      <item itemvalue="Google Test.global-lesson1-napoleon-test" />
+      <item itemvalue="Google Test.global-lesson1-negativ-test" />
+      <item itemvalue="Google Test.global-lesson1-task1-test" />
+      <item itemvalue="Google Test.global-lesson1-qr-test" />
+      <item itemvalue="Google Test.global-lesson1-sakk-test" />
+      <item itemvalue="Google Test.global-lesson1-szamrendszer-test" />
+      <item itemvalue="Google Test.global-lesson1-tarigeny-test" />
+      <item itemvalue="Google Test.global-lesson1-titkositas-test" />
+      <item itemvalue="Google Test.global-lesson1-tomorites-test" />
+      <item itemvalue="Google Test.global-lesson1-forditott-test" />
+      <item itemvalue="Google Test.global-lesson1-vilagos-test" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="372044f1-da45-4db5-8f19-72685a2126ff" name="Changes" comment="" />
+      <created>1698762065261</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698762065261</updated>
+      <workItem from="1698762067677" duration="220000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../Progalap_09\test-framework\googletest-src" />
+    </ignored-roots>
+  </component>
+</project>

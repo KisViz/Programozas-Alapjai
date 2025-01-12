@@ -1,0 +1,35 @@
+<html lang="hu">
+    <h1>[⭐⭐⭐⭐] 25. Kirakó (10 pont)</h1>
+    Néhány évvel ezelőtt egy szegény családban gyermek született, akit Leenhurbertindrundnak neveztek el, és Leen-nek becéztek. Most kapott néhány kirakóst, amivel játszhat.
+    Ezeknek annyira megörült, hogy önfeledten kezdte őket összeborigatni, így egy nagy kupac lett belőle. Nem lesz könnyű dolga, de úgy gondolta, hogy mégiscsak szeretné
+    kirakni az összeset. Ehhez első lépésként szét kell a kirakókat válogatni, majd utána az egyes kirakókat ki kell rakni.<br>
+    Készítsd el a <i>kirakozas</i> nevű függvényt, amely 4 paramétert vár:
+    <ul>
+        <li>A kirakó darabokat egy tömbben. A kirakókról tudjuk az id-jüket, szettjüket és a sorszámukat. A szett és sorszám kezdetben -1.</li>
+        <li>A kirakók darabszámát (összesen hány kirakó darab van összeöntve)</li>
+        <li>Egy függvényt (szettEllenorzes), ami egy Kirako példányt vár, és visszaadja azt, hogy az az adott kirakó hányas szettbe tartozik. Leen egy kirakó darabról
+        csak egyszer szeretné megnézni, hogy melyik szettbe tartozik, így ezt a függvényt egy kirakóra csak egyszer hívd meg.</li>
+        <li>Egy függvényt (lerakas), ami egy Kirako példányt és egy egész számot vár. Az adott kirakót a megadott pozícióra szeretnénk lehelyezni. A függvény 1-et ad
+        vissza, ha odaillik, 0-t, ha nem. Csak olyan kirakókra működik, amelyeknek a szett száma helyesen ki van töltve (egyébként -1-et ad vissza).
+        Leen nem szeretne nagyon sokszor próbálkozni, mivel könnyen elfárad, tehát ezt a függvényt minél kevesebbszer próbáljuk meghívni.</li>
+    </ul>
+
+    A függvény töltse ki a kirakók tulajdonságait (szett, sorszám), majd a tömbben rendezze őket növekvő sorrendbe: elsődlegesen a szett szerint, azon belül a sorszám szerint.<br>
+    <br>
+    A lerakást úgy képzelhetjük el, hogy egymás után rakjuk le a darabokat: 1-es, 2-es, ... pozíciókra.<br>
+    <br>
+    Minden tesztesethez 3 változat található: Konnyitett, Normal és Nehezitett. A konnyítettben Leen nagyon türelmes, a normálban átlagos türelemmel rendelkezik, míg a
+    nehezítettben nagyon kevés türelemmel.
+
+    <div class="hint">
+        Például: ha van 5 db kirakónk 2 szettből, akkor először különválogatjuk a szetteket (egyik szettbe 3, a másikba 2 kirakó darab tartozik).
+        Ezután megnézzük az első szett darabjait, és kipróbáljuk melyik illik az első (1-es) pozícióba, és amelyik igen, azt lerakjuk. Aztán a második pozíció, majd a harmadik.
+        Hasonlóképpen járunk el a második szettel is. Ha ezzel megvagyunk, már tudjuk, hogy melyik kirakó darab melyik szettbe, és azon belül melyik pozícióra tartozik, így
+        végül már csak rendeznünk kell a tömböt a kért módon.
+    </div>
+
+    <div class="hint">
+        KIRAKÓ JUHÚÚ JEEEEE JUPÍÍÍÍÍ
+    </div>
+
+</html>

@@ -1,0 +1,99 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "lesson1/bevasarlas/libglobal-lesson1-bevasarlas-test-src-part.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"configure_test_target",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"cmake/utils.cmake",
+			"lesson1/bevasarlas/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "main=mainee9c2a01f546129e71d5b104e6b7c6f96856cb52"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "global-lesson1-bevasarlas-test-src-part::@e2a77b99d1f6ea74a831",
+	"name" : "global-lesson1-bevasarlas-test-src-part",
+	"nameOnDisk" : "libglobal-lesson1-bevasarlas-test-src-part.a",
+	"paths" : 
+	{
+		"build" : "lesson1/bevasarlas",
+		"source" : "lesson1/bevasarlas"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "lesson1/bevasarlas/src/bevasarlas.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

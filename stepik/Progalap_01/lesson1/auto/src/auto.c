@@ -1,0 +1,1 @@
+float sebesseg = 49.5;

@@ -1,0 +1,130 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-munka)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/munka.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/munka.c
+  visible: true
+  placeholders:
+  - offset: 40
+    length: 180
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      #include <string.h>
+
+      void uzenet(char becenev[], char uzenet[]){
+          char filename[strlen(becenev) + 4 + 1];
+          sprintf(filename, "%s.txt", becenev);
+          FILE* f = fopen(filename, "w");
+          fprintf(f, "%s", uzenet);
+          fclose(f);
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/munka.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char auzenet[] = "ez az uzenet";
+        char euzenet[] = "ez az uzenet";
+        char nev[] = "janos";
+        char filename[] = "janos.txt";
+
+        writeContentToFile(filename, euzenet);
+        uzenet(nev, auzenet);
+
+        char str[100];
+        FILE* file = fopen(filename, "r");
+        readstring(file, str);
+        ASSERT_STREQ(str, euzenet);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char auzenet[] = "ez egy jo hosszu szoveg. Ez kerulne ide most.\nOK\n";
+        char euzenet[] = "ez egy jo hosszu szoveg. Ez kerulne ide most.\nOK\n";
+        char nev[] = "otto";
+        char filename[] = "otto.txt";
+
+        writeContentToFile(filename, euzenet);
+        uzenet(nev, auzenet);
+
+        char str[100];
+        FILE* file = fopen(filename, "r");
+        readstring(file, str);
+        ASSERT_STREQ(str, euzenet);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char auzenet[] = "jo";
+        char euzenet[] = "jo";
+        char nev[] = "peti_neve";
+        char filename[] = "peti_neve.txt";
+
+        writeContentToFile(filename, euzenet);
+        uzenet(nev, auzenet);
+
+        char str[100];
+        FILE* file = fopen(filename, "r");
+        readstring(file, str);
+        ASSERT_STREQ(str, euzenet);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char auzenet[] = "nagyszeru egy ketto harom";
+        char euzenet[] = "nagyszeru egy ketto harom";
+        char nev[] = "anna";
+        char filename[] = "anna.txt";
+
+        writeContentToFile(filename, euzenet);
+        uzenet(nev, auzenet);
+
+        char str[100];
+        FILE* file = fopen(filename, "r");
+        readstring(file, str);
+        ASSERT_STREQ(str, euzenet);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 17:41:25 UTC"
+record: -1
+solution_hidden: true

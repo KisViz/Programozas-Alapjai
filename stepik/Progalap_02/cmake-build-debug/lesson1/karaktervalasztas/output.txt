@@ -1,0 +1,5 @@
+Melyik fajt szeretned valasztani?
+  1: elf
+  2: torpe
+  3: ember
+Ezt a fajt valasztottad: elf

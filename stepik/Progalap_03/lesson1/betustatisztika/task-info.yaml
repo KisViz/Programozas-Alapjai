@@ -1,0 +1,294 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-betustatisztika)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/betustatisztika.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/betustatisztika.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 414
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      void statisztika(char szoveg[], int gyakorisagok[]) {
+          for (int i = 0; i < 'Z'-'A'+1; i++) {
+              gyakorisagok[i] = 0;
+          }
+
+          int i = 0;
+          while (szoveg[i] != 0) {
+              if (szoveg[i] >= 'a' && szoveg[i] <= 'z') {
+                  gyakorisagok[szoveg[i] - 'a']++;
+              } else if (szoveg[i] >= 'A' && szoveg[i] <= 'Z') {
+                  gyakorisagok[szoveg[i] - 'A']++;
+              }
+
+              i++;
+          }
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/betustatisztika.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    void statisztika(char szoveg[], int gyakorisagok[]);
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "macska";
+        int res[] = {
+                2, // a
+                0, // b
+                1, // c
+                0, // d
+                0, // e
+                0, // f
+                0, // g
+                0, // h
+                0, // i
+                0, // j
+                1, // k
+                0, // l
+                1, // m
+                0, // n
+                0, // o
+                0, // p
+                0, // q
+                0, // r
+                1, // s
+                0, // t
+                0, // u
+                0, // v
+                0, // w
+                0, // x
+                0, // y
+                0, // z
+        };
+
+        int mo[] = {10, 30, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "MACSKA";
+        int res[] = {
+                2, // a
+                0, // b
+                1, // c
+                0, // d
+                0, // e
+                0, // f
+                0, // g
+                0, // h
+                0, // i
+                0, // j
+                1, // k
+                0, // l
+                1, // m
+                0, // n
+                0, // o
+                0, // p
+                0, // q
+                0, // r
+                1, // s
+                0, // t
+                0, // u
+                0, // v
+                0, // w
+                0, // x
+                0, // y
+                0, // z
+        };
+
+        int mo[] = {10, 30, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "MaCsKamAcSkA";
+        int res[] = {
+                4, // a
+                0, // b
+                2, // c
+                0, // d
+                0, // e
+                0, // f
+                0, // g
+                0, // h
+                0, // i
+                0, // j
+                2, // k
+                0, // l
+                2, // m
+                0, // n
+                0, // o
+                0, // p
+                0, // q
+                0, // r
+                2, // s
+                0, // t
+                0, // u
+                0, // v
+                0, // w
+                0, // x
+                0, // y
+                0, // z
+        };
+
+        int mo[] = {-1, 30, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "Leszallt a repulo";
+        int res[] = {
+                2, // a
+                0, // b
+                0, // c
+                0, // d
+                2, // e
+                0, // f
+                0, // g
+                0, // h
+                0, // i
+                0, // j
+                0, // k
+                4, // l
+                0, // m
+                0, // n
+                1, // o
+                1, // p
+                0, // q
+                1, // r
+                1, // s
+                1, // t
+                1, // u
+                0, // v
+                0, // w
+                0, // x
+                0, // y
+                1, // z
+        };
+
+        int mo[] = {1, 30, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "xyzXYZBBDEjkkkkkj";
+        int res[] = {
+                0, // a
+                2, // b
+                0, // c
+                1, // d
+                1, // e
+                0, // f
+                0, // g
+                0, // h
+                0, // i
+                2, // j
+                5, // k
+                0, // l
+                0, // m
+                0, // n
+                0, // o
+                0, // p
+                0, // q
+                0, // r
+                0, // s
+                0, // t
+                0, // u
+                0, // v
+                0, // w
+                2, // x
+                2, // y
+                2, // z
+        };
+
+        int mo[] = {2, 30, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char input[] = "wow uwu 123 +++ @@ owo pog H8G L0L defdef??? iiiii111iii! iji. vts -     # rawrcica ()(){}{} ___n? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        int res[] = {
+                103, // a
+                0, // b
+                2, // c
+                2, // d
+                2, // e
+                2, // f
+                2, // g
+                1, // h
+                11, // i
+                1, // j
+                0, // k
+                2, // l
+                0, // m
+                1, // n
+                4, // o
+                1, // p
+                0, // q
+                2, // r
+                1, // s
+                1, // t
+                2, // u
+                3, // v
+                5, // w
+                0, // x
+                0, // y
+                0, // z
+        };
+
+        int mo[] = {0, 1, 40, 0, 0, 0, 0, 0, 0, -1, -1, -1, 5, 3, 8, 4, 3, 2, 3, 4, 6, 7, 7, 5, 4, 2, 4, 5, 3, 10000};
+        statisztika(input, mo);
+        ASSERT_ARRAY_EQ(res, mo, 26);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 14 Oct 2023 16:06:11 UTC"
+record: -1
+solution_hidden: true

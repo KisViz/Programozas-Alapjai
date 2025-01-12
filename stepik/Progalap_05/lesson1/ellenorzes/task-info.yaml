@@ -1,0 +1,142 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-ellenorzes)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/ellenorzes.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/ellenorzes.c
+  visible: true
+  placeholders:
+  - offset: 243
+    length: 178
+    placeholder_text: |-
+      int gyartosor(int szamok[], int db) {
+          int ok;
+          for (int i = 0; i < db; i++) {
+              if (ellenorzo(szamok[i])) {
+                  return ok;
+              }
+          }
+
+          return ok;
+      }
+
+      int ellenorzo(int szam) {
+          if (szam % 231 == 53 || (szam % 2 == 0 && szam / 10 % 10 == 7)) {
+              return 1;
+          }
+
+          for (int i = 2; i < szam; i++) {
+              if (szam % i == 0) {
+                  return 0;
+              }
+          }
+
+          return 1;
+      }
+    initial_state:
+      length: 420
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int ellenorzo(int szam) {
+          if (szam % 231 == 53 || (szam % 2 == 0 && szam / 10 % 10 == 7)) {
+              return 1;
+          }
+
+          for (int i = 2; i < szam; i++) {
+              if (szam % i == 0) {
+                  return 0;
+              }
+          }
+
+          return 1;
+      }
+
+      int gyartosor(int szamok[], int db) {
+          int ok = 0;
+          for (int i = 0; i < db; i++) {
+              if (ellenorzo(szamok[i])) {
+                  ok++;
+              }
+          }
+
+          return ok;
+      }
+  text: |-
+    int gyartosor(int szamok[], int db) {
+        int ok;
+        for (int i = 0; i < db; i++) {
+            if (ellenorzo(szamok[i])) {
+                return ok;
+            }
+        }
+
+        return ok;
+    }
+
+    int ellenorzo(int szam) {
+        if (szam % 231 == 53 || (szam % 2 == 0 && szam / 10 % 10 == 7)) {
+            return 1;
+        }
+
+        for (int i = 2; i < szam; i++) {
+            if (szam % i == 0) {
+                return 0;
+            }
+        }
+
+        return 1;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/ellenorzes.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {72, 12574, 63277};
+        ASSERT_EQ(gyartosor(t1, 3), 3);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t2[] = {55278, 12345678, 12};
+        ASSERT_EQ(gyartosor(t2, 3), 2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t3[] = {154130, 154131, 154172};
+        ASSERT_EQ(gyartosor(t3, 3), 2);
+    }
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

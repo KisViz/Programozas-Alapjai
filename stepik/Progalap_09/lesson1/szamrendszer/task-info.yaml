@@ -1,0 +1,140 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-szamrendszer)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szamrendszer.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szamrendszer.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int ertek(char szamjegy) {
+          switch (szamjegy) {
+              case '0'...'9':
+                  return szamjegy - '0';
+              case 'A'...'Z':
+                  return szamjegy - 'A' + 10;
+              default:
+                  return 0;
+          }
+      }
+
+      int alap(const char* szam) {
+          int i = 0;
+          int max = 0;
+          while (szam[i] != 0) {
+              int e = ertek(szam[i]);
+              if (e > max) {
+                  max = e;
+              }
+              i++;
+          }
+
+          return max+1;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/szamrendszer.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const char* a = "90";
+        ASSERT_EQ(alap(a), 10);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("101011001"), 2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("12"), 3);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("414561"), 7);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("222222"), 3);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("AAAA"), 11);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("FAFA41"), 16);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("GAGA"), 17);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("KA41A"), 21);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("NANA"), 24);
+    }
+
+    TEST(Teszt, 11) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("QKA"), 27);
+    }
+
+    TEST(Teszt, 12) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("WWW"), 33);
+    }
+
+    TEST(Teszt, 13) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("ZOO"), 36);
+    }
+
+    TEST(Teszt, 14) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("UWU"), 33);
+    }
+
+    TEST(Teszt, 15) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(alap("C0S0I0G0A"), 29);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

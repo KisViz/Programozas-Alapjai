@@ -1,0 +1,109 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-nagyobb)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/nagyobb.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/nagyobb.c
+  visible: true
+  placeholders:
+  - offset: 21
+    length: 95
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+
+      const int* nagyobb(const int* a, const int* b) {
+          return *a > *b ? a : *b > *a ? b : NULL;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/nagyobb.c"
+    #undef main
+
+    const int a = 3;
+    const int b = 8;
+    const int c = 5;
+    const int d = 2;
+    const int e = 2;
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&a, &b), &b);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&a, &c), &c);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&a, &d), &a);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&b, &c), &b);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&b, &d), &b);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&c, &d), &c);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&a, &a), nullptr);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&b, &b), nullptr);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&d, &e), nullptr);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(nagyobb(&e, &a), &a);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 16:43:21 UTC"
+record: -1
+solution_hidden: true

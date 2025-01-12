@@ -1,0 +1,108 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-eltolva)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/eltolva.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/eltolva.c
+  visible: true
+  placeholders:
+  - offset: 274
+    length: 0
+    placeholder_text: return ' ';
+    initial_state:
+      length: 11
+      offset: 45
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int eredmeny = betu + mennyivel;
+
+          while (eredmeny > 'z') {
+              eredmeny = eredmeny - 'z' + 'a' - 1;
+          }
+
+          return (char) eredmeny;
+  text: |-
+    char eltolas(char betu, int mennyivel) {
+        return ' ';
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/eltolva.c"
+    #undef main
+
+    TEST(Egyszeru, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('a', 2), 'c');
+    }
+
+    TEST(Egyszeru, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('a', 20), 'u');
+    }
+
+    TEST(Egyszeru, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('s', 3), 'v');
+    }
+
+    TEST(Egyszeru, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('t', 0), 't');
+    }
+
+    TEST(Egyszeru, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('w', 3), 'z');
+    }
+
+    TEST(Osszetett, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('a', 26), 'a');
+    }
+
+    TEST(Osszetett, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('k', 26), 'k');
+    }
+
+    TEST(Osszetett, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('z', 1), 'a');
+    }
+
+    TEST(Osszetett, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('s', 183), 't');
+    }
+
+    TEST(Osszetett, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(eltolas('k', 1862885749), 'h');
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Oct 2023 08:11:17 UTC"
+record: -1
+solution_hidden: true

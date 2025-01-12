@@ -1,0 +1,155 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-fa)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/fa.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/fa.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 228
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          char fajta[100];
+          int orokzold;
+          int magassag;
+      } Fa;
+
+      int orokzold(Fa f1, Fa f2) {
+          Fa magasabb = f1.magassag >= f2.magassag ? f1 : f2;
+          return magasabb.orokzold ? 1 : 0;
+      }
+  text: |
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <cstring>
+
+    #define main main_0
+    #include "../src/fa.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Fa f1;
+        strcpy(f1.fajta, "fenyo");
+        f1.orokzold = 1;
+        f1.magassag = 130;
+
+        Fa f2;
+        strcpy(f2.fajta, "tolgy");
+        f2.orokzold = 0;
+        f2.magassag = 155;
+
+        int result = 0;
+
+        int res = orokzold(f1, f2);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Fa f1;
+        strcpy(f1.fajta, "fenyo");
+        f1.orokzold = 1;
+        f1.magassag = 130;
+
+        Fa f2;
+        strcpy(f2.fajta, "tolgy");
+        f2.orokzold = 0;
+        f2.magassag = 155;
+
+        int result = 0;
+
+        int res = orokzold(f2, f1);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Fa f1;
+        strcpy(f1.fajta, "fenyo");
+        f1.orokzold = 0;
+        f1.magassag = 153;
+
+        Fa f2;
+        strcpy(f2.fajta, "tolgy");
+        f2.orokzold = 1;
+        f2.magassag = 154;
+
+        int result = 1;
+
+        int res = orokzold(f1, f2);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Fa f1;
+        strcpy(f1.fajta, "fenyo");
+        f1.orokzold = 1;
+        f1.magassag = 140;
+
+        Fa f2;
+        strcpy(f2.fajta, "tolgy");
+        f2.orokzold = 0;
+        f2.magassag = 140;
+
+        int result = 1;
+
+        int res = orokzold(f1, f2);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Fa f1;
+        strcpy(f1.fajta, "fenyo");
+        f1.orokzold = 0;
+        f1.magassag = 140;
+
+        Fa f2;
+        strcpy(f2.fajta, "tolgy");
+        f2.orokzold = 1;
+        f2.magassag = 140;
+
+        int result = 0;
+
+        int res = orokzold(f1, f2);
+        ASSERT_EQ(res, result);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 07:11:29 UTC"
+record: -1
+solution_hidden: true

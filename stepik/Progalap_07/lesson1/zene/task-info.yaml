@@ -1,0 +1,127 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-zene)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/zene.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/zene.c"
+    #undef main
+
+    Zene z1 = {"asd", "ansan", 180};
+    Zene z2 = {"asd", "gvdkm", 177};
+    Zene z3 = {"asd", "mio", 188};
+    Zene z4 = {"zzz", "mbabi", 48};
+    Zene z5 = {"zzz", "naousn", 88};
+    Zene z6 = {"qqq", "avjnkj", 100};
+    Zene z7 = {"qqq", "mnasv", 1000};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zene* zz1[] = {&z1, &z2, &z3};
+
+        ASSERT_EQ(hosszu(zz1, 3, "asd"), &z3);
+        ASSERT_EQ(hosszu(zz1, 3, "qqq"), nullptr);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zene* zz2[] = {&z4, &z5, &z6, &z7};
+
+        ASSERT_EQ(hosszu(zz2, 4, "asd"), nullptr);
+        ASSERT_EQ(hosszu(zz2, 4, "zzz"), &z5);
+        ASSERT_EQ(hosszu(zz2, 4, "qqq"), &z7);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zene* zz3[] = {&z1, &z3, &z5, &z6, &z7};
+
+        ASSERT_EQ(hosszu(zz3, 5, "asd"), &z3);
+        ASSERT_EQ(hosszu(zz3, 5, "zzz"), &z5);
+        ASSERT_EQ(hosszu(zz3, 5, "qqq"), &z7);
+        ASSERT_EQ(hosszu(zz3, 5, "nnn"), nullptr);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zene* zz4[] = {&z1, &z2, &z3, &z4, &z5, &z6, &z7};
+
+        ASSERT_EQ(hosszu(zz4, 7, "asd"), &z3);
+        ASSERT_EQ(hosszu(zz4, 7, "zzz"), &z5);
+        ASSERT_EQ(hosszu(zz4, 7, "qqq"), &z7);
+        ASSERT_EQ(hosszu(zz4, 7, "nnn"), nullptr);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zene* zz5[] = {&z2};
+
+        ASSERT_EQ(hosszu(zz5, 1, "asd"), &z2);
+        ASSERT_EQ(hosszu(zz5, 1, "asdu"), nullptr);
+    }
+  learner_created: false
+- name: src/zene.c
+  visible: true
+  placeholders:
+  - offset: 546
+    length: 15
+    placeholder_text: return NULL;
+    initial_state:
+      length: 12
+      offset: 207
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Zene* leghosszabb = NULL;
+          for (int i = 0; i < darabszam; i++) {
+              if ((leghosszabb == NULL && !strcmp(zenek[i]->eloado, elvartEloado)) ||
+                  (leghosszabb != NULL && !strcmp(zenek[i]->eloado, elvartEloado) && zenek[i]->hossz > leghosszabb->hossz)) {
+                  leghosszabb = zenek[i];
+              }
+          }
+
+          return leghosszabb;
+  text: |-
+    #include <stdlib.h>
+    #include <string.h>
+
+    typedef struct {
+        char eloado[100];
+        char cim[100];
+        unsigned int hossz;
+    } Zene;
+
+    Zene* hosszu(Zene* zenek[], int darabszam, const char* elvartEloado) {
+        return NULL;
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 24 Nov 2023 16:56:00 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,112 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-sorminimum)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/sorminimum.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/sorminimum.c"
+    #undef main
+
+    void tesztel(const int* tomb, int sorok, int oszlopok, int elvartEredmeny) {
+        int res = minimum(tomb, sorok, oszlopok);
+        ASSERT_EQ(res, elvartEredmeny);
+    }
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {3, 3, 2, 5};
+        tesztel(t, 2, 2, 0);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {3, 2, 1, 5, 3, 3, 1, 5, 3, 5, 5, 5, 2, 2, 2, 4, 2, 1};
+        tesztel(t, 3, 6, 2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[100000];
+        for (int i = 0; i < 100000; i++) {
+            t[i] = 2;
+        }
+        tesztel(t, 1, 100000, 0);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {2100000000, 10, 4, 3, 2100000000, 3, 5, 3, 3, 2110000000, 3, 3};
+        tesztel(t, 3, 4, 1);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {-10, -50, -20, -30, -30, -30, -2, -2, -2, -2, -200, -2, 2, 2, 1, 2, 1, 2, 0, 0, 0, 0, 0, 0, -100000};
+        tesztel(t, 4, 6, 1);
+    }
+  learner_created: false
+- name: src/sorminimum.c
+  visible: true
+  placeholders:
+  - offset: 391
+    length: 13
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 81
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int minimumSorOsszeg = INT_MAX;
+          int minimumSorIndex = -1;
+
+          for (int i = 0; i < sorok; i++) {
+              int aktualisOsszeg = 0;
+              for (int j = 0; j < oszlopok; j++) {
+                  aktualisOsszeg += tomb[i*oszlopok+j];
+              }
+
+              if (aktualisOsszeg < minimumSorOsszeg) {
+                  minimumSorOsszeg = aktualisOsszeg;
+                  minimumSorIndex = i;
+              }
+          }
+
+          return minimumSorIndex;
+  text: |-
+    #include <limits.h>
+
+    int minimum(const int* tomb, int sorok, int oszlopok) {
+        return 0;
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 17:22:39 UTC"
+record: -1
+solution_hidden: true

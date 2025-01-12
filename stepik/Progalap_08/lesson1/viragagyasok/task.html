@@ -1,0 +1,44 @@
+<html lang="hu">
+    <h1>[⭐⭐] 12. Virágágyások (5 pont)</h1>
+    Bori néni szeretne virágokat ültetni az alábbi minta alapján: sorokat hoz létre egymás mellett úgy, hogy minden sorba azonos
+    mennyiségű virág kerüljön. Egy sorban csak egyfajta virág lehet, de két egymás melletti sorban különböző.<br>
+    Valósítsd meg az <i>ultet</i> függvényt, amely paraméterben a sorok számát várja, illetve azt, hogy egy sorba hány virágot kell
+    tenni. A függvény visszatérési értéke egy tömb, ami sorfolytonosan tartalmazza az egymás után ültetendő virágokat. Az ültetést
+    az első sorban a 0-s virággal kezdjük, majd a második sorban az 1-es virággal folytatjuk, utána megint a 0-s jön, és így tovább.
+    <br><br>
+    Például:
+    <table style="width:100%; padding: 5px; background-color: #F3F3F3; text-align: center; border: grey 3px solid">
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    A fenti példában 3 sort hozunk létre és minden sor 6 virágot tartalmaz. <br>
+    Ilyenkor a visszaadott tömb: {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}
+
+    <div class="hint">
+        Megfigyelhetjük, hogy int*-ot kell visszaadni, tehát 1D-s tömböt kell foglalnunk és visszaadnunk.
+    </div>
+
+</html>

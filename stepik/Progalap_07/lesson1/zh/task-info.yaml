@@ -1,0 +1,136 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-zh)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/zh.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/zh.c
+  visible: true
+  placeholders:
+  - offset: 139
+    length: 115
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 122
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int osszeg = 0;
+          int i = 0;
+          while (zh[i] != NULL) {
+              osszeg += zh[i]->pontszam;
+              i++;
+          }
+
+          return (double)osszeg / i;
+  text: |-
+    #include <stdlib.h>
+
+    typedef struct {
+        const char* hallgato;
+        unsigned pontszam;
+    } Zh;
+
+    double atlag(Zh** zh) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <string>
+
+    using namespace std;
+
+    #define main main_0
+    #include "../src/zh.c"
+    #undef main
+
+    Zh zh1 = {"Janika", 50};
+    Zh zh2 = {"Davidka", 44};
+    Zh zh3 = {"Jozsika", 55};
+    Zh zh4 = {"Erno", 0};
+    Zh zh5 = {"Petruska", 25};
+    Zh zh6 = {"Anitacska", 72};
+    Zh zh7 = {"Orsika", 53};
+    Zh zh8 = {"Vandor", 1};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh1, &zh2, NULL};
+        double elvart = 47.0;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh1, &zh2, &zh3, &zh4, &zh5, &zh6, NULL};
+        double elvart = 41.0;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh7, NULL};
+        double elvart = 53.0;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh1, &zh2, &zh6, NULL};
+        double elvart = 55.33333333;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh1, &zh2, &zh4, &zh8, NULL};
+        double elvart = 23.75;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Zh* zh[] = {&zh1, &zh2, &zh7, &zh8, NULL};
+        double elvart = 37.0;
+
+        double res = atlag(zh);
+        ASSERT_NEAR(res, elvart, 0.0001f);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 16:57:22 UTC"
+record: -1
+solution_hidden: true

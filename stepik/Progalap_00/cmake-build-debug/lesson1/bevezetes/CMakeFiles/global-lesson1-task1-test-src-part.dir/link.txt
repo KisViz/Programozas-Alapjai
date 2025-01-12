@@ -1,0 +1,2 @@
+C:\PROGRA~1\JETBRA~1\CLION2~1.5\bin\mingw\bin\ar.exe qc libglobal-lesson1-task1-test-src-part.a "CMakeFiles/global-lesson1-task1-test-src-part.dir/src/task.c.obj"
+C:\PROGRA~1\JETBRA~1\CLION2~1.5\bin\mingw\bin\ranlib.exe libglobal-lesson1-task1-test-src-part.a

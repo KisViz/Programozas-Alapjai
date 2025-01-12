@@ -1,0 +1,80 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-negativ)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/negativ.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/negativ.c
+  visible: true
+  placeholders:
+  - offset: 36
+    length: 9
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 36
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: "return szam[0] == '1';"
+  text: |-
+    int negativ(const char* szam) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/negativ.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(negativ("0011000110001101"), 0);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(negativ("1010111100110111"), 1);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(negativ("0111000100001000"), 0);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(negativ("1100111001101110"), 1);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(negativ("1011000110001101"), 1);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

@@ -1,0 +1,16 @@
+<html lang="hu">
+    <h1>[⭐] 4. Eredmények (3 pont)</h1>
+    Marika néni kijavította a matek dolgozatokat, ezek eredményeiről szeretne egy statisztikát készíteni.<br>
+    Valósítsd meg a <i>jegyek</i> függvényt, amely paraméterben az egyesek, kettesek, hármasok, négyesek és ötösök darabszámát várja, és
+    egy tömbbel tér vissza. A tömb egy 5 elemű tömb legyen, amelynek legelső eleme az egyesek száma, a következő eleme a kettesek száma,
+    és így tovább...
+
+    <div class="hint">
+        A tömb feltöltése viszonylag egyértelmű. De hogyan hozzuk létre a tömböt? Ha szokásos módon egy statikus tömböt hozunk létre és
+        azt adjuk vissza, akkor az úgy nem lesz jó, mivel az egy lokális változó, ami a stack-en jön létre, és amint kilépünk a függvényből,
+        meg fog szűnni. Ebből adódóan, amikor később használni szeretnénk, azon a memóriacímen már más adat van, így ebből problémák lesznek.
+        Éppen ezért a tömbünket dinamikusan kell létrehozni, azaz nekünk kell lefoglalni a memóriát malloc segítségével. Az így létrehozott
+        tömb addig fog létezni, amíg fel nem szabadítjuk azt a free függvény segítségével, ebből adódóan a main függvényben
+        (vagy ahonnan hívjuk) is tudjuk használni.
+    </div>
+</html>

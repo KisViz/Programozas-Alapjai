@@ -1,0 +1,103 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-tuzijatek)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            test/task.cpp)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/task.cpp
+  visible: false
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        std::vector<string> errors {
+            "warning: return type defaults to 'int'",
+            "error: subscripted value is neither array nor pointer nor vector",
+            "warning: control reaches end of non-void function"
+        };
+
+        CHECK_COMPILER_ERROR_LIMIT("tuzijatek", "tuzijatek.c", errors, 2, 1)
+    }
+  learner_created: false
+- name: src/tuzijatek.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 239
+    placeholder_text: |-
+      typedef struct {
+          int nagysag;
+          int idotartam;
+      } Tuzijatek;
+
+      int felloves(Tuzijatek tuzijatekok[], int darab) {
+          int ossz = 0;
+          for (int i = 0; i < darab; i++) {
+              ossz += tuzijatekok[i].idotartam;
+          }
+          return ossz;
+      }
+    initial_state:
+      length: 240
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          int nagysag;
+          int idotartam;
+      } Tuzijatek;
+
+      felloves(Tuzijatek tuzijatekok, int darab) {
+          int ossz = 0;
+          for (int i = 0; i < darab; i++) {
+              ossz += tuzijatekok[i].idotartam;
+          }
+      }
+  text: |-
+    typedef struct {
+        int nagysag;
+        int idotartam;
+    } Tuzijatek;
+
+    int felloves(Tuzijatek tuzijatekok[], int darab) {
+        int ossz = 0;
+        for (int i = 0; i < darab; i++) {
+            ossz += tuzijatekok[i].idotartam;
+        }
+        return ossz;
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 07:53:25 UTC"
+record: -1

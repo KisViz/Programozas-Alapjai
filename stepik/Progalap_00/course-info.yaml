@@ -1,0 +1,9 @@
+title: Progalap_00
+language: English
+summary: Próba feladatsor a környezet kipróbálásához
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

@@ -1,0 +1,140 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-gondolatolvasas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/gondolatolvasas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/gondolatolvasas.c
+  visible: true
+  placeholders:
+  - offset: 189
+    length: 2
+    placeholder_text: |-
+      0;
+      // tomb feltoltese
+    initial_state:
+      length: 21
+      offset: 189
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      1;
+          tomb[0] = 0;
+  - offset: 418
+    length: 19
+    placeholder_text: |-
+      0;
+      // tomb feltoltese
+    initial_state:
+      length: 21
+      offset: 354
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      3;
+          tomb[0] = 3;
+          tomb[1] = 4;
+          tomb[2] = 0;
+  text: |-
+    #include <stdio.h>
+
+    int gondolatolvas(int* a) {
+        int eredmeny = *a**a;
+        while (*(a++)) {
+            eredmeny += *a;
+        }
+        return eredmeny;
+    }
+
+    int nulla(int tomb[]) {
+        int meret = 0;
+    // tomb feltoltese
+
+        if (gondolatolvas(tomb) != 0) {
+            printf("Nem sikerult!");
+        }
+
+        return meret;
+    }
+
+    int tizenharom(int tomb[]) {
+        int meret = 0;
+    // tomb feltoltese
+
+        if (gondolatolvas(tomb) != 13) {
+            printf("Nem sikerult!");
+        }
+
+        return meret;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/gondolatolvasas.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(gondolatolvas, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {2, 4, 0};
+        ASSERT_EQ(gondolatolvas(t1), 8);
+
+        int t2[] = {1, 2, 0, 1};
+        ASSERT_EQ(gondolatolvas(t2), 3);
+
+        int t3[] = {4, 7, 4, 3, 2, 8, 0, 6, 3, 1};
+        ASSERT_EQ(gondolatolvas(t3), 40);
+    }
+
+    TEST(nulla, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        int t1[] = {-2451251, -2451251, -2454251, -2451251, -2452251, -2451251, -2451251, -2451251, -2451251, -2451251, -2451251};
+        IO("", int r = nulla(t1), str)
+        ASSERT_STREQ(str, "");
+        ASSERT_EQ(gondolatolvas(t1), 0);
+        ASSERT_EQ(t1[r-1], 0);
+    }
+
+    TEST(tizenharom, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        int t1[] = {-2451251, -2451251, -2454251, -2451251, -2452251, -2451251, -2451251, -2451251, -2451251, -2451251, -2451251};
+        IO("", int r = tizenharom(t1), str)
+        ASSERT_STREQ(str, "");
+        ASSERT_EQ(gondolatolvas(t1), 13);
+        ASSERT_EQ(t1[r-1], 0);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 19 Nov 2023 14:12:56 UTC"
+record: -1
+solution_hidden: true

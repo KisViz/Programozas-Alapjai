@@ -1,0 +1,147 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-tisza)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/tisza.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/tisza.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("5 x---- x--x- xx--- -xx-x _____", main_0(), str)
+        ASSERT_STREQ(str, "vigyazat!\nok!\nvigyazat!\nvigyazat!\n");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("2 x- -x -x -- -- -- x- __", main_0(), str)
+        ASSERT_STREQ(str, "vigyazat!\nvigyazat!\nok!\nok!\nok!\nok!\nvigyazat!\n");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("3 x-- x-x x-- --- --x xx- x-x -x- x-- ___", main_0(), str)
+        ASSERT_STREQ(str, "vigyazat!\nok!\nok!\nok!\nok!\nvigyazat!\nvigyazat!\nvigyazat!\nvigyazat!\n");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("4 ---x -xxx xx-- x-x- x-x- xxx- ---- x-xx ____", main_0(), str)
+        ASSERT_STREQ(str, "ok!\nok!\nvigyazat!\nvigyazat!\nok!\nvigyazat!\nok!\nvigyazat!\n");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("6 x----- xxx-xx -xxxx- -x-xxx -xxx-- -xxxxx ______", main_0(), str)
+        ASSERT_STREQ(str, "vigyazat!\nvigyazat!\nvigyazat!\nvigyazat!\nvigyazat!\nok!\n");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("12 xxx--x-x-xxx -xxxxx-xxxxx -xxxxxxxxxxx xxxxx-xxxxxx x-x-xxxx-xxx xxx-xxxxxxxx xxx-xxxxxxxx ____________", main_0(), str)
+        ASSERT_STREQ(str, "vigyazat!\nvigyazat!\nok!\nvigyazat!\nvigyazat!\nok!\nok!\n");
+    }
+
+    TEST(Visszateresi_ertek, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("12 xxx--x-x-xxx -xxxxx-xxxxx -xxxxxxxxxxx xxxxx-xxxxxx x-x-xxxx-xxx xxx-xxxxxxxx xxx-xxxxxxxx ____________", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+  learner_created: false
+- name: src/tisza.c
+  visible: true
+  placeholders:
+  - offset: 56
+    length: 894
+    placeholder_text: return 1;
+    initial_state:
+      length: 9
+      offset: 57
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int szelesseg;
+          scanf("%d", &szelesseg);
+
+          int aktualisPozicio = 1;
+
+          while (1) {
+              scanf("%*c");
+
+              int legjobbPozicio = aktualisPozicio;
+              int legjobbTavolsag = INT_MAX;
+
+              for (int i = 0; i < szelesseg; i++) {
+                  char c;
+                  scanf("%c", &c);
+
+                  if (c == '-') {
+                      int tavolsag = aktualisPozicio > i+1 ?  aktualisPozicio - (i+1) : (i+1) - aktualisPozicio;
+
+                      if (tavolsag < legjobbTavolsag) {
+                          legjobbTavolsag = tavolsag;
+                          legjobbPozicio = i+1;
+                      }
+                  }
+              }
+
+              if (legjobbTavolsag == INT_MAX) {
+                  break;
+              }
+
+              if (legjobbPozicio == aktualisPozicio) {
+                  printf("ok!\n");
+              } else {
+                  printf("vigyazat!\n");
+                  aktualisPozicio = legjobbPozicio;
+              }
+          }
+
+          return 0;
+  text: |-
+    #include <stdio.h>
+    #include <limits.h>
+
+    int main() {
+        return 1;
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 07 Nov 2023 12:21:26 UTC"
+record: -1
+solution_hidden: true

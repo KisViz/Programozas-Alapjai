@@ -1,0 +1,146 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-alakzatok)
+
+    set(CMAKE_CXX_STANDARD 14)
+    set(CMAKE_C_FLAGS "-D_USE_MATH_DEFINES")
+
+    # Files from `./src` directory
+    set(SRC
+            src/alakzatok.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/alakzatok.c
+  visible: true
+  placeholders:
+  - offset: 19
+    length: 416
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <math.h>
+
+      typedef struct {
+          double a;
+      } Negyzet;
+
+      typedef struct {
+          double d;
+      } Kor;
+
+      typedef struct {
+          double a;
+          double b;
+          double c;
+      } Haromszog;
+
+      double teruletOsszeg(Negyzet n, Kor k, Haromszog h) {
+          double tn = n.a * n.a;
+          double tk = (k.d / 2) * (k.d / 2) * M_PI;
+
+          double kh2 = (h.a + h.b + h.c) / 2;
+          double th = sqrt(kh2 * (kh2 - h.a) * (kh2 - h.b) * (kh2 - h.c));
+
+          return tn + tk + th;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/alakzatok.c"
+    #undef main
+
+    Negyzet n1 = {5};
+    Negyzet n2 = {7.5};
+    Negyzet n3 = {0.01};
+
+    Kor k1 = {6};
+    Kor k2 = {5.52};
+    Kor k3 = {0.054};
+
+    Haromszog h1 = {2, 3, 4};
+    Haromszog h2 = {3.3, 3.5, 4.1};
+    Haromszog h3 = {0.01, 0.015, 0.011};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Negyzet n = n1;
+        Kor k = k1;
+        Haromszog h = h1;
+        double result = 56.17907139;
+
+        double res = teruletOsszeg(n, k, h);
+        ASSERT_NEAR(res, result, 0.000001);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Negyzet n = n1;
+        Kor k = k1;
+        Haromszog h = h2;
+        double result = 58.82828011;
+
+        double res = teruletOsszeg(n, k, h);
+        ASSERT_NEAR(res, result, 0.000001);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Negyzet n = n2;
+        Kor k = k3;
+        Haromszog h = h1;
+        double result = 59.15702773;
+
+        double res = teruletOsszeg(n, k, h);
+        ASSERT_NEAR(res, result, 0.000001);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Negyzet n = n3;
+        Kor k = k3;
+        Haromszog h = h3;
+        double result = 0.002445211;
+
+        double res = teruletOsszeg(n, k, h);
+        ASSERT_NEAR(res, result, 0.000001);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Negyzet n = n1;
+        Kor k = k2;
+        Haromszog h = h2;
+        double result = 54.48534243;
+
+        double res = teruletOsszeg(n, k, h);
+        ASSERT_NEAR(res, result, 0.000001);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 20 Oct 2023 16:06:07 UTC"
+record: -1
+solution_hidden: true

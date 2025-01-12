@@ -1,0 +1,129 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-verseny)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/verseny.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/verseny.c
+  visible: true
+  placeholders:
+  - offset: 74
+    length: 178
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 55
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      char nev[100];
+
+          FILE* file = fopen(fajlnev, "r");
+          fscanf(file, "%s", nev);
+          fclose(file);
+
+          printf("%s\n", nev);
+  text: |-
+    #include <stdio.h>
+
+    void gyoztes(char fajlnev[]) {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+    #include <string>
+
+    using namespace std;
+
+    #define main main_0
+    #include "../src/verseny.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "info.txt";
+
+        writeContentToFile(filename, "Marika");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "Marika\n");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "info.txt";
+
+        writeContentToFile(filename, "Monika");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "Monika\n");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "gyoztes.txt";
+
+        writeContentToFile(filename, "Peter");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "Peter\n");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "eredmeny.csv";
+
+        writeContentToFile(filename, "Otto");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "Otto\n");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "megoldas.be";
+
+        writeContentToFile(filename, "David");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "David\n");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "fajl.ki";
+
+        writeContentToFile(filename, "Bence");
+        char str[1000];
+        IO("", gyoztes(filename), str);
+        ASSERT_STREQ(str, "Bence\n");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 15:18:18 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,116 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-szallitas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szallitas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szallitas.c
+  visible: true
+  placeholders:
+  - offset: 140
+    length: 100
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 140
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int meret;
+          for (int i = 0; i < db; i++) {
+              scanf("%d", &meret);
+              osszeg += meret;
+          }
+  text: |-
+    #include <stdio.h>
+
+    int main() {
+        int db;
+        printf("Hany csoki all rendelkezesre?\n");
+        scanf("%d", &db);
+
+        int osszeg = 0;
+
+        // megoldas
+
+        printf("A csokik ossztomege: %d\n", osszeg);
+
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/szallitas.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("5 3 6 3 2 1", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 15\n");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("1 400", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 400\n");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("3 2 1 1", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 4\n");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("10 1 2 3 4 5 6 7 8 8 11", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 55\n");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("0", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 0\n");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("2 1 100000", main_0(), str)
+        ASSERT_STREQ(str, "Hany csoki all rendelkezesre?\nA csokik ossztomege: 100001\n");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 27 Sep 2023 18:07:22 UTC"
+record: -1
+solution_hidden: true

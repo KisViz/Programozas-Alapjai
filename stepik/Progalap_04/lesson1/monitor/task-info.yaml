@@ -1,0 +1,223 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-monitor)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/monitor.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/monitor.c
+  visible: true
+  placeholders:
+  - offset: 90
+    length: 676
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 90
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Monitor monitorVasarlas(Monitor monitorok[], int db) {
+          Monitor legjobb = monitorok[0];
+
+          for (int i = 1; i < db; i++) {
+              if (monitorok[i].pixelX == 1920 && monitorok[i].pixelY == 1080 &&
+                  (monitorok[i].kepatlo > legjobb.kepatlo || (monitorok[i].kepatlo == legjobb.kepatlo && monitorok[i].ar < legjobb.ar))) {
+                  legjobb = monitorok[i];
+              }
+          }
+
+          if (legjobb.pixelX != 1920 || legjobb.pixelY != 1080) {
+              Monitor m = {0, 0, 0, 0};
+              return m;
+          }
+
+          return legjobb;
+      }
+  text: |-
+    typedef struct {
+        int pixelX;
+        int pixelY;
+        int kepatlo;
+        int ar;
+    } Monitor;
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/monitor.c"
+    #undef main
+
+    Monitor m0 = {0, 0, 0, 0};
+    Monitor m1 = {1920, 1080, 21, 100000};
+    Monitor m2 = {1280, 720, 20, 40000};
+    Monitor m3 = {2560, 1080, 29, 90000};
+    Monitor m4 = {1024, 768, 18, 5500};
+    Monitor m5 = {1920, 1080, 23, 40000};
+    Monitor m6 = {1920, 1080, 23, 45000};
+    Monitor m7 = {1920, 1079, 40, 10000};
+    Monitor m8 = {1919, 1080, 40, 10000};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m1, m2, m3, m4};
+        int db = 4;
+        Monitor result = m1;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m4, m2, m1, m4};
+        int db = 4;
+        Monitor result = m1;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m2, m3, m4, m6, m7};
+        int db = 5;
+        Monitor result = m6;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m1, m7, m5, m4};
+        int db = 4;
+        Monitor result = m5;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m5, m7, m1, m4};
+        int db = 4;
+        Monitor result = m5;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m6, m5, m1, m8};
+        int db = 4;
+        Monitor result = m5;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m5, m1, m6, m8};
+        int db = 4;
+        Monitor result = m5;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m1};
+        int db = 1;
+        Monitor result = m1;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m2};
+        int db = 1;
+        Monitor result = m0;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor monitorok[] = {m2, m3, m4, m7, m8};
+        int db = 5;
+        Monitor result = m0;
+
+        Monitor res = monitorVasarlas(monitorok, db);
+
+        ASSERT_EQ(result.pixelX, res.pixelX);
+        ASSERT_EQ(result.pixelY, res.pixelY);
+        ASSERT_EQ(result.kepatlo, res.kepatlo);
+        ASSERT_EQ(result.ar, res.ar);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 20 Oct 2023 08:10:41 UTC"
+record: -1
+solution_hidden: true

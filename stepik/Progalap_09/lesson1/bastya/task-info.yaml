@@ -1,0 +1,188 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-bastya)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/bastya.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/bastya.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+
+      int strategia(const char* fajlnev) {
+          // beolvasas
+          int db = 0;
+
+          int bastyaI;
+          int bastyaJ;
+
+          FILE* f = fopen(fajlnev, "r");
+          int tabla[8][8];
+          for (int i = 0; i < 8; i++) {
+              for (int j = 0; j < 8; j++) {
+                  fscanf(f, "%d", &tabla[i][j]);
+
+                  if (tabla[i][j] == 2) {
+                      bastyaI = i;
+                      bastyaJ = j;
+                  }
+
+              }
+          }
+          fclose(f);
+
+          // osszeszamolas
+          int volt = 0;
+          for (int i = 0; i < 8; i++) {
+              if (tabla[bastyaI][i] == 1) {
+                  volt = 1;
+              } else if (tabla[bastyaI][i] == 2) {
+                  db += volt;
+                  volt = 0;
+              }
+          }
+
+          db += volt;
+          volt = 0;
+
+          for (int i = 0; i < 8; i++) {
+              if (tabla[i][bastyaJ] == 1) {
+                  volt = 1;
+              } else if (tabla[i][bastyaJ] == 2) {
+                  db += volt;
+                  volt = 0;
+              }
+          }
+
+          db += volt;
+
+          return db;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/bastya.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0";
+        int elvart = 3;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "karika.txt";
+        char szoveg[] = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1";
+        int elvart = 3;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "beka.txt";
+        char szoveg[] = "1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0 0 0 2";
+        int elvart = 2;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 2";
+        int elvart = 0;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 1 0 0 0 0 0 2 0 0 1 1 0 1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0";
+        int elvart = 1;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "0 0 2 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0";
+        int elvart = 1;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0";
+        int elvart = 1;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char fajlnev[] = "info.txt";
+        char szoveg[] = "1 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 0 0 0 1 0 1 0 1 0 1 0 2 0 0 0 0 0 0 0 1 0";
+        int elvart = 3;
+
+        writeContentToFile(fajlnev, szoveg);
+        int res = strategia(fajlnev);
+        ASSERT_EQ(res, elvart);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

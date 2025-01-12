@@ -1,0 +1,152 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-autopalya)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/autopalya.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/autopalya.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 100;
+        int extra = 50;
+        int honapok = 4;
+        int elvart = 900;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 100;
+        int extra = 50;
+        int honapok = 27;
+        int elvart = 166500;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 100;
+        int extra = 0;
+        int honapok = 200;
+        int elvart = 20000;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 100;
+        int extra = 1;
+        int honapok = 200;
+        int elvart = 1353300;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 10000;
+        int extra = 10000;
+        int honapok = 36;
+        int elvart = 78060000;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 500000;
+        int extra = 20000;
+        int honapok = 85;
+        int elvart = 2089300000;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 10000000;
+        int extra = 1000000;
+        int honapok = 15;
+        int elvart = 710000000;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 100000000;
+        int extra = 20000000;
+        int honapok = 7;
+        int elvart = 1820000000;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int alap = 1000;
+        int extra = -10;
+        int honapok = 12;
+        int elvart = 9140;
+
+        ASSERT_EQ(felujitas(alap, extra, honapok), elvart);
+    }
+  learner_created: false
+- name: src/autopalya.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 297
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Solved
+    encrypted_possible_answer: |-
+      int felujitas(int alapKoltseg, int extraKoltseg, int honapok) {
+          int aktualis = alapKoltseg;
+          int aktualisNovekedes = 0;
+
+          int osszeg = aktualis;
+          for (int i = 1; i < honapok; i++) {
+              aktualisNovekedes += extraKoltseg;
+              aktualis = aktualis + aktualisNovekedes;
+              osszeg += aktualis;
+          }
+
+          return osszeg;
+      }
+  text: // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 28 Oct 2023 13:16:05 UTC"
+record: -1
+solution_hidden: true

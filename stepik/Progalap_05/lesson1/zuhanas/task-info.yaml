@@ -1,0 +1,182 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-zuhanas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/zuhanas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/zuhanas.c"
+    #undef main
+
+    Repulo r1 = {100, 105};
+    Repulo r2 = {101, 105};
+    Repulo r3 = {98, 110};
+    Repulo r4 = {60, 101};
+    Repulo r5 = {500, 130};
+    Repulo r6 = {40, 100};
+    Repulo r7 = {120, 100};
+    Repulo r8 = {44, 87};
+    Repulo r9 = {55, 55};
+    Repulo r10 = {11, 65};
+
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r8, r9, r10};
+        int db = 3;
+        Repulo res = r9;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r8, r7, r10};
+        int db = 3;
+        Repulo res = r8;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r2, r4, r8, r7};
+        int db = 4;
+        Repulo res = r8;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r5, r2, r3};
+        int db = 3;
+        Repulo res = r2;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r5, r2, r3, r1};
+        int db = 4;
+        Repulo res = r2;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r5, r1, r3, r2};
+        int db = 4;
+        Repulo res = r2;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r6, r7};
+        int db = 2;
+        Repulo res = r7;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r7};
+        int db = 1;
+        Repulo res = r7;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Repulo repulok[] = {r8};
+        int db = 1;
+        Repulo res = r8;
+
+        Repulo result = zuhanas(repulok, db);
+        ASSERT_EQ(res.sebesseg, result.sebesseg);
+        ASSERT_EQ(res.magassag, result.magassag);
+    }
+  learner_created: false
+- name: src/zuhanas.c
+  visible: true
+  placeholders:
+  - offset: 966
+    length: 20
+    placeholder_text: "return repulok[0];"
+    initial_state:
+      length: 18
+      offset: 111
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Repulo ret = repulok[0];
+
+          for (int i = 1; i < db; i++) {
+              if (ret.magassag >= 100 && (repulok[i].magassag < ret.magassag || (repulok[i].magassag == ret.magassag && repulok[i].sebesseg > ret.sebesseg))) {
+                  ret = repulok[i];
+                  continue;
+              }
+
+              if (repulok[i].magassag < 100 && repulok[i].sebesseg > ret.sebesseg) {
+                  ret = repulok[i];
+              }
+          }
+
+          return ret;
+  text: |-
+    typedef struct {
+        int sebesseg;
+        int magassag;
+    } Repulo;
+
+    Repulo zuhanas(Repulo repulok[], int db) {
+        return repulok[0];
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 10:42:12 UTC"
+record: -1
+solution_hidden: true

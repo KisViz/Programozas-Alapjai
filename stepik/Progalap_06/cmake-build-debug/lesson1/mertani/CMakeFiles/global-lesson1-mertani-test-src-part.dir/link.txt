@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libglobal-lesson1-mertani-test-src-part.a "CMakeFiles/global-lesson1-mertani-test-src-part.dir/src/mertani.c.obj"
+C:\MinGW\bin\ranlib.exe libglobal-lesson1-mertani-test-src-part.a

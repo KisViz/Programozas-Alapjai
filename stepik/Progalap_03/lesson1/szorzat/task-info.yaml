@@ -1,0 +1,111 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-task1)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szorzat.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szorzat.c
+  visible: true
+  placeholders:
+  - offset: 20
+    length: 227
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+
+      int main() {
+
+          int szorzat = 1;
+
+          while (1) {
+              int szam;
+              scanf("%d", &szam);
+
+              if (szam == 0) {
+                  break;
+              }
+
+              szorzat *= szam;
+          }
+
+          printf("%d", szorzat);
+
+          return 0;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/szorzat.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("5 7 2 2 0", main_0(), str)
+        ASSERT_STREQ(str, "140");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("1 1 1 1 1 0", main_0(), str)
+        ASSERT_STREQ(str, "1");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("100 0", main_0(), str)
+        ASSERT_STREQ(str, "100");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("7 5 44 232 32 1 2 33 2 0", main_0(), str)
+        ASSERT_STREQ(str, "1509150720");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 12 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 0", main_0(), str)
+        ASSERT_STREQ(str, "201326592");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 09 Oct 2023 12:44:05 UTC"
+record: -1
+solution_hidden: true

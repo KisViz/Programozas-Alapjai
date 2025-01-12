@@ -1,0 +1,109 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-viragagyasok)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/viragagyasok.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/viragagyasok.c
+  visible: true
+  placeholders:
+  - offset: 266
+    length: 13
+    placeholder_text: return NULL;
+    initial_state:
+      length: 12
+      offset: 62
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int* viragok = (int*) malloc(sor * darabszam * sizeof(int));
+          for (int i = 0; i < sor; i++) {
+              for (int j = 0; j < darabszam; j++) {
+                  viragok[i*darabszam+j] = i%2;
+              }
+          }
+
+          return viragok;
+  text: |-
+    #include <stdlib.h>
+
+    int* ultet(int sor, int darabszam) {
+        return NULL;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/viragagyasok.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int sor = 3;
+        int oszlop = 7;
+        int elvart[] = {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0};
+        int* tomb = ultet(sor, oszlop);
+        ASSERT_ARRAY_EQ(elvart, tomb, sor*oszlop);
+        free(tomb);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int sor = 1;
+        int oszlop = 13;
+        int elvart[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int* tomb = ultet(sor, oszlop);
+        ASSERT_ARRAY_EQ(elvart, tomb, sor*oszlop);
+        free(tomb);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int sor = 5;
+        int oszlop = 2;
+        int elvart[] = {0, 0, 1, 1, 0, 0, 1, 1, 0, 0};
+        int* tomb = ultet(sor, oszlop);
+        ASSERT_ARRAY_EQ(elvart, tomb, sor*oszlop);
+        free(tomb);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int sor = 10;
+        int oszlop = 1;
+        int elvart[] = {0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
+        int* tomb = ultet(sor, oszlop);
+        ASSERT_ARRAY_EQ(elvart, tomb, sor*oszlop);
+        free(tomb);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 17:03:19 UTC"
+record: -1
+solution_hidden: true

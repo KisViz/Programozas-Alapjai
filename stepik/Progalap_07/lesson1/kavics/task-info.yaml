@@ -1,0 +1,100 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-Kavics)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/kavics.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/kavics.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Kavics* k = kavicsKreacio(4, 'a');
+        ASSERT_EQ(k->meret, 4);
+        ASSERT_EQ(k->szin, 'a');
+        free((void*) k);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Kavics* k2 = kavicsKreacio(7, 'b');
+        ASSERT_EQ(k2->meret, 7);
+        ASSERT_EQ(k2->szin, 'b');
+        free((void*) k2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Kavics* k3 = kavicsKreacio(0, 'z');
+        ASSERT_EQ(k3->meret, 0);
+        ASSERT_EQ(k3->szin, 'z');
+        free((void*) k3);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Kavics* k4 = kavicsKreacio(211, 'm');
+        ASSERT_EQ(k4->meret, 211);
+        ASSERT_EQ(k4->szin, 'm');
+        free((void*) k4);
+    }
+  learner_created: false
+- name: src/kavics.c
+  visible: true
+  placeholders:
+  - offset: 99
+    length: 166
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 79
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      const Kavics* kavicsKreacio(int meret, char szin) {
+          Kavics* k = (Kavics*) malloc(sizeof(Kavics));
+          k->meret = meret;
+          k->szin = szin;
+          return k;
+      }
+  text: |-
+    #include <stdlib.h>
+
+    typedef struct {
+        int meret;
+        char szin;
+    } Kavics;
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 19 Nov 2023 14:21:35 UTC"
+record: -1
+solution_hidden: true

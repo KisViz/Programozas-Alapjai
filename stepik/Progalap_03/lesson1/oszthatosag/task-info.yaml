@@ -1,0 +1,135 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-oszthatosag)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/oszthatosag.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/oszthatosag.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 83
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      //oszthatosag(int*s,int d){int c=0;while(d)s[--d]%2?0:c++;return c;}
+      oszthatosag(int*s,int d){return d?oszthatosag(s,--d)+!(s[d]%2):0;}
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #include "../src/oszthatosag.c"
+
+    #include "../../tools.cpp"
+
+    TEST(Eredmeny, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {1, 2, 3};
+        int meret = 3;
+        int eredmeny = 1;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {4, 4, 2, 10, 16, -2, 6, 4, 0};
+        int meret = 9;
+        int eredmeny = 9;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {5, 2, 7, 4, 40, 5623, 643, 21, 312};
+        int meret = 9;
+        int eredmeny = 4;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {-1, -1, -1, -1, -1, -1};
+        int meret = 6;
+        int eredmeny = 0;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {412, 512, 512, 310, 335, 85683, 85, 352, 7547, -153, -7347, -634};
+        int meret = 12;
+        int eredmeny = 6;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {3, 3, 3};
+        int meret = 3;
+        int eredmeny = 0;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {8};
+        int meret = 1;
+        int eredmeny = 1;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Eredmeny, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {3};
+        int meret = 1;
+        int eredmeny = 0;
+
+        int res = oszthatosag(szamok, meret);
+        ASSERT_EQ(res, eredmeny);
+    }
+
+    TEST(Meret, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        checkFileSize("oszthatosag", "oszthatosag.c", 83);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 11 Oct 2023 13:15:23 UTC"
+record: -1

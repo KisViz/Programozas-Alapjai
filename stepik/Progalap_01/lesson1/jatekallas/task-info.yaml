@@ -1,0 +1,88 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-jatekallas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/jatekallas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/jatekallas.c
+  visible: true
+  placeholders:
+  - offset: 19
+    length: 80
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+
+      void eredmenyKiir(int pontszam) {
+          printf("Elert pontszam: %d\n", pontszam);
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/jatekallas.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    void eredmenyKiir(int pontszam);
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[100];
+        KIIR(eredmenyKiir(13))
+        ASSERT_STREQ("Elert pontszam: 13\n", readstring(file, res));
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[100];
+        KIIR(eredmenyKiir(-7))
+        ASSERT_STREQ("Elert pontszam: -7\n", readstring(file, res));
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[100];
+        KIIR(eredmenyKiir(5))
+        ASSERT_STREQ("Elert pontszam: 5\n", readstring(file, res));
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[100];
+        KIIR(eredmenyKiir(5151))
+        ASSERT_STREQ("Elert pontszam: 5151\n", readstring(file, res));
+    }
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

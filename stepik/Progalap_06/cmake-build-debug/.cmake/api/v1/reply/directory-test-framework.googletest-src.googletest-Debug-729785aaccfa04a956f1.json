@@ -1,0 +1,169 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"install_project"
+		],
+		"files" : 
+		[
+			"test-framework/googletest-src/googletest/CMakeLists.txt",
+			"test-framework/googletest-src/googletest/cmake/internal_utils.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 97,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 103,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 151,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 301,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 304,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 314,
+				"parent" : 3
+			},
+			{
+				"command" : 0,
+				"file" : 1,
+				"line" : 314,
+				"parent" : 3
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/GTest",
+			"exportName" : "GTestTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "gtest::@18492002f6e42ff32c6b",
+					"index" : 86
+				},
+				{
+					"id" : "gtest_main::@18492002f6e42ff32c6b",
+					"index" : 87
+				},
+				{
+					"id" : "gmock::@c2234ae200fc3a7ec6ce",
+					"index" : 84
+				},
+				{
+					"id" : "gmock_main::@c2234ae200fc3a7ec6ce",
+					"index" : 85
+				}
+			],
+			"paths" : 
+			[
+				"C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-build/googlemock/gtest/CMakeFiles/Export/0c08b8e77dd885bfe55a19a9659d9fc1/GTestTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/GTest",
+			"paths" : 
+			[
+				"test-framework/googletest-build/googlemock/gtest/generated/GTestConfigVersion.cmake",
+				"test-framework/googletest-build/googlemock/gtest/generated/GTestConfig.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				{
+					"from" : "test-framework/googletest-src/googletest/include",
+					"to" : "."
+				}
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-build/googlemock/gtest/libgtestd.a"
+			],
+			"targetId" : "gtest::@18492002f6e42ff32c6b",
+			"targetIndex" : 86,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-build/googlemock/gtest/libgtest_maind.a"
+			],
+			"targetId" : "gtest_main::@18492002f6e42ff32c6b",
+			"targetIndex" : 87,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"test-framework/googletest-build/googlemock/gtest/generated/gtest.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 7,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"test-framework/googletest-build/googlemock/gtest/generated/gtest_main.pc"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-build/googlemock/gtest",
+		"source" : "test-framework/googletest-src/googletest"
+	}
+}

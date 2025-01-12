@@ -1,0 +1,9 @@
+title: Progalap_02
+language: English
+summary: "Feltételes szerkezetek, ciklusok"
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

@@ -1,0 +1,101 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-forditva)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/forditva.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/forditva.c
+  visible: true
+  placeholders:
+  - offset: 41
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 41
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      char* megfordit(const char* eredeti) {
+          char* forditott = (char*) malloc((strlen(eredeti) + 1) * sizeof(char));
+
+          for (int i = 0; i < strlen(eredeti); i++) {
+              forditott[strlen(eredeti)-i-1] = eredeti[i];
+          }
+          forditott[strlen(eredeti)] = 0;
+
+          return forditott;
+      }
+  text: |-
+    #include <stdlib.h>
+    #include <string.h>
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/forditva.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const char eredeti[] = "macska";
+        char elvart[] = "akscam";
+        char* eredmeny = megfordit(eredeti);
+        ASSERT_STREQ(elvart, eredmeny);
+        free(eredmeny);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const char eredeti[] = "a";
+        char elvart[] = "a";
+        char* eredmeny = megfordit(eredeti);
+        ASSERT_STREQ(elvart, eredmeny);
+        free(eredmeny);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const char eredeti[] = "";
+        char elvart[] = "";
+        char* eredmeny = megfordit(eredeti);
+        ASSERT_STREQ(elvart, eredmeny);
+        free(eredmeny);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const char eredeti[] = "a lovacska uszkal a 30. patakban";
+        char elvart[] = "nabkatap .03 a lakzsu akscavol a";
+        char* eredmeny = megfordit(eredeti);
+        ASSERT_STREQ(elvart, eredmeny);
+        free(eredmeny);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

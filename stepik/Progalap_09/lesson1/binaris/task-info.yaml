@@ -1,0 +1,107 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-binaris)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/binaris.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/binaris.c
+  visible: true
+  placeholders:
+  - offset: 36
+    length: 9
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 36
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      for (int i = 0; szam[i] != 0; i++) {
+              if (szam[i] != '0' && szam[i] != '1') {
+                  return 0;
+              }
+          }
+
+          return 1;
+  text: |-
+    int binaris(const char* szam) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/binaris.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("1101001110110011"), 1);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("1"), 1);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("0"), 1);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("110101000010110110101010100101010101010101010001010010010101010110101000010110110101010100101010101010101010001010010010101010110101000010110110101010100101010101010101010001010010010101010110101000010110110101010100101010101010101010001010010010101010110101000010110110101010100101010101010101010001010010010101010110101000010110110101010100101010101010101010001010010010101010"), 1);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("1000"), 1);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("10000005"), 0);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("100002202201201202012120"), 0);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("123123123123123123123123123123"), 0);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("macska"), 0);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(binaris("10BAD10"), 0);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

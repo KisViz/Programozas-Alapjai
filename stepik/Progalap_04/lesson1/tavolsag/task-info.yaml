@@ -1,0 +1,166 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-tavolsag)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/tavolsag.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/tavolsag.c"
+    #undef main
+
+    Ember a = {"Margitka", 77, {5, 4}};
+    Ember b = {"Juditka", 66, {3, 4.5}};
+    Ember c = {"Irenke", 55, {2, 7.1}};
+    Ember d = {"Gaborka", 44, {4, 2.2}};
+    Ember e = {"Jocoka", 33, {1, 1.8}};
+    Ember f = {"Otto", 22, {3, 3.3}};
+    Ember g = {"Kinga", 19, {4.4, 2.7}};
+    Ember h = {"Eszter", 24, {2.1, 8.2}};
+    Ember i = {"Peter", 22, {2, 8.2}};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {a, b, c};
+        int db = 3;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {d, h};
+        int db = 2;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {h, d};
+        int db = 2;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i, h};
+        int db = 2;
+        int res = 0;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {h, i};
+        int db = 2;
+        int res = 0;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i, g, f, e};
+        int db = 4;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i, g, f, e, b};
+        int db = 5;
+        int res = 0;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i, g, f, e, b, a};
+        int db = 6;
+        int res = 0;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i, e, b, a, d};
+        int db = 5;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Ember emberek[] = {i};
+        int db = 1;
+        int res = 1;
+        ASSERT_EQ(szabalyos(emberek, db), res);
+    }
+  learner_created: false
+- name: src/tavolsag.c
+  visible: true
+  placeholders:
+  - offset: 160
+    length: 918
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 141
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <math.h>
+      int szabalyos(Ember emberek[], int db) {
+          for (int i = 0; i < db-1; i++) {
+              for (int j = i+1; j < db; j++) {
+                  double diffX = emberek[i].pozicio.x > emberek[j].pozicio.x ? emberek[i].pozicio.x - emberek[j].pozicio.x : emberek[j].pozicio.x - emberek[i].pozicio.x;
+                  double diffY = emberek[i].pozicio.y > emberek[j].pozicio.y ? emberek[i].pozicio.y - emberek[j].pozicio.y : emberek[j].pozicio.y - emberek[i].pozicio.y;
+                  double diff = sqrt(diffX * diffX + diffY * diffY);
+
+                  if (diff < 1.5) {
+                      return 0;
+                  }
+              }
+          }
+
+          return 1;
+      }
+  text: |-
+    typedef struct {
+        double x;
+        double y;
+    } Pozicio;
+
+    typedef struct {
+        char nev[100];
+        int eletkor;
+        Pozicio pozicio;
+    } Ember;
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 20 Oct 2023 16:34:20 UTC"
+record: -1
+solution_hidden: true

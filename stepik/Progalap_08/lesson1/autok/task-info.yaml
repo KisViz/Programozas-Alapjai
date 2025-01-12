@@ -1,0 +1,175 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-autok)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/autok.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/autok.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+
+      typedef struct {
+          int maximalisSebesseg;
+          double gyorsulas;
+      } Auto;
+
+      const Auto* leggyorsabb(const Auto* const * autok) {
+          int i = 1;
+
+          if (autok[0] == NULL) {
+              return NULL;
+          }
+
+          int maximalisSebesseg = autok[0]->maximalisSebesseg;
+          int maxIndex = 0;
+          while (autok[i] != NULL) {
+              if (autok[i]->maximalisSebesseg > maximalisSebesseg) {
+                  maximalisSebesseg = autok[i]->maximalisSebesseg;
+                  maxIndex = i;
+              }
+              i++;
+          }
+
+          return autok[maxIndex];
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/autok.c"
+    #undef main
+
+    const Auto* createAuto(int sebesseg, double gyorsulas) {
+        Auto* car = (Auto*) malloc(sizeof(Auto));
+        car->maximalisSebesseg = sebesseg;
+        car->gyorsulas = gyorsulas;
+        return car;
+    }
+
+    const Auto** createAutoArray(int darab) {
+        const Auto** cars = (const Auto**) malloc(sizeof(Auto*) * darab);
+        return cars;
+    }
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto* a1 = createAuto(3, 5.5);
+        const Auto* a2 = createAuto(4, 5.6);
+        const Auto* a3 = createAuto(2, 5.2);
+        const Auto** autok = createAutoArray(4);
+        autok[0] = a1; autok[1] = a2; autok[2] = a3; autok[3] = NULL;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, a2);
+        free((void *) a1);
+        free((void *) a2);
+        free((void *) a3);
+        free(autok);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto* a1 = createAuto(3, 5.5);
+        const Auto* a2 = createAuto(4, 5.6);
+        const Auto* a3 = createAuto(11, 5.2);
+        const Auto** autok = createAutoArray(4);
+        autok[0] = a1; autok[1] = a2; autok[2] = a3; autok[3] = NULL;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, a3);
+        free((void *) a1);
+        free((void *) a2);
+        free((void *) a3);
+        free(autok);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto* a1 = createAuto(30, 73.1);
+        const Auto* a2 = createAuto(22, 110.2);
+        const Auto* a3 = createAuto(31, 0.01);
+        const Auto* a4 = createAuto(33, 66.43);
+        const Auto** autok = createAutoArray(5);
+        autok[0] = a1; autok[1] = a2; autok[2] = a3; autok[3] = a4; autok[4] = NULL;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, a4);
+        free((void *) a1);
+        free((void *) a2);
+        free((void *) a3);
+        free((void *) a4);
+        free(autok);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto* a1 = createAuto(3, 5.5);
+        const Auto** autok = createAutoArray(2);
+        autok[0] = a1; autok[1] = NULL;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, a1);
+        free((void *) a1);
+        free(autok);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto** autok = createAutoArray(1);
+        autok[0] = NULL;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, nullptr);
+        free(autok);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Auto* a1 = createAuto(5, 5.5);
+        const Auto* a2 = createAuto(4, 5.6);
+        const Auto* a3 = createAuto(6, 5.2);
+        const Auto* a4 = createAuto(2, 5.5);
+        const Auto* a5 = createAuto(5, 5.6);
+        const Auto* a6 = createAuto(300, 300);
+        const Auto** autok = createAutoArray(7);
+        autok[0] = a1; autok[1] = a2; autok[2] = a3; autok[3] = a4; autok[4] = a5;  autok[5] = NULL; autok[6] = a6;
+        const Auto* res = leggyorsabb(autok);
+        ASSERT_EQ(res, a3);
+        free((void *) a1);
+        free((void *) a2);
+        free((void *) a3);
+        free((void *) a4);
+        free((void *) a5);
+        free((void *) a6);
+        free(autok);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

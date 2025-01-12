@@ -1,0 +1,4 @@
+C:/Users/Albert/CLionProjects/hazi8/cmake-build-debug/CMakeFiles/hazi8.dir
+C:/Users/Albert/CLionProjects/hazi8/cmake-build-debug/CMakeFiles/feladat.dir
+C:/Users/Albert/CLionProjects/hazi8/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Albert/CLionProjects/hazi8/cmake-build-debug/CMakeFiles/rebuild_cache.dir

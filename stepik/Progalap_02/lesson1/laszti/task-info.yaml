@@ -1,0 +1,126 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-laszti)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/laszti.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/laszti.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 306
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+
+      int main() {
+          char c;
+          int db = 0;
+          while (1) {
+              printf("Sikerult? ");
+
+              do {
+                  scanf("%c", &c);
+              } while (c != 'i' && c != 'n');
+
+
+              if (c == 'i') {
+                  db++;
+              } else {
+                  break;
+              }
+          }
+
+          printf("Ennyit sikerult dekazni: %d\n", db);
+
+          return 0;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/laszti.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Eredmeny, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("iiin", main_0(), str)
+        ASSERT_STREQ(str, "Sikerult? Sikerult? Sikerult? Sikerult? Ennyit sikerult dekazni: 3\n");
+    }
+
+    TEST(Eredmeny, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("iin", main_0(), str)
+        ASSERT_STREQ(str, "Sikerult? Sikerult? Sikerult? Ennyit sikerult dekazni: 2\n");
+    }
+
+    TEST(Eredmeny, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("iiiiiiiiiiiiiiiiiiiiiiiiiiiin", main_0(), str)
+        ASSERT_STREQ(str, "Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Sikerult? Ennyit sikerult dekazni: 28\n");
+    }
+
+    TEST(Eredmeny_rossz_input, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("isvnjsdvbhn", main_0(), str)
+        ASSERT_STREQ(str, "Sikerult? Sikerult? Ennyit sikerult dekazni: 1\n");
+    }
+
+    TEST(Eredmeny, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("n", main_0(), str)
+        ASSERT_STREQ(str, "Sikerult? Ennyit sikerult dekazni: 0\n");
+    }
+
+    TEST(Visszateresi_ertek, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("n", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Visszateresi_ertek, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("iiin", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Oct 2023 14:23:29 UTC"
+record: -1
+solution_hidden: true

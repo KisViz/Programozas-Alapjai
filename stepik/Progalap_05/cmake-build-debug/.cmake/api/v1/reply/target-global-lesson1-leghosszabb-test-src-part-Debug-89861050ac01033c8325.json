@@ -1,0 +1,110 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "lesson1/leghosszabb/libglobal-lesson1-leghosszabb-test-src-part.a"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"configure_test_target",
+			"target_compile_definitions"
+		],
+		"files" : 
+		[
+			"cmake/utils.cmake",
+			"lesson1/leghosszabb/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 22,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "main=mainee9c2a01f546129e71d5b104e6b7c6f96856cb52"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "global-lesson1-leghosszabb-test-src-part::@ac8494c1abc6372ef9e0",
+	"name" : "global-lesson1-leghosszabb-test-src-part",
+	"nameOnDisk" : "libglobal-lesson1-leghosszabb-test-src-part.a",
+	"paths" : 
+	{
+		"build" : "lesson1/leghosszabb",
+		"source" : "lesson1/leghosszabb"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "lesson1/leghosszabb/test/task.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

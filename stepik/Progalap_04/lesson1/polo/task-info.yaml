@@ -1,0 +1,146 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-polo)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/polo.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/polo.c
+  visible: true
+  placeholders:
+  - offset: 106
+    length: 106
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 86
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      Polo vasarlas() {
+          Polo p;
+          scanf("%d %s %[^\n]s", &p.csikokSzama, p.meret, p.szin);
+          return p;
+      }
+  text: |-
+    typedef struct {
+        char meret[10];
+        char szin[50];
+        int csikokSzama;
+    } Polo;
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <cstdio>
+
+    #define main main_0
+    #include "../src/polo.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char meret[] = "XXL";
+        char szin[] = "fekete";
+        int csikok = 5;
+
+        char input[100];
+        char str[100];
+        sprintf(input, "%d %s %s", csikok, meret, szin);
+
+        IO(input, Polo res = vasarlas(), str)
+        ASSERT_STREQ(meret, res.meret);
+        ASSERT_STREQ(szin, res.szin);
+        ASSERT_EQ(csikok, res.csikokSzama);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char meret[] = "XXXXXS";
+        char szin[] = "sarga";
+        int csikok = 5532;
+
+        char input[100];
+        char str[100];
+        sprintf(input, "%d %s %s", csikok, meret, szin);
+
+        IO(input, Polo res = vasarlas(), str)
+        ASSERT_STREQ(meret, res.meret);
+        ASSERT_STREQ(szin, res.szin);
+        ASSERT_EQ(csikok, res.csikokSzama);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char meret[] = "S";
+        char szin[] = "zold";
+        int csikok = 0;
+
+        char input[100];
+        char str[100];
+        sprintf(input, "%d %s %s", csikok, meret, szin);
+
+        IO(input, Polo res = vasarlas(), str)
+        ASSERT_STREQ(meret, res.meret);
+        ASSERT_STREQ(szin, res.szin);
+        ASSERT_EQ(csikok, res.csikokSzama);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char meret[] = "M";
+        char szin[] = "margaretasturkizkek";
+        int csikok = 5;
+
+        char input[100];
+        char str[100];
+        sprintf(input, "%d %s %s", csikok, meret, szin);
+
+        IO(input, Polo res = vasarlas(), str)
+        ASSERT_STREQ(meret, res.meret);
+        ASSERT_STREQ(szin, res.szin);
+        ASSERT_EQ(csikok, res.csikokSzama);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char meret[] = "L";
+        char szin[] = "halvany sarga";
+        int csikok = 5;
+
+        char input[100];
+        char str[100];
+        sprintf(input, "%d %s %s", csikok, meret, szin);
+
+        IO(input, Polo res = vasarlas(), str)
+        ASSERT_STREQ(meret, res.meret);
+        ASSERT_STREQ(szin, res.szin);
+        ASSERT_EQ(csikok, res.csikokSzama);
+    }
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

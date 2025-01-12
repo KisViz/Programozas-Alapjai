@@ -1,0 +1,129 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-verseny)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/verseny.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/verseny.c
+  visible: true
+  placeholders:
+  - offset: 148
+    length: 316
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int eredmeny(int elso[], int masodik[], int db1, int db2) {
+          double atlag1 = 0;
+          double atlag2 = 0;
+
+          for (int i = 0; i < db1; i++) {
+              atlag1 += elso[i];
+          }
+
+          for (int i = 0; i < db2; i++) {
+              atlag2 += masodik[i];
+          }
+
+          atlag1 /= db1;
+          atlag2 /= db2;
+
+          return atlag1 > atlag2 ? 1 : atlag1 < atlag2 ? 2 : 0;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/verseny.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {10, 12};
+        int t2[] = {11};
+        int db1 = 2;
+        int db2 = 1;
+        int res = 0;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {4, 5, 1, 6, 4};
+        int t2[] = {7, 4, 3, 2, 7};
+        int db1 = 5;
+        int db2 = 5;
+        int res = 2;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {10, 13};
+        int t2[] = {11};
+        int db1 = 2;
+        int db2 = 1;
+        int res = 1;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29};
+        int t2[] = {30};
+        int db1 = 157;
+        int db2 = 1;
+        int res = 2;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {5, 6, 3, 6, 4, 3, 2};
+        int t2[] = {2, 5, 5};
+        int db1 = 7;
+        int db2 = 3;
+        int res = 1;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t1[] = {5, 6, 3, 6, 4, 3, 2};
+        int t2[] = {2, 5, 5, 3, 6, 4, 4, 4, 5};
+        int db1 = 7;
+        int db2 = 9;
+        int res = 2;
+        ASSERT_EQ(eredmeny(t1, t2, db1, db2), res);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 09 Oct 2023 12:56:08 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,118 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-arufeltolto)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/arufeltoltes.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/arufeltoltes.c
+  visible: true
+  placeholders:
+  - offset: 225
+    length: 12
+    placeholder_text: return NULL;
+    initial_state:
+      length: 12
+      offset: 83
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int* tomb = (int*) malloc(mennyiseg * sizeof(int));
+          for (int i = 0; i < mennyiseg; i++) {
+              tomb[i] = gyartasiAzonosito;
+          }
+          return tomb;
+  text: |-
+    #include <stdlib.h>
+
+    int* arufeltoltes(int mennyiseg, int gyartasiAzonosito) {
+        return NULL;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/arufeltoltes.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int mennyiseg = 7;
+        int aruSorszam = 7;
+        int* tomb = arufeltoltes(mennyiseg, aruSorszam);
+        for (int i = 0; i < mennyiseg; i++) {
+            ASSERT_EQ(tomb[i], aruSorszam);
+        }
+        free(tomb);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int mennyiseg = 4;
+        int aruSorszam = 15;
+        int* tomb = arufeltoltes(mennyiseg, aruSorszam);
+        for (int i = 0; i < mennyiseg; i++) {
+            ASSERT_EQ(tomb[i], aruSorszam);
+        }
+        free(tomb);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int mennyiseg = 15;
+        int aruSorszam = 4;
+        int* tomb = arufeltoltes(mennyiseg, aruSorszam);
+        for (int i = 0; i < mennyiseg; i++) {
+            ASSERT_EQ(tomb[i], aruSorszam);
+        }
+        free(tomb);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int mennyiseg = 1000000;
+        int aruSorszam = 22;
+        int* tomb = arufeltoltes(mennyiseg, aruSorszam);
+        for (int i = 0; i < mennyiseg; i++) {
+            ASSERT_EQ(tomb[i], aruSorszam);
+        }
+        free(tomb);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int mennyiseg = 22;
+        int aruSorszam = 2100000000;
+        int* tomb = arufeltoltes(mennyiseg, aruSorszam);
+        for (int i = 0; i < mennyiseg; i++) {
+            ASSERT_EQ(tomb[i], aruSorszam);
+        }
+        free(tomb);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 24 Nov 2023 17:33:18 UTC"
+record: -1
+solution_hidden: true

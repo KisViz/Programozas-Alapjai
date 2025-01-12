@@ -1,0 +1,9 @@
+title: Progalap_03
+language: English
+summary: "Tömbök, stringek"
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

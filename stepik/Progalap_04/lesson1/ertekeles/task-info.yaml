@@ -1,0 +1,140 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-ertekeles)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/ertekeles.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/ertekeles.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "AAAAAA";
+        int pontszam = 5;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "AAAAAA");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "BAFVEW";
+        int pontszam = 88;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "BAFVEW");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "WZEDVS";
+        int pontszam = 100;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "WZEDVS");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "QQQQQQ";
+        int pontszam = 0;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "QQQQQQ");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "BABABA";
+        int pontszam = -3;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "BABABA");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "NANANA";
+        int pontszam = 104;
+        int eredmeny = pontszam > 100 ? 100 : pontszam < 0 ? 0 : pontszam;
+
+        Ertekeles e = ertekel(str, pontszam);
+        ASSERT_STREQ(e.neptunkod, "NANANA");
+        ASSERT_EQ(e.pontszam, eredmeny);
+    }
+  learner_created: false
+- name: src/ertekeles.c
+  visible: true
+  placeholders:
+  - offset: 93
+    length: 322
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 93
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Ertekeles ertekel(char neptunkod[], int pontszam) {
+          Ertekeles e;
+          strcpy(e.neptunkod, neptunkod);
+
+          if (pontszam > 100) {
+              pontszam = 100;
+          } else if (pontszam < 0) {
+              pontszam = 0;
+          }
+
+          e.pontszam = pontszam;
+
+          return e;
+      }
+  text: |-
+    #include <string.h>
+
+    typedef struct {
+        char neptunkod[7];
+        int pontszam;
+    } Ertekeles;
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 07:15:55 UTC"
+record: -1
+solution_hidden: true

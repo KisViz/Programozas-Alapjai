@@ -1,0 +1,132 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-bonyolult)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/bonyolult.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/bonyolult.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    void egyszerusit(int szamlalo, int nevezo);
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(10, 20), str)
+        ASSERT_STREQ(str, "1/2");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(11, 20), str)
+        ASSERT_STREQ(str, "11/20");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(4, 5), str)
+        ASSERT_STREQ(str, "4/5");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(4, 4), str)
+        ASSERT_STREQ(str, "1");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(4, 2), str)
+        ASSERT_STREQ(str, "2");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(7, 4388041), str)
+        ASSERT_STREQ(str, "1/626863");
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(8, 44), str)
+        ASSERT_STREQ(str, "2/11");
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("", egyszerusit(21415455, 5233215), str)
+        ASSERT_STREQ(str, "1427697/348881");
+    }
+  learner_created: false
+- name: src/bonyolult.c
+  visible: true
+  placeholders:
+  - offset: 116
+    length: 232
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 116
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      void egyszerusit(int szamlalo, int nevezo) {
+          int kozosOszto = gcd(szamlalo, nevezo);
+          szamlalo /= kozosOszto;
+          nevezo /= kozosOszto;
+
+          if (nevezo == 1) {
+              printf("%d", szamlalo);
+          } else {
+              printf("%d/%d", szamlalo, nevezo);
+          }
+      }
+  text: |
+    #include <stdio.h>
+
+    int gcd(int a, int b) {
+        if (a == 0) {
+            return b;
+        }
+
+        return gcd(b % a, a);
+    }
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Oct 2023 09:12:55 UTC"
+record: -1
+solution_hidden: true

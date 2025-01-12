@@ -1,0 +1,147 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-monitor)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/monitor.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/monitor.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 363
+    placeholder_text: |-
+      include <math.h>
+
+      typedef struct {
+          double x;
+          double y;
+      } Monitor;
+
+      double atmero(Monitor m) {
+          return pow(m.x * m.x + m.y * m.y);
+      }
+
+      int monitorszemle(Monitor[] monitorok, int db, int minMeret) {
+          int ok = 0;
+
+          for (int i = 0; i < db; i++) {
+              if (atmreo(monitorok[i]) >= minMeret) {
+                  ok++;
+              }
+          }
+
+          retrun ok;
+      }
+    initial_state:
+      length: 358
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <math.h>
+
+      typedef struct {
+          double x;
+          double y;
+      } Monitor;
+
+      double atmero(Monitor m) {
+          return sqrt(m.x * m.x + m.y * m.y);
+      }
+
+      int monitorszemle(Monitor monitorok[], int db, double minMeret) {
+          int ok = 0;
+
+          for (int i = 0; i < db; i++) {
+              if (atmero(monitorok[i]) >= minMeret) {
+                  ok++;
+              }
+          }
+
+          return ok;
+      }
+  text: |-
+    include <math.h>
+
+    typedef struct {
+        double x;
+        double y;
+    } Monitor;
+
+    double atmero(Monitor m) {
+        return pow(m.x * m.x + m.y * m.y);
+    }
+
+    int monitorszemle(Monitor[] monitorok, int db, int minMeret) {
+        int ok = 0;
+
+        for (int i = 0; i < db; i++) {
+            if (atmreo(monitorok[i]) >= minMeret) {
+                ok++;
+            }
+        }
+
+        retrun ok;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/monitor.c"
+    #undef main
+
+    Monitor m1 = {5, 7};
+    Monitor m2 = {3.3, 6.6};
+    Monitor m3 = {421.2, 42.2};
+    Monitor m4 = {60.2, 32.4};
+    Monitor m5 = {5.1, 6.8};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor mm1[] = {m1, m2, m3};
+        ASSERT_EQ(monitorszemle(mm1, 3, 8.61), 1);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor mm1[] = {m1, m2, m3};
+        ASSERT_EQ(monitorszemle(mm1, 3, 8.6), 2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor mm2[] = {m2, m3, m4, m5};
+        ASSERT_EQ(monitorszemle(mm2, 4, 7.4), 3);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Monitor mm3[] = {m4, m5, m1};
+        ASSERT_EQ(monitorszemle(mm3, 3, 50), 1);
+    }
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

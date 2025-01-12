@@ -1,0 +1,1366 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "C:/Users/Albert/CLionProjects/Progalap_05/test-framework/googletest-build",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test-framework.googletest-src-Debug-83858110fb17af7d3836.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "test-framework/googletest-src"
+				},
+				{
+					"build" : "C:/Users/Albert/CLionProjects/Progalap_05/test-framework/googletest-build/googlemock",
+					"childIndexes" : 
+					[
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test-framework.googletest-src.googlemock-Debug-452501636f3dd4cd0361.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "test-framework/googletest-src/googlemock",
+					"targetIndexes" : 
+					[
+						66,
+						67
+					]
+				},
+				{
+					"build" : "C:/Users/Albert/CLionProjects/Progalap_05/test-framework/googletest-build/googlemock/gtest",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test-framework.googletest-src.googletest-Debug-d520e7f546797d82e669.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 3,
+					"source" : "test-framework/googletest-src/googletest",
+					"targetIndexes" : 
+					[
+						68,
+						69
+					]
+				},
+				{
+					"build" : "lesson1/csere",
+					"jsonFile" : "directory-lesson1.csere-Debug-4bf77bb55585707c463a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "lesson1/csere",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"build" : "lesson1/ellenorzes",
+					"jsonFile" : "directory-lesson1.ellenorzes-Debug-2dd7f56bb8259fbe1ebf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "lesson1/ellenorzes",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"build" : "lesson1/elsoosztaly",
+					"jsonFile" : "directory-lesson1.elsoosztaly-Debug-ec4a71cb0256dbf970eb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "lesson1/elsoosztaly",
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "lesson1/haromszog",
+					"jsonFile" : "directory-lesson1.haromszog-Debug-8ead3fa1d89e0aa6a5b7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "lesson1/haromszog",
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				},
+				{
+					"build" : "lesson1/hatalmas",
+					"jsonFile" : "directory-lesson1.hatalmas-Debug-c6e4a7f21f58179e2d69.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "lesson1/hatalmas",
+					"targetIndexes" : 
+					[
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"build" : "lesson1/jegyek",
+					"jsonFile" : "directory-lesson1.jegyek-Debug-cceeedb6aaff375afce8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "lesson1/jegyek",
+					"targetIndexes" : 
+					[
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "lesson1/kuldetes",
+					"jsonFile" : "directory-lesson1.kuldetes-Debug-c1111f4bd9d2d759539f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "lesson1/kuldetes",
+					"targetIndexes" : 
+					[
+						18,
+						19,
+						20
+					]
+				},
+				{
+					"build" : "lesson1/leghosszabb",
+					"jsonFile" : "directory-lesson1.leghosszabb-Debug-2d56dc3176d18a1c347a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 11,
+					"source" : "lesson1/leghosszabb",
+					"targetIndexes" : 
+					[
+						21,
+						22,
+						23
+					]
+				},
+				{
+					"build" : "lesson1/macska",
+					"jsonFile" : "directory-lesson1.macska-Debug-8b239e6de2121e6e5ac0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 12,
+					"source" : "lesson1/macska",
+					"targetIndexes" : 
+					[
+						24,
+						25,
+						26
+					]
+				},
+				{
+					"build" : "lesson1/macskak",
+					"jsonFile" : "directory-lesson1.macskak-Debug-3d06c461dfa16f27a2b3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 13,
+					"source" : "lesson1/macskak",
+					"targetIndexes" : 
+					[
+						27,
+						28,
+						29
+					]
+				},
+				{
+					"build" : "lesson1/maximum",
+					"jsonFile" : "directory-lesson1.maximum-Debug-c1239c5f2d2baa253622.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 14,
+					"source" : "lesson1/maximum",
+					"targetIndexes" : 
+					[
+						30,
+						31,
+						32
+					]
+				},
+				{
+					"build" : "lesson1/megfordit",
+					"jsonFile" : "directory-lesson1.megfordit-Debug-009b10cc02a862c0fe7b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 15,
+					"source" : "lesson1/megfordit",
+					"targetIndexes" : 
+					[
+						33,
+						34,
+						35
+					]
+				},
+				{
+					"build" : "lesson1/monitor",
+					"jsonFile" : "directory-lesson1.monitor-Debug-787c8340b03f20ce3c18.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 16,
+					"source" : "lesson1/monitor",
+					"targetIndexes" : 
+					[
+						36,
+						37,
+						38
+					]
+				},
+				{
+					"build" : "lesson1/napok",
+					"jsonFile" : "directory-lesson1.napok-Debug-abd72206df72d431915f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 17,
+					"source" : "lesson1/napok",
+					"targetIndexes" : 
+					[
+						39,
+						40,
+						41
+					]
+				},
+				{
+					"build" : "lesson1/osszeadas",
+					"jsonFile" : "directory-lesson1.osszeadas-Debug-62c56a9214ca8f046071.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 18,
+					"source" : "lesson1/osszeadas",
+					"targetIndexes" : 
+					[
+						42,
+						43,
+						44
+					]
+				},
+				{
+					"build" : "lesson1/osszeg",
+					"jsonFile" : "directory-lesson1.osszeg-Debug-a7aea56e0577afa53864.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 19,
+					"source" : "lesson1/osszeg",
+					"targetIndexes" : 
+					[
+						45,
+						46,
+						47
+					]
+				},
+				{
+					"build" : "lesson1/owo",
+					"jsonFile" : "directory-lesson1.owo-Debug-d55df3293c1a550453e5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 20,
+					"source" : "lesson1/owo",
+					"targetIndexes" : 
+					[
+						48,
+						49,
+						50
+					]
+				},
+				{
+					"build" : "lesson1/paros",
+					"jsonFile" : "directory-lesson1.paros-Debug-41bf56cfbe3f39d19eb7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 21,
+					"source" : "lesson1/paros",
+					"targetIndexes" : 
+					[
+						51,
+						52,
+						53
+					]
+				},
+				{
+					"build" : "lesson1/szamjegyosszeg",
+					"jsonFile" : "directory-lesson1.szamjegyosszeg-Debug-410eff74a7e58237410d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 22,
+					"source" : "lesson1/szamjegyosszeg",
+					"targetIndexes" : 
+					[
+						57,
+						58,
+						59
+					]
+				},
+				{
+					"build" : "lesson1/totaliskatasztrofa",
+					"jsonFile" : "directory-lesson1.totaliskatasztrofa-Debug-9a2107679af61d0c0deb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 23,
+					"source" : "lesson1/totaliskatasztrofa",
+					"targetIndexes" : 
+					[
+						60,
+						61,
+						62
+					]
+				},
+				{
+					"build" : "lesson1/urlenyek",
+					"jsonFile" : "directory-lesson1.urlenyek-Debug-5392863fdd51f935a48a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 24,
+					"source" : "lesson1/urlenyek",
+					"targetIndexes" : 
+					[
+						54,
+						55,
+						56
+					]
+				},
+				{
+					"build" : "lesson1/zuhanas",
+					"jsonFile" : "directory-lesson1.zuhanas-Debug-b07d2c7c0baf4d482674.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 25,
+					"source" : "lesson1/zuhanas",
+					"targetIndexes" : 
+					[
+						63,
+						64,
+						65
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Progalap_05"
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "googletest-distribution",
+					"parentIndex" : 0
+				},
+				{
+					"childIndexes" : 
+					[
+						3
+					],
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "gmock",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						66,
+						67
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "gtest",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						68,
+						69
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "global-lesson1-csere",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "global-lesson1-ellenorzes",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "global-lesson1-elsoosztaly",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "global-lesson1-haromszog",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "global-lesson1-hatalmas",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "global-lesson1-jegyek",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "global-lesson1-kuldetes",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						18,
+						19,
+						20
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "global-lesson1-leghosszabb",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						21,
+						22,
+						23
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "global-lesson1-macska",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						24,
+						25,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						13
+					],
+					"name" : "global-lesson1-macskak",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						27,
+						28,
+						29
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						14
+					],
+					"name" : "global-lesson1-maximum",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						30,
+						31,
+						32
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						15
+					],
+					"name" : "global-lesson1-megfordit",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						33,
+						34,
+						35
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						16
+					],
+					"name" : "global-lesson1-monitor",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						36,
+						37,
+						38
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						17
+					],
+					"name" : "global-lesson1-napok",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						39,
+						40,
+						41
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						18
+					],
+					"name" : "global-lesson1-osszeadas",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						42,
+						43,
+						44
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						19
+					],
+					"name" : "global-lesson1-osszeg",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						45,
+						46,
+						47
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						20
+					],
+					"name" : "global-lesson1-owo",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						48,
+						49,
+						50
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						21
+					],
+					"name" : "global-lesson1-paros",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						51,
+						52,
+						53
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						22
+					],
+					"name" : "global-lesson1-szamjegyosszeg",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						57,
+						58,
+						59
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						23
+					],
+					"name" : "global-lesson1-totaliskatasztrofa",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						60,
+						61,
+						62
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						24
+					],
+					"name" : "global-lesson1-rendezes",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						54,
+						55,
+						56
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						25
+					],
+					"name" : "global-lesson1-zuhanas",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						63,
+						64,
+						65
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "global-lesson1-csere-run::@313d7bb290fbdd0608df",
+					"jsonFile" : "target-global-lesson1-csere-run-Debug-4d43006f94d8fc700a14.json",
+					"name" : "global-lesson1-csere-run",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "global-lesson1-csere-test::@313d7bb290fbdd0608df",
+					"jsonFile" : "target-global-lesson1-csere-test-Debug-e962afd6f5eb67b5cbf6.json",
+					"name" : "global-lesson1-csere-test",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "global-lesson1-csere-test-src-part::@313d7bb290fbdd0608df",
+					"jsonFile" : "target-global-lesson1-csere-test-src-part-Debug-2b3209cf226085b06694.json",
+					"name" : "global-lesson1-csere-test-src-part",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "global-lesson1-ellenorzes-run::@5d3b5eedd8a8b7d8d0b1",
+					"jsonFile" : "target-global-lesson1-ellenorzes-run-Debug-610c9d8c870756a156bb.json",
+					"name" : "global-lesson1-ellenorzes-run",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "global-lesson1-ellenorzes-test::@5d3b5eedd8a8b7d8d0b1",
+					"jsonFile" : "target-global-lesson1-ellenorzes-test-Debug-9c7170b34d53226d3f6d.json",
+					"name" : "global-lesson1-ellenorzes-test",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "global-lesson1-ellenorzes-test-src-part::@5d3b5eedd8a8b7d8d0b1",
+					"jsonFile" : "target-global-lesson1-ellenorzes-test-src-part-Debug-ec45bcae59d51e919543.json",
+					"name" : "global-lesson1-ellenorzes-test-src-part",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "global-lesson1-elsoosztaly-run::@99068644311234139939",
+					"jsonFile" : "target-global-lesson1-elsoosztaly-run-Debug-a980350cf9bb5cd6bc01.json",
+					"name" : "global-lesson1-elsoosztaly-run",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "global-lesson1-elsoosztaly-test::@99068644311234139939",
+					"jsonFile" : "target-global-lesson1-elsoosztaly-test-Debug-0398fd3553cc8b9e1589.json",
+					"name" : "global-lesson1-elsoosztaly-test",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "global-lesson1-elsoosztaly-test-src-part::@99068644311234139939",
+					"jsonFile" : "target-global-lesson1-elsoosztaly-test-src-part-Debug-574c0fae47e29b2ca862.json",
+					"name" : "global-lesson1-elsoosztaly-test-src-part",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "global-lesson1-haromszog-run::@0ee3e7f8927d9360fcc0",
+					"jsonFile" : "target-global-lesson1-haromszog-run-Debug-571dbc40f85e90ac4533.json",
+					"name" : "global-lesson1-haromszog-run",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "global-lesson1-haromszog-test::@0ee3e7f8927d9360fcc0",
+					"jsonFile" : "target-global-lesson1-haromszog-test-Debug-1a2b79e6cc43a3f2cb3a.json",
+					"name" : "global-lesson1-haromszog-test",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "global-lesson1-haromszog-test-src-part::@0ee3e7f8927d9360fcc0",
+					"jsonFile" : "target-global-lesson1-haromszog-test-src-part-Debug-fe3d6149aa062eb7b90f.json",
+					"name" : "global-lesson1-haromszog-test-src-part",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "global-lesson1-hatalmas-run::@5c6db85bafd74f24fbeb",
+					"jsonFile" : "target-global-lesson1-hatalmas-run-Debug-e7c5e775e12f21d4bacb.json",
+					"name" : "global-lesson1-hatalmas-run",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "global-lesson1-hatalmas-test::@5c6db85bafd74f24fbeb",
+					"jsonFile" : "target-global-lesson1-hatalmas-test-Debug-281d3861f284b533493d.json",
+					"name" : "global-lesson1-hatalmas-test",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "global-lesson1-hatalmas-test-src-part::@5c6db85bafd74f24fbeb",
+					"jsonFile" : "target-global-lesson1-hatalmas-test-src-part-Debug-114d817de51d00b7be14.json",
+					"name" : "global-lesson1-hatalmas-test-src-part",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "global-lesson1-jegyek-run::@bb10961ed35749928d13",
+					"jsonFile" : "target-global-lesson1-jegyek-run-Debug-1dcc385d951e93158e35.json",
+					"name" : "global-lesson1-jegyek-run",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "global-lesson1-jegyek-test::@bb10961ed35749928d13",
+					"jsonFile" : "target-global-lesson1-jegyek-test-Debug-4fe18898024ac8a2fd89.json",
+					"name" : "global-lesson1-jegyek-test",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "global-lesson1-jegyek-test-src-part::@bb10961ed35749928d13",
+					"jsonFile" : "target-global-lesson1-jegyek-test-src-part-Debug-925ab0dc9935ff912aec.json",
+					"name" : "global-lesson1-jegyek-test-src-part",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "global-lesson1-kuldetes-run::@817b15861f75734c5aaf",
+					"jsonFile" : "target-global-lesson1-kuldetes-run-Debug-93eae6f9b03d440aa8e4.json",
+					"name" : "global-lesson1-kuldetes-run",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "global-lesson1-kuldetes-test::@817b15861f75734c5aaf",
+					"jsonFile" : "target-global-lesson1-kuldetes-test-Debug-baae5f71182229ce1cdd.json",
+					"name" : "global-lesson1-kuldetes-test",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "global-lesson1-kuldetes-test-src-part::@817b15861f75734c5aaf",
+					"jsonFile" : "target-global-lesson1-kuldetes-test-src-part-Debug-1f587c95b2e6b7e1d6b7.json",
+					"name" : "global-lesson1-kuldetes-test-src-part",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "global-lesson1-leghosszabb-run::@ac8494c1abc6372ef9e0",
+					"jsonFile" : "target-global-lesson1-leghosszabb-run-Debug-70cd898986447107be1f.json",
+					"name" : "global-lesson1-leghosszabb-run",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "global-lesson1-leghosszabb-test::@ac8494c1abc6372ef9e0",
+					"jsonFile" : "target-global-lesson1-leghosszabb-test-Debug-7424345397600b5190ad.json",
+					"name" : "global-lesson1-leghosszabb-test",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "global-lesson1-leghosszabb-test-src-part::@ac8494c1abc6372ef9e0",
+					"jsonFile" : "target-global-lesson1-leghosszabb-test-src-part-Debug-89861050ac01033c8325.json",
+					"name" : "global-lesson1-leghosszabb-test-src-part",
+					"projectIndex" : 11
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "global-lesson1-macska-run::@c08e8f9b8ba27d5620d2",
+					"jsonFile" : "target-global-lesson1-macska-run-Debug-efab8a75894c4105d7a7.json",
+					"name" : "global-lesson1-macska-run",
+					"projectIndex" : 12
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "global-lesson1-macska-test::@c08e8f9b8ba27d5620d2",
+					"jsonFile" : "target-global-lesson1-macska-test-Debug-c4959edbb926a7851dd3.json",
+					"name" : "global-lesson1-macska-test",
+					"projectIndex" : 12
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "global-lesson1-macska-test-src-part::@c08e8f9b8ba27d5620d2",
+					"jsonFile" : "target-global-lesson1-macska-test-src-part-Debug-7ef090a3a6cff0d82b6e.json",
+					"name" : "global-lesson1-macska-test-src-part",
+					"projectIndex" : 12
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "global-lesson1-macskak-run::@e05418f3de89eaad0077",
+					"jsonFile" : "target-global-lesson1-macskak-run-Debug-cdb1115fa3f94512bb07.json",
+					"name" : "global-lesson1-macskak-run",
+					"projectIndex" : 13
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "global-lesson1-macskak-test::@e05418f3de89eaad0077",
+					"jsonFile" : "target-global-lesson1-macskak-test-Debug-d0dbdf8ee2999ffbd28c.json",
+					"name" : "global-lesson1-macskak-test",
+					"projectIndex" : 13
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "global-lesson1-macskak-test-src-part::@e05418f3de89eaad0077",
+					"jsonFile" : "target-global-lesson1-macskak-test-src-part-Debug-26a1606e84f97cce607f.json",
+					"name" : "global-lesson1-macskak-test-src-part",
+					"projectIndex" : 13
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "global-lesson1-maximum-run::@aa4eb26cec464d7654b5",
+					"jsonFile" : "target-global-lesson1-maximum-run-Debug-96d587cc4c55b6c4ba25.json",
+					"name" : "global-lesson1-maximum-run",
+					"projectIndex" : 14
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "global-lesson1-maximum-test::@aa4eb26cec464d7654b5",
+					"jsonFile" : "target-global-lesson1-maximum-test-Debug-6cbd718b4f08516a9f7e.json",
+					"name" : "global-lesson1-maximum-test",
+					"projectIndex" : 14
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "global-lesson1-maximum-test-src-part::@aa4eb26cec464d7654b5",
+					"jsonFile" : "target-global-lesson1-maximum-test-src-part-Debug-f2fe3998421390366e86.json",
+					"name" : "global-lesson1-maximum-test-src-part",
+					"projectIndex" : 14
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "global-lesson1-megfordit-run::@e4fe19330e95849f09a7",
+					"jsonFile" : "target-global-lesson1-megfordit-run-Debug-4862ca0c876c7ce61ead.json",
+					"name" : "global-lesson1-megfordit-run",
+					"projectIndex" : 15
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "global-lesson1-megfordit-test::@e4fe19330e95849f09a7",
+					"jsonFile" : "target-global-lesson1-megfordit-test-Debug-027cd09d6fb0002cefd8.json",
+					"name" : "global-lesson1-megfordit-test",
+					"projectIndex" : 15
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "global-lesson1-megfordit-test-src-part::@e4fe19330e95849f09a7",
+					"jsonFile" : "target-global-lesson1-megfordit-test-src-part-Debug-f8f42cf7918d9c472ae1.json",
+					"name" : "global-lesson1-megfordit-test-src-part",
+					"projectIndex" : 15
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "global-lesson1-monitor-run::@19c35c7f8254424dc378",
+					"jsonFile" : "target-global-lesson1-monitor-run-Debug-cf6e132f38dce848f1a8.json",
+					"name" : "global-lesson1-monitor-run",
+					"projectIndex" : 16
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "global-lesson1-monitor-test::@19c35c7f8254424dc378",
+					"jsonFile" : "target-global-lesson1-monitor-test-Debug-4712dd3d2d5840873160.json",
+					"name" : "global-lesson1-monitor-test",
+					"projectIndex" : 16
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "global-lesson1-monitor-test-src-part::@19c35c7f8254424dc378",
+					"jsonFile" : "target-global-lesson1-monitor-test-src-part-Debug-d4fe820ac4d3146c178d.json",
+					"name" : "global-lesson1-monitor-test-src-part",
+					"projectIndex" : 16
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "global-lesson1-napok-run::@8a175b9d442a8cf52e04",
+					"jsonFile" : "target-global-lesson1-napok-run-Debug-c63bd6da400287fda525.json",
+					"name" : "global-lesson1-napok-run",
+					"projectIndex" : 17
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "global-lesson1-napok-test::@8a175b9d442a8cf52e04",
+					"jsonFile" : "target-global-lesson1-napok-test-Debug-c36ba07c8115870f98c0.json",
+					"name" : "global-lesson1-napok-test",
+					"projectIndex" : 17
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "global-lesson1-napok-test-src-part::@8a175b9d442a8cf52e04",
+					"jsonFile" : "target-global-lesson1-napok-test-src-part-Debug-e424b260acbad60fb7e6.json",
+					"name" : "global-lesson1-napok-test-src-part",
+					"projectIndex" : 17
+				},
+				{
+					"directoryIndex" : 18,
+					"id" : "global-lesson1-osszeadas-run::@e4d4b563679b4b2c7b60",
+					"jsonFile" : "target-global-lesson1-osszeadas-run-Debug-7096b19b082bf3af3011.json",
+					"name" : "global-lesson1-osszeadas-run",
+					"projectIndex" : 18
+				},
+				{
+					"directoryIndex" : 18,
+					"id" : "global-lesson1-osszeadas-test::@e4d4b563679b4b2c7b60",
+					"jsonFile" : "target-global-lesson1-osszeadas-test-Debug-f0fcb7ff372ad722a46b.json",
+					"name" : "global-lesson1-osszeadas-test",
+					"projectIndex" : 18
+				},
+				{
+					"directoryIndex" : 18,
+					"id" : "global-lesson1-osszeadas-test-src-part::@e4d4b563679b4b2c7b60",
+					"jsonFile" : "target-global-lesson1-osszeadas-test-src-part-Debug-f7d7c09f81fe4b8059ea.json",
+					"name" : "global-lesson1-osszeadas-test-src-part",
+					"projectIndex" : 18
+				},
+				{
+					"directoryIndex" : 19,
+					"id" : "global-lesson1-osszeg-run::@13057af1212dce8b1495",
+					"jsonFile" : "target-global-lesson1-osszeg-run-Debug-0e5dc17606bb01004554.json",
+					"name" : "global-lesson1-osszeg-run",
+					"projectIndex" : 19
+				},
+				{
+					"directoryIndex" : 19,
+					"id" : "global-lesson1-osszeg-test::@13057af1212dce8b1495",
+					"jsonFile" : "target-global-lesson1-osszeg-test-Debug-6a1b00b726ce55d0e64b.json",
+					"name" : "global-lesson1-osszeg-test",
+					"projectIndex" : 19
+				},
+				{
+					"directoryIndex" : 19,
+					"id" : "global-lesson1-osszeg-test-src-part::@13057af1212dce8b1495",
+					"jsonFile" : "target-global-lesson1-osszeg-test-src-part-Debug-1c6ff9060805b077fbb4.json",
+					"name" : "global-lesson1-osszeg-test-src-part",
+					"projectIndex" : 19
+				},
+				{
+					"directoryIndex" : 20,
+					"id" : "global-lesson1-owo-run::@c1490e559b2f201a6917",
+					"jsonFile" : "target-global-lesson1-owo-run-Debug-d4ef1827c3ae64add37f.json",
+					"name" : "global-lesson1-owo-run",
+					"projectIndex" : 20
+				},
+				{
+					"directoryIndex" : 20,
+					"id" : "global-lesson1-owo-test::@c1490e559b2f201a6917",
+					"jsonFile" : "target-global-lesson1-owo-test-Debug-fc8683cff1d31783c33c.json",
+					"name" : "global-lesson1-owo-test",
+					"projectIndex" : 20
+				},
+				{
+					"directoryIndex" : 20,
+					"id" : "global-lesson1-owo-test-src-part::@c1490e559b2f201a6917",
+					"jsonFile" : "target-global-lesson1-owo-test-src-part-Debug-04d420ae76aed3c13c62.json",
+					"name" : "global-lesson1-owo-test-src-part",
+					"projectIndex" : 20
+				},
+				{
+					"directoryIndex" : 21,
+					"id" : "global-lesson1-paros-run::@28e1f2fd539581af569e",
+					"jsonFile" : "target-global-lesson1-paros-run-Debug-f57fbcaaae771c00757f.json",
+					"name" : "global-lesson1-paros-run",
+					"projectIndex" : 21
+				},
+				{
+					"directoryIndex" : 21,
+					"id" : "global-lesson1-paros-test::@28e1f2fd539581af569e",
+					"jsonFile" : "target-global-lesson1-paros-test-Debug-af83f4982b918269977f.json",
+					"name" : "global-lesson1-paros-test",
+					"projectIndex" : 21
+				},
+				{
+					"directoryIndex" : 21,
+					"id" : "global-lesson1-paros-test-src-part::@28e1f2fd539581af569e",
+					"jsonFile" : "target-global-lesson1-paros-test-src-part-Debug-2d356ea6470435c736be.json",
+					"name" : "global-lesson1-paros-test-src-part",
+					"projectIndex" : 21
+				},
+				{
+					"directoryIndex" : 24,
+					"id" : "global-lesson1-rendezes-run::@f0d040c3971aaacf4102",
+					"jsonFile" : "target-global-lesson1-rendezes-run-Debug-1ea79a022cecae77bd69.json",
+					"name" : "global-lesson1-rendezes-run",
+					"projectIndex" : 24
+				},
+				{
+					"directoryIndex" : 24,
+					"id" : "global-lesson1-rendezes-test::@f0d040c3971aaacf4102",
+					"jsonFile" : "target-global-lesson1-rendezes-test-Debug-05f07ee4d6e24c92d788.json",
+					"name" : "global-lesson1-rendezes-test",
+					"projectIndex" : 24
+				},
+				{
+					"directoryIndex" : 24,
+					"id" : "global-lesson1-rendezes-test-src-part::@f0d040c3971aaacf4102",
+					"jsonFile" : "target-global-lesson1-rendezes-test-src-part-Debug-58f08d8a92b8f413deae.json",
+					"name" : "global-lesson1-rendezes-test-src-part",
+					"projectIndex" : 24
+				},
+				{
+					"directoryIndex" : 22,
+					"id" : "global-lesson1-szamjegyosszeg-run::@a34cf430adffecb170a8",
+					"jsonFile" : "target-global-lesson1-szamjegyosszeg-run-Debug-9e7af712f90f12197c65.json",
+					"name" : "global-lesson1-szamjegyosszeg-run",
+					"projectIndex" : 22
+				},
+				{
+					"directoryIndex" : 22,
+					"id" : "global-lesson1-szamjegyosszeg-test::@a34cf430adffecb170a8",
+					"jsonFile" : "target-global-lesson1-szamjegyosszeg-test-Debug-86c7e7c62263fc37d093.json",
+					"name" : "global-lesson1-szamjegyosszeg-test",
+					"projectIndex" : 22
+				},
+				{
+					"directoryIndex" : 22,
+					"id" : "global-lesson1-szamjegyosszeg-test-src-part::@a34cf430adffecb170a8",
+					"jsonFile" : "target-global-lesson1-szamjegyosszeg-test-src-part-Debug-2d4f034261bd845bf90e.json",
+					"name" : "global-lesson1-szamjegyosszeg-test-src-part",
+					"projectIndex" : 22
+				},
+				{
+					"directoryIndex" : 23,
+					"id" : "global-lesson1-totaliskatasztrofa-run::@342d0804933f069b6c4c",
+					"jsonFile" : "target-global-lesson1-totaliskatasztrofa-run-Debug-99e5d03fe8e9f974d019.json",
+					"name" : "global-lesson1-totaliskatasztrofa-run",
+					"projectIndex" : 23
+				},
+				{
+					"directoryIndex" : 23,
+					"id" : "global-lesson1-totaliskatasztrofa-test::@342d0804933f069b6c4c",
+					"jsonFile" : "target-global-lesson1-totaliskatasztrofa-test-Debug-910d8cb6891d8731b91d.json",
+					"name" : "global-lesson1-totaliskatasztrofa-test",
+					"projectIndex" : 23
+				},
+				{
+					"directoryIndex" : 23,
+					"id" : "global-lesson1-totaliskatasztrofa-test-src-part::@342d0804933f069b6c4c",
+					"jsonFile" : "target-global-lesson1-totaliskatasztrofa-test-src-part-Debug-8c8f468860b0ff1e5d51.json",
+					"name" : "global-lesson1-totaliskatasztrofa-test-src-part",
+					"projectIndex" : 23
+				},
+				{
+					"directoryIndex" : 25,
+					"id" : "global-lesson1-zuhanas-run::@4a82a9d9088d0747e23c",
+					"jsonFile" : "target-global-lesson1-zuhanas-run-Debug-a412d3c1940c93898a15.json",
+					"name" : "global-lesson1-zuhanas-run",
+					"projectIndex" : 25
+				},
+				{
+					"directoryIndex" : 25,
+					"id" : "global-lesson1-zuhanas-test::@4a82a9d9088d0747e23c",
+					"jsonFile" : "target-global-lesson1-zuhanas-test-Debug-ccef2709dfa950dc4b5d.json",
+					"name" : "global-lesson1-zuhanas-test",
+					"projectIndex" : 25
+				},
+				{
+					"directoryIndex" : 25,
+					"id" : "global-lesson1-zuhanas-test-src-part::@4a82a9d9088d0747e23c",
+					"jsonFile" : "target-global-lesson1-zuhanas-test-src-part-Debug-53e22a244f8655c5a810.json",
+					"name" : "global-lesson1-zuhanas-test-src-part",
+					"projectIndex" : 25
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gmock::@05dd783894a41a549fbe",
+					"jsonFile" : "target-gmock-Debug-7aed32271c255fd7f241.json",
+					"name" : "gmock",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gmock_main::@05dd783894a41a549fbe",
+					"jsonFile" : "target-gmock_main-Debug-dd41ddef851ee7308f91.json",
+					"name" : "gmock_main",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "gtest::@f493ac65bf4e3b540d83",
+					"jsonFile" : "target-gtest-Debug-ce2c870d41ce20fff785.json",
+					"name" : "gtest",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "gtest_main::@f493ac65bf4e3b540d83",
+					"jsonFile" : "target-gtest_main-Debug-a445728f314491a1aca5.json",
+					"name" : "gtest_main",
+					"projectIndex" : 3
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Albert/CLionProjects/Progalap_05/cmake-build-debug",
+		"source" : "C:/Users/Albert/CLionProjects/Progalap_05"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

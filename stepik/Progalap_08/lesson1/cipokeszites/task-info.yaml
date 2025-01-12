@@ -1,0 +1,137 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-cipokeszites)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/cipokeszites.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/cipokeszites.c
+  visible: true
+  placeholders:
+  - offset: 356
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 167
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Cipo* cipok = (Cipo*) malloc(darab * sizeof(Cipo));
+
+          for (int i = 0; i < darab; i++) {
+              strcpy(cipok[i].szin, szin);
+              cipok[i].meret = meret;
+          }
+
+          return cipok;
+  text: |-
+    #include <stdlib.h>
+    #include <string.h>
+
+    typedef struct {
+        char szin[100];
+        int meret;
+    } Cipo;
+
+    Cipo* cipokeszites(int darab, const char* szin, int meret) {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/cipokeszites.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 5;
+        const char szin[] = "piros";
+        int meret = 37;
+        Cipo* cipok = cipokeszites(darab, szin, meret);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_STREQ(cipok[i].szin, szin);
+            ASSERT_EQ(cipok[i].meret, meret);
+        }
+        free(cipok);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 5;
+        const char szin[] = "piros";
+        int meret = 33;
+        Cipo* cipok = cipokeszites(darab, szin, meret);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_STREQ(cipok[i].szin, szin);
+            ASSERT_EQ(cipok[i].meret, meret);
+        }
+        free(cipok);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 5;
+        const char szin[] = "kek";
+        int meret = 37;
+        Cipo* cipok = cipokeszites(darab, szin, meret);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_STREQ(cipok[i].szin, szin);
+            ASSERT_EQ(cipok[i].meret, meret);
+        }
+        free(cipok);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 5000;
+        const char szin[] = "sarga";
+        int meret = 40;
+        Cipo* cipok = cipokeszites(darab, szin, meret);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_STREQ(cipok[i].szin, szin);
+            ASSERT_EQ(cipok[i].meret, meret);
+        }
+        free(cipok);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 3000000;
+        const char szin[] = "rozsaszin";
+        int meret = 44;
+        Cipo* cipok = cipokeszites(darab, szin, meret);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_STREQ(cipok[i].szin, szin);
+            ASSERT_EQ(cipok[i].meret, meret);
+        }
+        free(cipok);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 16:55:20 UTC"
+record: -1
+solution_hidden: true

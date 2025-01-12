@@ -1,0 +1,86 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-szoba)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szoba.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szoba.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 85
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          char tipus[100];
+          double meret;
+          double homerseklet;
+      } Szoba;
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+    #include <cstring>
+
+    #define main main_0
+    #include "../src/szoba.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Szoba sz;
+        strcpy(sz.tipus, "furdo");
+        sz.meret = 4.4;
+        sz.homerseklet = 20.5;
+
+        ASSERT_STREQ(sz.tipus, "furdo");
+        ASSERT_NEAR(sz.meret, 4.4, 0.001);
+        ASSERT_NEAR(sz.homerseklet, 20.5, 0.001);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Szoba sz;
+        strcpy(sz.tipus, "konyha");
+        sz.meret = 14.4;
+        sz.homerseklet = 22.3;
+
+        ASSERT_STREQ(sz.tipus, "konyha");
+        ASSERT_NEAR(sz.meret, 14.4, 0.001);
+        ASSERT_NEAR(sz.homerseklet, 22.3, 0.001);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 16 Oct 2023 12:13:45 UTC"
+record: -1
+solution_hidden: true

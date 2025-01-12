@@ -1,0 +1,104 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-temetes)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/temetes.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/temetes.c
+  visible: true
+  placeholders:
+  - offset: 21
+    length: 42
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+
+      void felszabadit(int* pointer) {
+          free(pointer);
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #define free(p) printf("%p", p);free(p)
+    #include "../src/temetes.c"
+    #undef free
+    #undef main
+
+    #include "../../tools.cpp"
+
+    void fff(char eredmeny[]) {
+        int* b = (int*) malloc(sizeof(int));
+        int* c = (int*) malloc(sizeof(int));
+        int* d = (int*) malloc(sizeof(int));
+        int* e = (int*) malloc(sizeof(int));
+        int* f = (int*) malloc(sizeof(int));
+        int* g = (int*) malloc(sizeof(int));
+        int* h = (int*) malloc(sizeof(int));
+        int* i = (int*) malloc(sizeof(int));
+        int* j = (int*) malloc(sizeof(int));
+        int* k = (int*) malloc(sizeof(int));
+        int* l = (int*) malloc(sizeof(int));
+        int* m = (int*) malloc(sizeof(int));
+
+        sprintf(eredmeny, "%p%p%p%p%p%p%p%p%p%p%p%p", b, c, d, e, f, g, h, i, j, k, l, m);
+
+        felszabadit(b);
+        felszabadit(c);
+        felszabadit(d);
+        felszabadit(e);
+        felszabadit(f);
+        felszabadit(g);
+        felszabadit(h);
+        felszabadit(i);
+        felszabadit(j);
+        felszabadit(k);
+        felszabadit(l);
+        felszabadit(m);
+    }
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[500];
+        char elvart[500];
+        IO("", fff(elvart), str);
+        ASSERT_STREQ(str, elvart);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 16:38:29 UTC"
+record: -1
+solution_hidden: true

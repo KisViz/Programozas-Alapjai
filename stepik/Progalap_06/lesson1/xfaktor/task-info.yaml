@@ -1,0 +1,115 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-xfaktor)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/xfaktor.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/xfaktor.c
+  visible: true
+  placeholders:
+  - offset: 98
+    length: 37
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 102
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: "fscanf(f, \"%[^\\n]s\", gyoztes);"
+  text: |-
+    #include <stdio.h>
+
+    int main() {
+        FILE* f = fopen("boritek.txt", "r");
+        char gyoztes[100];
+
+        // megoldas
+
+        fclose(f);
+
+        printf("%s", gyoztes);
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/xfaktor.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "Alee");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "Alee");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "USNK");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "USNK");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "Opitz Barbara");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "Opitz Barbara");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "Danics Dora");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "Danics Dora");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "Vastag Csaba");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "Vastag Csaba");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        writeContentToFile("boritek.txt", "Legyen Azert Valami Hosszu Nevu Is Hogy Nehez Legyen A Feladat");
+        char str[1000];
+        IO("", main_0(), str);
+        ASSERT_STREQ(str, "Legyen Azert Valami Hosszu Nevu Is Hogy Nehez Legyen A Feladat");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 15:29:56 UTC"
+record: -1
+solution_hidden: true

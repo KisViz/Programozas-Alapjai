@@ -1,0 +1,94 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-jegyek)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            test/task.cpp)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        std::vector<string> errors {
+            "warning: return type defaults to 'int'", "error: called object 'jegyek' is not a function or function pointer"
+        };
+
+        CHECK_COMPILER_ERROR("jegyek", "jegyek.c", errors, 1);
+    }
+  learner_created: false
+- name: src/jegyek.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 186
+    placeholder_text: |-
+      double jegyek(int jegyek[], int db) {
+          int egyes = 0;
+          for (int i = 0; i < db; i++) {
+              if (jegyek[i] == 1) {
+                  egyes++;
+              }
+          }
+
+          return (double) egyes / db;
+      }
+    initial_state:
+      length: 193
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      jegyek(int jegyek[], int db) {
+          int egyes = 0;
+          for (int i = 0; i < db; i++) {
+              if (jegyek(i) == 1) {
+                  egyes++;
+              }
+          }
+
+          return (double) egyes / db;
+      }
+  text: |-
+    double jegyek(int jegyek[], int db) {
+        int egyes = 0;
+        for (int i = 0; i < db; i++) {
+            if (jegyek[i] == 1) {
+                egyes++;
+            }
+        }
+
+        return (double) egyes / db;
+    }
+  learner_created: false
+- name: test/task.cpp
+  visible: false
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

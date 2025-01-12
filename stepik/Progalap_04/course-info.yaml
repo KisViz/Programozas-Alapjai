@@ -1,0 +1,9 @@
+title: Progalap_04
+language: English
+summary: Struktúrák
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

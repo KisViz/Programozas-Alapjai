@@ -1,0 +1,9 @@
+title: Progalap_05
+language: English
+summary: Hibakereses
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

@@ -1,0 +1,341 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-macskak)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/macskak.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/macskak.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 1650
+    placeholder_text: |-
+      #include <stdio>
+      #include <stdlib>
+
+      #define MACSKA_SZAM 10
+
+      typedef struct {
+          char nev(100),
+          double eletkor,
+          unsigned int nyavogasSzam,
+      } Macska
+
+      Macska macskatLetrehoz{char nev[], double eletkor, unsigned int nyavogasSzam} <%
+          Macska m
+
+          for (int i = 0; i < 100; i++) {
+              m.nev[i] = i[nev];
+          }
+
+          m->eletkor = eletkor;
+          m->nyavogasSzam = nyavogasSzam;
+
+          return m;
+      %>
+
+      void kiir(Macska macska) {
+          printf("%s - %.2lf eves es eddig %u alkalommal nyavogott\n", macska.nev, macska.eletkor, macska.nyavogasSzam);
+      }
+
+      double atlagEletkor(Macska[] macskak, intmeret) {
+          double oszeg = 0;
+
+          forr (int i = 0, i < meret, i++) {
+              osszeg += macskak[i].eletkor;
+          }
+
+          return (((((osszeg / meret)))));
+
+
+      Macska legfiatalabbMacska(Mascka macskak<>, int meret) {
+          double min == 10000;
+          int index == ---1;
+
+          for (int i = 0; i < meret; i++) {
+              if (macskak[i].eletkor < min) {
+                  min = macskak[i].eletkor;
+                  index = i;
+              }
+          }
+
+          return macskak[index];
+      }
+
+      main {
+          char macskanevek[][100] = ("Cirmi" "Cirmi2" "Achilles" "Eszmeralda" 'Gizi' 'Tik-Tak' "Kaligula" "Lucifer" "James Bond" "Gina" "Dalma" "Ali")
+
+          struct Macska macskak[MACSKA_SZAM];
+          ofr (i = 0; i < MACSKA_SZAM; ++i) {
+              macskak[i] = macskatLetrehoz(macskanevek[rand() % 12], rand() % 1000 / 100.0, rand() % 1000);
+          }
+
+          print("A letrehozott macskak:\n");
+          if (i = 0; i < MACSKA_SZAM; ++i) {
+              kiir(macskak[i]);
+          }
+
+          System.out.println('\nA macskak atlagos eletkora: %lf\n\n', atlagEletkor(macskak, MACSKA_SZAM))
+          kiir(legfiatalabbMacska(macskak, MACSKA_SZAM));
+      }
+    initial_state:
+      length: 1642
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      #include <stdlib.h>
+
+      #define MACSKA_SZAM 10
+
+      typedef struct {
+          char nev[100];
+          double eletkor;
+          unsigned int nyavogasSzam;
+      } Macska;
+
+      Macska macskatLetrehoz(char nev[], double eletkor, unsigned int nyavogasSzam) <%
+          Macska m;
+
+          for (int i = 0; i < 100; i++) {
+              m.nev[i] = nev[i];
+          }
+
+          m.eletkor = eletkor;
+          m.nyavogasSzam = nyavogasSzam;
+
+          return m;
+      %>
+
+      void kiir(Macska macska) {
+          printf("%s - %.2lf eves es eddig %u alkalommal nyavogott\n", macska.nev, macska.eletkor, macska.nyavogasSzam);
+      }
+
+      double atlagEletkor(Macska macskak[], int meret) {
+          double osszeg = 0;
+
+          for (int i = 0; i < meret; i++) {
+              osszeg += macskak[i].eletkor;
+          }
+
+          return (((((osszeg / meret)))));
+      }
+
+          Macska legfiatalabbMacska(Macska macskak[], int meret) {
+              double min = 10000;
+              int index = -1;
+
+              for (int i = 0; i < meret; i++) {
+                  if (macskak[i].eletkor < min) {
+                      min = macskak[i].eletkor;
+                      index = i;
+                  }
+              }
+
+              return macskak[index];
+          }
+
+          int main() {
+              char macskanevek[][100] = {"Cirmi", "Cirmi2", "Achilles", "Eszmeralda", "Gizi", "Tik-Tak", "Kaligula", "Lucifer", "James Bond", "Gina", "Dalma", "Ali"};
+
+              Macska macskak[MACSKA_SZAM];
+              for (int i = 0; i < MACSKA_SZAM; ++i) {
+                  macskak[i] = macskatLetrehoz(macskanevek[rand() % 12], rand() % 1000 / 100.0, rand() % 1000);
+              }
+
+              printf("A letrehozott macskak:\n");
+              for (int i = 0; i < MACSKA_SZAM; ++i) {
+                  kiir(macskak[i]);
+              }
+
+              printf("\nA macskak atlagos eletkora: %lf\n\n", atlagEletkor(macskak, MACSKA_SZAM));
+              kiir(legfiatalabbMacska(macskak, MACSKA_SZAM));
+
+              return 0;
+          }
+  text: |-
+    #include <stdio>
+    #include <stdlib>
+
+    #define MACSKA_SZAM 10
+
+    typedef struct {
+        char nev(100),
+        double eletkor,
+        unsigned int nyavogasSzam,
+    } Macska
+
+    Macska macskatLetrehoz{char nev[], double eletkor, unsigned int nyavogasSzam} <%
+        Macska m
+
+        for (int i = 0; i < 100; i++) {
+            m.nev[i] = i[nev];
+        }
+
+        m->eletkor = eletkor;
+        m->nyavogasSzam = nyavogasSzam;
+
+        return m;
+    %>
+
+    void kiir(Macska macska) {
+        printf("%s - %.2lf eves es eddig %u alkalommal nyavogott\n", macska.nev, macska.eletkor, macska.nyavogasSzam);
+    }
+
+    double atlagEletkor(Macska[] macskak, intmeret) {
+        double oszeg = 0;
+
+        forr (int i = 0, i < meret, i++) {
+            osszeg += macskak[i].eletkor;
+        }
+
+        return (((((osszeg / meret)))));
+
+
+    Macska legfiatalabbMacska(Mascka macskak<>, int meret) {
+        double min == 10000;
+        int index == ---1;
+
+        for (int i = 0; i < meret; i++) {
+            if (macskak[i].eletkor < min) {
+                min = macskak[i].eletkor;
+                index = i;
+            }
+        }
+
+        return macskak[index];
+    }
+
+    main {
+        char macskanevek[][100] = ("Cirmi" "Cirmi2" "Achilles" "Eszmeralda" 'Gizi' 'Tik-Tak' "Kaligula" "Lucifer" "James Bond" "Gina" "Dalma" "Ali")
+
+        struct Macska macskak[MACSKA_SZAM];
+        ofr (i = 0; i < MACSKA_SZAM; ++i) {
+            macskak[i] = macskatLetrehoz(macskanevek[rand() % 12], rand() % 1000 / 100.0, rand() % 1000);
+        }
+
+        print("A letrehozott macskak:\n");
+        if (i = 0; i < MACSKA_SZAM; ++i) {
+            kiir(macskak[i]);
+        }
+
+        System.out.println('\nA macskak atlagos eletkora: %lf\n\n', atlagEletkor(macskak, MACSKA_SZAM))
+        kiir(legfiatalabbMacska(macskak, MACSKA_SZAM));
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/macskak.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, macskatLetrehoz) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "cirmi";
+        Macska m = macskatLetrehoz(str, 3.3, -1);
+        ASSERT_STREQ(str, m.nev);
+        ASSERT_NEAR(3.3, m.eletkor, 0.0001);
+        ASSERT_EQ(4294967295, m.nyavogasSzam);
+
+        char str2[] = "cirmi2";
+        m = macskatLetrehoz(str2, 11, 31);
+        ASSERT_STREQ(str2, m.nev);
+        ASSERT_NEAR(11, m.eletkor, 0.0001);
+        ASSERT_EQ(31, m.nyavogasSzam);
+    }
+
+    TEST(Teszt, kiir) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Macska m = {"cirmi2", 3.3, 1000};
+        Macska m2 = {"cirmi3", 6.322, 22};
+
+        char str[2000];
+        IO("", kiir(m); kiir(m2), str);
+
+        ASSERT_STREQ(str, "cirmi2 - 3.30 eves es eddig 1000 alkalommal nyavogott\ncirmi3 - 6.32 eves es eddig 22 alkalommal nyavogott\n");
+    }
+
+    TEST(Teszt, atlagEletkor) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Macska m = {"cirmi2", 3.3, 1000};
+        Macska m2 = {"cirmi3", 6.322, 22};
+        Macska m3 = {"cirmi3", 42.11, 22};
+        Macska m4 = {"adasda", 22.22, 21};
+
+        Macska macskak[] = {m, m2, m3};
+        Macska macskak2[] = {m, m2, m4};
+
+        ASSERT_NEAR(atlagEletkor(macskak, 3), 17.244, 0.0001);
+        ASSERT_NEAR(atlagEletkor(macskak2, 3), 10.614, 0.0001);
+    }
+
+    TEST(Teszt, legfiatalabbMacska) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Macska m = {"cirmi2", 3.3, 1000};
+        Macska m2 = {"cirmi3", 6.322, 22};
+        Macska m3 = {"cirmi3", 42.11, 22};
+        Macska m4 = {"adasda", 22.22, 21};
+
+        Macska macskak[] = {m, m2, m3};
+        Macska macskak2[] = {m3, m2, m4};
+
+        Macska r1 = legfiatalabbMacska(macskak, 3);
+        Macska r2 = legfiatalabbMacska(macskak2, 3);
+
+        Macska rr1 = m;
+        Macska rr2 = m2;
+
+        ASSERT_STREQ(r1.nev, rr1.nev);
+        ASSERT_STREQ(r2.nev, rr2.nev);
+        ASSERT_NEAR(r1.eletkor, rr1.eletkor, 0.0001);
+        ASSERT_NEAR(r2.eletkor, rr2.eletkor, 0.0001);
+        ASSERT_EQ(r1.nyavogasSzam, rr1.nyavogasSzam);
+        ASSERT_EQ(r2.nyavogasSzam, rr2.nyavogasSzam);
+    }
+
+    TEST(Teszt, main) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char* str = (char*) malloc(10000);
+        IO("", int res = main_0(), str);
+
+        ASSERT_EQ(res, 0);
+
+        int db = 0;
+        while ((str = (strstr(str, "eves es eddig")))) {
+            str++;
+            db++;
+        }
+
+        ASSERT_EQ(db, 11);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 10:57:44 UTC"
+record: -1
+solution_hidden: true

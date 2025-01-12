@@ -1,0 +1,110 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-auto)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/auto.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+    #include <cstring>
+
+    #define main main_0
+    #include "../src/auto.c"
+    #undef main
+
+    Auto a1 = {"AAA-111", 45};
+    Auto a2 = {"BBB-224", 53};
+    Auto a3 = {"KXL-675", 45};
+    Auto a4 = {"IWK-210", 77};
+    Auto a5 = {"OOO-000", 46};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a1, a2);
+        ASSERT_STREQ(res.rendszam, a2.rendszam);
+        ASSERT_EQ(res.sebesseg, a2.sebesseg);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a2, a1);
+        ASSERT_STREQ(res.rendszam, a2.rendszam);
+        ASSERT_EQ(res.sebesseg, a2.sebesseg);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a4, a5);
+        ASSERT_STREQ(res.rendszam, a4.rendszam);
+        ASSERT_EQ(res.sebesseg, a4.sebesseg);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a5, a3);
+        ASSERT_STREQ(res.rendszam, a5.rendszam);
+        ASSERT_EQ(res.sebesseg, a5.sebesseg);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a1, a3);
+        ASSERT_STREQ(res.rendszam, a1.rendszam);
+        ASSERT_EQ(res.sebesseg, a1.sebesseg);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Auto res = gyorsabb(a3, a1);
+        ASSERT_STREQ(res.rendszam, a3.rendszam);
+        ASSERT_EQ(res.sebesseg, a3.sebesseg);
+    }
+  learner_created: false
+- name: src/auto.c
+  visible: true
+  placeholders:
+  - offset: 66
+    length: 134
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 66
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      Auto gyorsabb(Auto elso, Auto masodik) {
+          return elso.sebesseg >= masodik.sebesseg ? elso : masodik;
+      }
+  text: |-
+    typedef struct {
+        char rendszam[8];
+        int sebesseg;
+    } Auto;
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 07:11:20 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,104 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-forditott)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/tukorforditas.cpp)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/tukorforditas.cpp
+  visible: true
+  placeholders:
+  - offset: 52
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 52
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      for (unsigned int i = 0, j = strlen(szoveg) - 1; i < j; i++, j--) {
+              char tmp = szoveg[i];
+              szoveg[i] = szoveg[j];
+              szoveg[j] = tmp;
+          }
+
+          for (int i = 0; szoveg[i] != 0; i++) {
+              switch (szoveg[i]) {
+                  case 'a'...'z':
+                      szoveg[i] = 'z' - (szoveg[i] - 'a');
+                      break;
+                  case 'A'...'Z':
+                      szoveg[i] = 'Z' - (szoveg[i] - 'A');
+                      break;
+              }
+          }
+  text: |-
+    #include<string.h>
+
+    void fordit(char* szoveg) {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/tukorforditas.cpp"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char eredeti[] = "macska";
+        char elvart[] = "zphxzn";
+        fordit(eredeti);
+        ASSERT_STREQ(eredeti, elvart);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char eredeti[] = "a lovak osszessege 3.";
+        char elvart[] = ".3 vtvhhvahhl pzelo z";
+        fordit(eredeti);
+        ASSERT_STREQ(eredeti, elvart);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char eredeti[] = "0123??@a";
+        char elvart[] = "z@??3210";
+        fordit(eredeti);
+        ASSERT_STREQ(eredeti, elvart);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char eredeti[] = "azaz az az";
+        char elvart[] = "az az azaz";
+        fordit(eredeti);
+        ASSERT_STREQ(eredeti, elvart);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

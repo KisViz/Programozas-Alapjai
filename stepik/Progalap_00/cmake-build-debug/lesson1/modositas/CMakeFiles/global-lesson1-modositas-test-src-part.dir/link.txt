@@ -1,0 +1,2 @@
+C:\PROGRA~1\JETBRA~1\CLION2~1.5\bin\mingw\bin\ar.exe qc libglobal-lesson1-modositas-test-src-part.a "CMakeFiles/global-lesson1-modositas-test-src-part.dir/src/modositas.c.obj"
+C:\PROGRA~1\JETBRA~1\CLION2~1.5\bin\mingw\bin\ranlib.exe libglobal-lesson1-modositas-test-src-part.a

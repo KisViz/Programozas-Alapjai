@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libglobal-lesson1-task1-test-src-part.a "CMakeFiles/global-lesson1-task1-test-src-part.dir/src/kisbetu.c.obj"
+C:\MinGW\bin\ranlib.exe libglobal-lesson1-task1-test-src-part.a

@@ -1,0 +1,114 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-nulla)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/nulla.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/nulla.c
+  visible: true
+  placeholders:
+  - offset: 67
+    length: 48
+    placeholder_text: int** tabla = NULL;
+    initial_state:
+      length: 19
+      offset: 67
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int** tabla = (int**) malloc(sor * sizeof(int*));
+          for (int i = 0; i < sor; i++) {
+              tabla[i] = (int*) malloc(oszlop * sizeof(int));
+          }
+  text: |-
+    #include <stdlib.h>
+
+    int** tablatKeszit(int sor, int oszlop) {
+        int** tabla = NULL;
+
+        for (int i = 0; i < sor; i++) {
+            for (int j = 0; j < oszlop; j++) {
+                tabla[i][j] = 0;
+            }
+        }
+
+        return tabla;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/nulla.c"
+    #undef main
+
+    void tesztel(int sor, int oszlop) {
+        int** tabla = tablatKeszit(sor, oszlop);
+
+        for (int i = 0; i < sor; i++) {
+            for (int j = 0; j < oszlop; j++) {
+                ASSERT_EQ(tabla[i][j], 0);
+            }
+        }
+
+        for (int i = 0; i < sor; i++) {
+            free(tabla[i]);
+        }
+        free(tabla);
+    }
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(3, 3);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(3, 100000);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(100000, 3);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(3000, 3000);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(1, 100000);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(100000, 1);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 16:32:37 UTC"
+record: -1
+solution_hidden: true

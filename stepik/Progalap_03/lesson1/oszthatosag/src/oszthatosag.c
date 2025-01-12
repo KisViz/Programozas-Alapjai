@@ -1,0 +1,1 @@
+int oszthatosag (int a[],int m){int k=0;while(m>0){m--;if(a[m]%2==0)k++;}return k;}

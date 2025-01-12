@@ -1,0 +1,158 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-forditva)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/forditva.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/forditva.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 530
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      void kodol(char str[]) {
+          int i = 0;
+          int start = 0;
+          while (1) {
+              if (str[i] == ' ' || str[i] == '\0') {
+                  for (int j = start; j < start + (i-1-start+1)/2; j++) {
+                      int hatulrol = (i-1) - j + start;
+
+                      char tmp = str[j];
+                      str[j] = str[hatulrol];
+                      str[hatulrol] = tmp;
+                  }
+
+                  start = i+1;
+              }
+
+              if (str[i] == '\0') {
+                  break;
+              }
+
+              i++;
+          }
+      }
+
+      void dekodol(char str[]) {
+          kodol(str);
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/forditva.c"
+    #undef main
+
+    void kodol(char str[]);
+    void dekodol(char str[]);
+
+    TEST(Kodol, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "itt a macska";
+        char eredmeny[] = "tti a akscam";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Kodol, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "a kiscica bejott a konyhaba";
+        char eredmeny[] = "a acicsik ttojeb a abahynok";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Kodol, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "itt a macska okos homloka";
+        char eredmeny[] = "tti a akscam soko akolmoh";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Kodol, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "tavoktatas";
+        char eredmeny[] = "satatkovat";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Kodol, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "abc";
+        char eredmeny[] = "cba";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Dekodol, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "itt a macska";
+        char eredmeny[] = "tti a akscam";
+        dekodol(eredmeny);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Dekodol, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "a kiscica bejott a konyhaba";
+        char eredmeny[] = "a acicsik ttojeb a abahynok";
+        dekodol(eredmeny);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Dekodol, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "itt a macska okos homloka";
+        char eredmeny[] = "tti a akscam soko akolmoh";
+        dekodol(eredmeny);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Dekodol, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "tavoktatas";
+        char eredmeny[] = "satatkovat";
+        dekodol(eredmeny);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+
+    TEST(Dekodol, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "abc";
+        char eredmeny[] = "cba";
+        dekodol(eredmeny);
+        ASSERT_STREQ(szoveg, eredmeny);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 07 Nov 2023 12:24:02 UTC"
+record: -1
+solution_hidden: true

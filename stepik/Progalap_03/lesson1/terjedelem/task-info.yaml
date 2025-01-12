@@ -1,0 +1,125 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-terjedelem)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/terjedelem.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/terjedelem.c
+  visible: true
+  placeholders:
+  - offset: 41
+    length: 372
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 21
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int kulonbseg(int magassagok[], int darabszam) {
+          int max = INT_MIN;
+          int min = INT_MAX;
+
+          for (int i = 0; i < darabszam; i++) {
+              if (magassagok[i] > max) {
+                  max = magassagok[i];
+              }
+
+              if (magassagok[i] < min) {
+                  min = magassagok[i];
+              }
+          }
+
+          return max-min;
+      }
+  text: |-
+    #include <stdlib.h>
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/terjedelem.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {120, 125, 130, 135};
+        int db = 4;
+        int res = 15;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {150, 149, 151, 148, 151, 151, 151};
+        int db = 7;
+        int res = 3;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {170};
+        int db = 1;
+        int res = 0;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {120, 155};
+        int db = 2;
+        int res = 35;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {99, 105, 101, 140, 122, 125, 102, 151, 121, 111, 116, 116, 114, 117};
+        int db = 14;
+        int res = 52;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 100, 200};
+        int db = 11;
+        int res = 0;
+
+        ASSERT_EQ(kulonbseg(t, db), res);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 09 Oct 2023 12:21:53 UTC"
+record: -1
+solution_hidden: true

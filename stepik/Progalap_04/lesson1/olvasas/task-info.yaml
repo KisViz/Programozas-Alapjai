@@ -1,0 +1,144 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-olvasas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/olvasas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/olvasas.c"
+    #undef main
+
+    Konyv k1 = {"cim1", "iro1", 55};
+    Konyv k2 = {"cim2", "iro2", 44};
+    Konyv k3 = {"cim3", "iro3", 15};
+    Konyv k4 = {"cim4", "iro2", 8};
+    Konyv k5 = {"a kiscica kalandozasai a matematika birodalmaban Danteval a koltovel", "Nem tudni de valaki nagyon okos lehetett", 130};
+    Konyv k6 = {"cim5", "iro2", 110};
+    Konyv k7 = {"cim6", "iro3", 52};
+    Konyv k8 = {"Recept", "Irenke neni", 1};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k1, k2, k3};
+        int db = 3;
+        int res = 114;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k3, k1, k2};
+        int db = 3;
+        int res = 114;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k8};
+        int db = 1;
+        int res = 1;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k7};
+        int db = 1;
+        int res = 52;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k4, k5, k6, k7};
+        int db = 4;
+        int res = 300;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k1, k5, k7, k8};
+        int db = 4;
+        int res = 238;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Konyv konyvek[] = {k1, k2, k3, k4, k5, k6, k7, k8};
+        int db = 8;
+        int res = 415;
+
+        int result = olvasasiMennyiseg(konyvek, db);
+        ASSERT_EQ(res, result);
+    }
+  learner_created: false
+- name: src/olvasas.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 243
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          char cim[100];
+          char iro[100];
+          int oldalSzam;
+      } Konyv;
+
+      int olvasasiMennyiseg(Konyv konyvek[], int db) {
+          int osszeg = 0;
+          for (int i = 0; i < db; i++) {
+              osszeg += konyvek[i].oldalSzam;
+          }
+
+          return osszeg;
+      }
+  text: // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 18 Oct 2023 07:58:50 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,97 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-osszeg)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/osszeg.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/osszeg.c
+  visible: true
+  placeholders:
+  - offset: 93
+    length: 22
+    placeholder_text: // masodik szam beolvasasa
+    initial_state:
+      length: 26
+      offset: 93
+    initialized_from_dependency: false
+    selected: true
+    status: Solved
+    encrypted_possible_answer: "scanf(\"%d\", &masodik);"
+  text: |-
+    #include <stdio.h>
+
+    int main() {
+        int elso;
+        int masodik;
+
+        scanf("%d", &elso);
+        // masodik szam beolvasasa
+
+        printf("%d", elso+masodik);
+
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/osszeg.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Eredmeny, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("7 4", main_0(), str);
+        ASSERT_STREQ(str, "11");
+    }
+
+    TEST(Eredmeny, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("241 4", main_0(), str);
+        ASSERT_STREQ(str, "245");
+    }
+
+    TEST(Eredmeny, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("-3 -4", main_0(), str);
+        ASSERT_STREQ(str, "-7");
+    }
+
+    TEST(VisszateresiErtek, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("1 1", int res = main_0(), str);
+        ASSERT_EQ(res, 0);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 15 Sep 2023 19:14:54 UTC"
+record: -1
+solution_hidden: true

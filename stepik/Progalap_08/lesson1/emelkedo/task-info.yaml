@@ -1,0 +1,115 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-emelkedo)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/emelkedo.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/emelkedo.c
+  visible: true
+  placeholders:
+  - offset: 188
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 21
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int* emelkedo(int darabszam) {
+          int* tomb = (int*) malloc(darabszam * sizeof(int));
+
+          for (int i = 0; i < darabszam; i++) {
+              tomb[i] = i+1;
+          }
+
+          return tomb;
+      }
+  text: |-
+    #include <stdlib.h>
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/emelkedo.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 4;
+        int* res = emelkedo(darab);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_EQ(res[i], i+1);
+        }
+        free(res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 70;
+        int* res = emelkedo(darab);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_EQ(res[i], i+1);
+        }
+        free(res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 10000000;
+        int* res = emelkedo(darab);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_EQ(res[i], i+1);
+        }
+        free(res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 1;
+        int* res = emelkedo(darab);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_EQ(res[i], i+1);
+        }
+        free(res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int darab = 717;
+        int* res = emelkedo(darab);
+        for (int i = 0; i < darab; i++) {
+            ASSERT_EQ(res[i], i+1);
+        }
+        free(res);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 16:49:08 UTC"
+record: -1
+solution_hidden: true

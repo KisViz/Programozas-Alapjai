@@ -1,0 +1,116 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-osszegzes)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/osszegzes.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/osszegzes.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 130
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int osszeg(int start, int end) {
+          int res = 0;
+
+          for (int i = start; i <= end; i++) {
+              res += i;
+          }
+
+          return res;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/osszegzes.c"
+    #undef main
+
+    TEST(Nullatol, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(0, 10), 55);
+    }
+
+    TEST(Nullatol, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(0, 35), 630);
+    }
+
+    TEST(Nullatol, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(0, 643), 207046);
+    }
+
+    TEST(Nullatol, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(0, 59542), 1772654653);
+    }
+
+
+    TEST(Pozitiv, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(7, 10), 34);
+    }
+
+    TEST(Pozitiv, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(22, 35), 399);
+    }
+
+    TEST(Pozitiv, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(555, 643), 53311);
+    }
+
+    TEST(Pozitiv, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(59542, 59542), 59542);
+    }
+
+    TEST(Vegyes, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(-2, 10), 52);
+    }
+
+    TEST(Vegyes, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(-35, 35), 0);
+    }
+
+    TEST(Vegyes, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(-42412, 4241), -890414917);
+    }
+
+    TEST(Vegyes, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        ASSERT_EQ(osszeg(-52132, 81214), 1938998727);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 27 Sep 2023 18:02:47 UTC"
+record: -1
+solution_hidden: true

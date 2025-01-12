@@ -1,0 +1,88 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-var)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/var.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/var.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 106
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          int tipus;
+          int allapot;
+      } Var;
+
+      void lerombol(Var* var) {
+          var->allapot = 0;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/var.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Var v = {5, 2};
+
+        lerombol(&v);
+
+        ASSERT_EQ(v.tipus, 5);
+        ASSERT_EQ(v.allapot, 0);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Var* v2 = (Var*) malloc(sizeof(Var));
+        v2->allapot = 66;
+        v2->tipus = 2;
+
+        lerombol(v2);
+
+        ASSERT_EQ(v2->tipus, 2);
+        ASSERT_EQ(v2->allapot, 0);
+
+        free(v2);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 16:46:21 UTC"
+record: -1
+solution_hidden: true

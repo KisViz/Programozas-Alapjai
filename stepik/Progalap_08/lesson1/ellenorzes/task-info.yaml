@@ -1,0 +1,164 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-task1)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/ellenorzes.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/ellenorzes.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {4, 2, 1, 7, 4, 3, 4, 0};
+        int elvartOsszeg = 25; int osszeg = 25;
+        int elvartMax = 7; int max = 7;
+        int elvartEredmeny = 0;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {4, 2, 1, 7, 4, 3, 4, 0};
+        int elvartOsszeg = 25; int osszeg = 24;
+        int elvartMax = 7; int max = 7;
+        int elvartEredmeny = 1;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {4, 2, 1, 7, 4, 3, 4, 0};
+        int elvartOsszeg = 25; int osszeg = 25;
+        int elvartMax = 7; int max = 5;
+        int elvartEredmeny = 2;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {4, 2, 1, 7, 4, 3, 4, 0};
+        int elvartOsszeg = 25; int osszeg = 24;
+        int elvartMax = 7; int max = 5;
+        int elvartEredmeny = 3;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {3, 9, 3, 3, 5, 3, 10, 0, 3, 2, 0};
+        int elvartOsszeg = 36; int osszeg = 360;
+        int elvartMax = 10; int max = 9;
+        int elvartEredmeny = 3;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {5, 0};
+        int elvartOsszeg = 5; int osszeg = 5;
+        int elvartMax = 5; int max = 0;
+        int elvartEredmeny = 2;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int tomb[] = {0};
+        int elvartOsszeg = 0; int osszeg = 0;
+        int elvartMax = 0; int max = 0;
+        int elvartEredmeny = 0;
+
+        int visszaadottEredmeny = ellenorzes(tomb, &osszeg, &max);
+        ASSERT_EQ(visszaadottEredmeny, elvartEredmeny);
+        ASSERT_EQ(elvartOsszeg, osszeg);
+        ASSERT_EQ(elvartMax, max);
+    }
+  learner_created: false
+- name: src/ellenorzes.c
+  visible: true
+  placeholders:
+  - offset: 78
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 78
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int i = 0;
+
+          int max = 0;
+          int osszeg = 0;
+
+          while (kiadasok[i] != 0) {
+              if (kiadasok[i] > max) {
+                  max = kiadasok[i];
+              }
+
+              osszeg += kiadasok[i];
+              i++;
+          }
+
+          int res = 0;
+          res += (osszeg != *kiadasOsszeg);
+          res += 2 * (max != *legnagyobb);
+
+          *kiadasOsszeg = osszeg;
+          *legnagyobb = max;
+
+          return res;
+  text: |-
+    int ellenorzes(const int* kiadasok, int* kiadasOsszeg, int* legnagyobb) {
+        // megoldas
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

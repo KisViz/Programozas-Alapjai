@@ -1,0 +1,4 @@
+h000000 regisztralt
+h000000 emailt kuldott h000001nek
+h000001 elhagyta a csoportot
+h000000 elhagyta a csoportot

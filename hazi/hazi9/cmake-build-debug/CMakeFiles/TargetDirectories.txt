@@ -1,0 +1,4 @@
+C:/Users/Albert/CLionProjects/hazi9/cmake-build-debug/CMakeFiles/hazi9.dir
+C:/Users/Albert/CLionProjects/hazi9/cmake-build-debug/CMakeFiles/hazikilenc.dir
+C:/Users/Albert/CLionProjects/hazi9/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Albert/CLionProjects/hazi9/cmake-build-debug/CMakeFiles/rebuild_cache.dir

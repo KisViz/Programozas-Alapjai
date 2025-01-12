@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="global-lesson1-sporolas"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\test-framework\;CMake Files\test-framework\googletest-src\;CMake Files\test-framework\googletest-src\googlemock\;CMake Files\test-framework\googletest-src\googlemock\cmake\;CMake Files\test-framework\googletest-src\googletest\;CMake Files\test-framework\googletest-src\googletest\cmake\;CMake Files\lesson1\;CMake Files\lesson1\ackermann\;CMake Files\lesson1\alma\;CMake Files\lesson1\autopalya\;CMake Files\lesson1\bank\;CMake Files\lesson1\fajlnev\;CMake Files\lesson1\faktorialis\;CMake Files\lesson1\forma1\;CMake Files\lesson1\kamat\;CMake Files\lesson1\legjobb\;CMake Files\lesson1\log\;CMake Files\lesson1\macska\;CMake Files\lesson1\mertani\;CMake Files\lesson1\negyzetszamok\;CMake Files\lesson1\novenytan\;CMake Files\lesson1\osszead\;CMake Files\lesson1\osszeg\;CMake Files\lesson1\osztas\;CMake Files\lesson1\pontszamok\;CMake Files\lesson1\primszamok\;CMake Files\lesson1\profizmus\;CMake Files\lesson1\ranglista\;CMake Files\lesson1\sporolas\;CMake Files\lesson1\szamjegy\;CMake Files\lesson1\szamtani\;CMake Files\lesson1\szamtaniosszeg\;CMake Files\lesson1\uzenetek\;CMake Files\lesson1\verseny\;CMake Files\lesson1\xfaktor\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-run">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/global-lesson1-sporolas-run.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-run"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-run/fast">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/global-lesson1-sporolas-run.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-run/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-test-src-part">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/libglobal-lesson1-sporolas-test-src-part.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-Dmain=mainee9c2a01f546129e71d5b104e6b7c6f96856cb52"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-test-src-part"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-test-src-part/fast">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/libglobal-lesson1-sporolas-test-src-part.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-Dmain=mainee9c2a01f546129e71d5b104e6b7c6f96856cb52"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-test-src-part/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-test">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/global-lesson1-sporolas-test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/include"/>
+					<Add directory="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-test"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global-lesson1-sporolas-test/fast">
+				<Option output="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/global-lesson1-sporolas-test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/include"/>
+					<Add directory="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 global-lesson1-sporolas-test/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/Albert/CLionProjects/Progalap_06/cmake-build-debug/lesson1/sporolas/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/sporolas/src/sporolas.c">
+			<Option target="global-lesson1-sporolas-run"/>
+			<Option target="global-lesson1-sporolas-test-src-part"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/sporolas/test/test.cpp">
+			<Option target="global-lesson1-sporolas-test"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/cmake/googletest-download.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/cmake/googletest.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/cmake/utils.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googlemock/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googlemock\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googlemock/cmake/gmock.pc.in">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googlemock/cmake/gmock_main.pc.in">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googletest\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/cmake/Config.cmake.in">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/cmake/gtest.pc.in">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/cmake/gtest_main.pc.in">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/test-framework/googletest-src/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\test-framework\googletest-src\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/ackermann/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\ackermann\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/alma/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\alma\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/autopalya/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\autopalya\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/bank/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\bank\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/fajlnev/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\fajlnev\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/faktorialis/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\faktorialis\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/forma1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\forma1\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/kamat/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\kamat\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/legjobb/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\legjobb\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/log/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\log\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/macska/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\macska\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/mertani/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\mertani\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/negyzetszamok/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\negyzetszamok\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/novenytan/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\novenytan\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/osszead/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\osszead\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/osszeg/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\osszeg\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/osztas/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\osztas\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/pontszamok/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\pontszamok\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/primszamok/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\primszamok\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/profizmus/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\profizmus\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/ranglista/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\ranglista\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/sporolas/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\sporolas\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/szamjegy/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\szamjegy\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/szamtani/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\szamtani\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/szamtaniosszeg/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\szamtaniosszeg\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/uzenetek/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\uzenetek\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/verseny/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\verseny\"/>
+		</Unit>
+		<Unit filename="C:/Users/Albert/CLionProjects/Progalap_06/lesson1/xfaktor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lesson1\xfaktor\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

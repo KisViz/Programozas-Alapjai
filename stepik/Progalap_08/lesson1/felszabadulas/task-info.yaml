@@ -1,0 +1,128 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-felszabadulas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/felszabadulas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/felszabadulas.c
+  visible: true
+  placeholders:
+  - offset: 160
+    length: 0
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+
+      void felszabadulas(int** tomb, int sorok, int oszlopok) {
+          for (int i = 0; i < sorok; i++) {
+              free(tomb[i]);
+          }
+          free(tomb);
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <iostream>
+    #include <cstdlib>
+
+    #define main main_0
+    #define free(a) free(a);printf("%p", a);
+    #include "../src/felszabadulas.c"
+    #undef free
+    #undef main
+
+    #include "../../tools.cpp"
+
+    void tesztel(int sorok, int oszlopok) {
+        int** tomb = (int**) malloc(sorok * sizeof(int*));
+        for (int i = 0; i < sorok; i++) {
+            tomb[i] = (int*) malloc(oszlopok * sizeof(int));
+        }
+
+        char elvart[200000];
+        char szoveg[20];
+        elvart[0] = 0;
+        for (int i = 0; i < sorok; i++) {
+            sprintf(szoveg, "%p", tomb[i]);
+            strcat(elvart, szoveg);
+        }
+
+        sprintf(szoveg, "%p", tomb);
+        strcat(elvart, szoveg);
+
+        char str[200000];
+        IO("", felszabadulas(tomb, sorok, oszlopok), str)
+
+        ASSERT_STREQ(elvart, str);
+        printf("%d", strlen(elvart));
+    }
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(4, 4);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(4, 100);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(3, 1000000);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(10000, 4);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(10000, 100000);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(1, 512);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(512, 1);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        tesztel(11, 12);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 25 Nov 2023 16:38:20 UTC"
+record: -1
+solution_hidden: true

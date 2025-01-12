@@ -1,0 +1,46 @@
+<html lang="hu">
+    <h1>[⭐⭐⭐] 16. Tömörítés (8 pont)</h1>
+    Egy hatékony szövegtömörítő eljárást dolgoztunk ki, amely során sok szöveg egyesíthető. Csak olyan szavak tömöríthetőek, amelyek csak
+    kisbetűket tartalmaznak. A tömörítés során az előállítandó szöveg mindegyik karaktere úgy áll elő, hogy az összes többi szöveg megadott
+    indexedik karakterének a-tól vett távolságát hozzáadjuk.<br>
+    Például:
+    <table style="padding: 5px; text-align: center; background-color: #F3F3F3; border: solid 3px grey; width: 100%">
+        <tr><td>c</td><td>i</td><td>c</td><td>a</td></tr>
+        <tr><td>b</td><td>a</td><td>b</td><td>a</td></tr>
+        <tr><td>b</td><td>e</td><td>a</td><td>n</td></tr>
+    </table>
+    Az eredmény az alábbi formában számítható ki:
+    <table style="padding: 5px; text-align: center; background-color: #F3F3F3; border: solid 3px grey; width: 100%">
+        <tr><td>c+b+b</td><td>i+a+e</td><td>c+b+a</td><td>a+a+n</td></tr>
+        <tr><td>2+1+1</td><td>8+0+4</td><td>2+1+0</td><td>0+0+13</td></tr>
+        <tr><td>4</td><td>12</td><td>3</td><td>13</td></tr>
+        <tr><td>a+4</td><td>a+12</td><td>a+3</td><td>a+13</td></tr>
+        <tr><td>e</td><td>m</td><td>d</td><td>n</td></tr>
+    </table>
+    Tehát a tömörített szöveg: <b>emdn</b>.<br><br>
+
+    Lehetséges, hogy a szövegek hossza nem egyezik meg:
+    <table style="padding: 5px; text-align: center; background-color: #F3F3F3; border: solid 3px grey; width: 100%">
+        <tr><td style="width: 25%">b</td><td style="width: 25%">e</td><td style="width: 25%">l</td><td style="width: 25%">t</td></tr>
+        <tr><td>m</td><td>e</td><td></td><td></td></tr>
+        <tr><td>a</td><td></td><td></td><td></td></tr>
+    </table>
+    Ebben az esetben az eredmény így néz ki:
+    <table style="padding: 5px; text-align: center; background-color: #F3F3F3; border: solid 3px grey; width: 100%">
+        <tr><td style="width: 25%">b+m+a</td><td style="width: 25%">e+e</td><td style="width: 25%">l</td><td style="width: 25%">t</td></tr>
+        <tr><td>1+12+0</td><td>4+4</td><td>11</td><td>19</td></tr>
+        <tr><td>13</td><td>8</td><td>11</td><td>19</td></tr>
+        <tr><td>a+13</td><td>a+8</td><td>a+11</td><td>a+19</td></tr>
+        <tr><td>n</td><td>i</td><td>l</td><td>t</td></tr>
+    </table>
+    Tehát a tömörített szöveg: <b>nilt</b>.<br>
+    <br>
+    Készítsd el a <i>tomorites</i> függvényt, amely paraméterben egy szövegekből álló tömböt vár. A tömb NULL elemmel van lezárva.
+    A függvény ez alapján hozzon létre egy új szöveget, és azt adja vissza.<br>
+    Néhány speciális esetre figyelned kell, amely esetekben az algoritmus nem tud működni
+    <ul>
+        <li>Amennyiben az inputban van olyan karakter, amely nem kisbetű</li>
+        <li>Amennyiben az outputban valahol kívül megyünk a határon, azaz túllépjük a 'z' betűt (pl. n+n > z)</li>
+    </ul>
+    Hibás esetekben NULL-t adjunk vissza!
+</html>

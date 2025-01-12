@@ -1,0 +1,121 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-szamjegy)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szamjegy.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szamjegy.c
+  visible: true
+  placeholders:
+  - offset: 138
+    length: 213
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 36
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int i = 0;
+          while (szoveg[i] != 0) {
+              if (szoveg[i] < '0' || szoveg[i] > '9') {
+                  return 0;
+              }
+
+              i++;
+          }
+
+          return 1;
+  text: |-
+    int szamjegyek(char szoveg[]) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/szamjegy.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "2526";
+        ASSERT_EQ(szamjegyek(szoveg), 1);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "100900";
+        ASSERT_EQ(szamjegyek(szoveg), 1);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "4122m";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "m1512";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "124 421";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "532.32";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "";
+        ASSERT_EQ(szamjegyek(szoveg), 1);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "374373913846871237697823140598429812756095056095690634643534";
+        ASSERT_EQ(szamjegyek(szoveg), 1);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "123523789/346534";
+        ASSERT_EQ(szamjegyek(szoveg), 0);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 04 Oct 2023 15:06:24 UTC"
+record: -1
+solution_hidden: true

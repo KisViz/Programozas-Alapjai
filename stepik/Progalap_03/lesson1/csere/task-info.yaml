@@ -1,0 +1,130 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-csere)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/csere.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/csere.c
+  visible: true
+  placeholders:
+  - offset: 50
+    length: 179
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 50
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      for (int i = 0; szoveg[i] != 0; i++) {
+              if (szoveg[i] == c1) {
+                  szoveg[i] = c2;
+              } else if (szoveg[i] == c2) {
+                  szoveg[i] = c1;
+              }
+          }
+  text: |-
+    void csere(char szoveg[], char c1, char c2) {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/csere.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        csere(szoveg, 'm', 'a');
+        ASSERT_STREQ(szoveg, "amcskm");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        csere(szoveg, 'a', 'm');
+        ASSERT_STREQ(szoveg, "amcskm");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        csere(szoveg, 'b', 'd');
+        ASSERT_STREQ(szoveg, "macska");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "aaaaaaaaaa";
+        csere(szoveg, 'a', 'b');
+        ASSERT_STREQ(szoveg, "bbbbbbbbbb");
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "egy ketto harom";
+        csere(szoveg, ' ', '_');
+        ASSERT_STREQ(szoveg, "egy_ketto_harom");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "15 kiscica az udvaron setal";
+        csere(szoveg, '1', '5');
+        ASSERT_STREQ(szoveg, "51 kiscica az udvaron setal");
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "NO!";
+        csere(szoveg, 'N', 'O');
+        ASSERT_STREQ(szoveg, "ON!");
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "NO!";
+        csere(szoveg, 'n', 'o');
+        ASSERT_STREQ(szoveg, "NO!");
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "aabbaabbaabbbbaa";
+        csere(szoveg, 'a', 'b');
+        ASSERT_STREQ(szoveg, "bbaabbaabbaaaabb");
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "abababcabab";
+        csere(szoveg, 'b', 'd');
+        ASSERT_STREQ(szoveg, "adadadcadad");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 09 Oct 2023 12:15:39 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,157 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-napoleon)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/napoleon.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/napoleon.c
+  visible: true
+  placeholders:
+  - offset: 31
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 31
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int i = 0;
+          while (szoveg[i] != 0) {
+              switch (szoveg[i]) {
+                  case 'a'...'y':
+                  case 'A'...'Y':
+                      szoveg[i]++;
+                      break;
+                  case 'z':
+                  case 'Z':
+                      szoveg[i] -= ('Z' - 'A');
+                      break;
+              }
+              i++;
+          }
+  - offset: 79
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 79
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int i = 0;
+          while (szoveg[i] != 0) {
+              switch (szoveg[i]) {
+                  case 'b'...'z':
+                  case 'B'...'Z':
+                      szoveg[i]--;
+                      break;
+                  case 'a':
+                  case 'A':
+                      szoveg[i] -= ('A' - 'Z');
+                      break;
+              }
+              i++;
+          }
+  text: |-
+    void kodol(char* szoveg) {
+        // megoldas
+    }
+
+    void dekodol(char* szoveg) {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/napoleon.c"
+    #undef main
+
+    TEST(kodol, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        char megoldas[] = "nbdtlb";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(kodol, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "zebra";
+        char megoldas[] = "afcsb";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(kodol, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "{medve01}++ ? 0 : 9 + '@'";
+        char megoldas[] = "{nfewf01}++ ? 0 : 9 + '@'";
+        kodol(szoveg);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(dekodol, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "macska";
+        char megoldas[] = "nbdtlb";
+        dekodol(megoldas);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(dekodol, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "zebra";
+        char megoldas[] = "afcsb";
+        dekodol(megoldas);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(dekodol, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "{medve01}++ ? 0 : 9 + '@'";
+        char megoldas[] = "{nfewf01}++ ? 0 : 9 + '@'";
+        dekodol(megoldas);
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+
+    TEST(vegyes, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char szoveg[] = "ne legyen kecske fejeden mert nem kellemes!!!!!!4negy??@?_:;##<>";
+        char megoldas[] = "ne legyen kecske fejeden mert nem kellemes!!!!!!4negy??@?_:;##<>";
+
+        for (int i = 0; i < 100000; i++) {
+            kodol(szoveg);
+        }
+
+        for (int i = 0; i < 100000; i++) {
+            dekodol(szoveg);
+        }
+
+        ASSERT_STREQ(szoveg, megoldas);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

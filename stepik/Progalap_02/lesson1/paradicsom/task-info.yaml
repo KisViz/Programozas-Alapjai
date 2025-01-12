@@ -1,0 +1,110 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-paradicsom)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/paradicsom.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/paradicsom.c
+  visible: true
+  placeholders:
+  - offset: 108
+    length: 113
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 108
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      scanf("%c", &eredmeny);
+
+          if (eredmeny == 'p') {
+              printf("El kell hagyni Jozsit!\n");
+          }
+
+          return 0;
+  text: |-
+    #include <stdio.h>
+
+    int main() {
+        char eredmeny;
+        printf("Milyen szinu a paradicsom? (p / s)\n");
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/paradicsom.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Eredmeny, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("p", main_0(), str)
+        ASSERT_STREQ(str, "Milyen szinu a paradicsom? (p / s)\nEl kell hagyni Jozsit!\n");
+    }
+
+    TEST(Eredmeny, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("s", main_0(), str)
+        ASSERT_STREQ(str, "Milyen szinu a paradicsom? (p / s)\n");
+    }
+
+    TEST(Eredmeny, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("e", main_0(), str)
+        ASSERT_STREQ(str, "Milyen szinu a paradicsom? (p / s)\n");
+    }
+
+    TEST(Visszateresi_ertek, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("p", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Visszateresi_ertek, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("s", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Visszateresi_ertek, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[100];
+        IO("z", int res = main_0(), str)
+        ASSERT_EQ(res, 0);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 27 Sep 2023 17:47:52 UTC"
+record: -1
+solution_hidden: true

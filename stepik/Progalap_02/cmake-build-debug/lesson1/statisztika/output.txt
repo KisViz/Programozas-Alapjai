@@ -1,0 +1,2 @@
+A minimum: 2
+A maximum: 7

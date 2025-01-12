@@ -1,0 +1,2 @@
+# Empty dependencies file for global-lesson1-szorzas-test.
+# This may be replaced when dependencies are built.

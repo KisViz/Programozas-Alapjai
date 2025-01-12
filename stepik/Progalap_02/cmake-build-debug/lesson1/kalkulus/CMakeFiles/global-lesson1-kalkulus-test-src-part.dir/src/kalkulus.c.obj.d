@@ -1,0 +1,2 @@
+lesson1/kalkulus/CMakeFiles/global-lesson1-kalkulus-test-src-part.dir/src/kalkulus.c.obj: \
+ C:\Users\Albert\CLionProjects\Progalap_02\lesson1\kalkulus\src\kalkulus.c

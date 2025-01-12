@@ -1,0 +1,85 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-szamitogep)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/laptop.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/laptop.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 95
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          char gyarto[100];
+          const double kijelzoMeret;
+          int memoria;
+      } Laptop;
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/laptop.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Laptop l1 = {"a1", 3.3, 16};
+        ASSERT_STREQ(l1.gyarto, "a1");
+        ASSERT_NEAR(l1.kijelzoMeret, 3.3, 0.00001f);
+        ASSERT_EQ(l1.memoria, 16);
+
+        ASSERT_FALSE(isConst(l1.gyarto));
+        ASSERT_TRUE(isConst(l1.kijelzoMeret));
+        ASSERT_FALSE(isConst(l1.memoria));
+
+        const Laptop l2 = {"a2", 3.8, 8};
+        ASSERT_STREQ(l2.gyarto, "a2");
+        ASSERT_NEAR(l2.kijelzoMeret, 3.8, 0.000001f);
+        ASSERT_EQ(l2.memoria, 8);
+
+        ASSERT_TRUE(isConst(l2.gyarto));
+        ASSERT_TRUE(isConst(l2.kijelzoMeret));
+        ASSERT_TRUE(isConst(l2.memoria));
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 17 Nov 2023 16:32:15 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,2 @@
+A teglalap kerulete: 4.00
+A teglalap terulete: 1.00

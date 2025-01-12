@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "C:/Users/Albert/CLionProjects/Progalap_01/test-framework/googletest-build",
+		"source" : "test-framework/googletest-src"
+	}
+}

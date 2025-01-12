@@ -1,0 +1,144 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-titkositas)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/titkositas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/titkositas.c
+  visible: true
+  placeholders:
+  - offset: 74
+    length: 12
+    placeholder_text: return NULL;
+    initial_state:
+      length: 12
+      offset: 74
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int* titkositott = (int*) malloc(meret * sizeof(int));
+
+          titkositott[0] = eredeti[0];
+          for (int i = 1; i < meret; i++) {
+              titkositott[i] = eredeti[i] + eredeti[i-1];
+          }
+
+          return titkositott;
+  - offset: 146
+    length: 12
+    placeholder_text: return NULL;
+    initial_state:
+      length: 12
+      offset: 146
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int* eredeti = (int*) malloc(meret *sizeof(int));
+
+          eredeti[0] = titkositott[0];
+          for (int i = 1; i < meret; i++) {
+              eredeti[i] = titkositott[i] - eredeti[i-1];
+          }
+
+          return eredeti;
+  text: |-
+    #include <stdlib.h>
+
+    int* titkositas(const int* eredeti, int meret) {
+        return NULL;
+    }
+
+    int* megfejtes(const int* titkositott, int meret) {
+        return NULL;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/titkositas.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Titkositas, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {4, 3, 1, 5, 2, 3};
+        int elvart[] = {4, 7, 4, 6, 7, 5};
+        int db = 6;
+        int* res = titkositas(szamok, db);
+
+        ASSERT_ARRAY_EQ(elvart, res, db);
+        free(res);
+    }
+
+    TEST(Titkositas, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {7, 7, 3, 1, 1, 4, 2, 0, 1};
+        int elvart[] = {7, 14, 10, 4, 2, 5, 6, 2, 1};
+        int db = 9;
+        int* res = titkositas(szamok, db);
+
+        ASSERT_ARRAY_EQ(elvart, res, db);
+        free(res);
+    }
+
+    TEST(Megfejtes, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {1, 1, 4, 10, 10, 7, 7, 9, 9};
+        int elvart[] = {1, 0, 4, 6, 4, 3, 4, 5, 4};
+        int db = 9;
+        int* res = megfejtes(szamok, db);
+
+        ASSERT_ARRAY_EQ(elvart, res, db);
+        free(res);
+    }
+
+    TEST(Megfejtes, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {7, 12, 9, 9, 9, 14, 8, -7, -3};
+        int elvart[] = {7, 5, 4, 5, 4, 10, -2, -5, 2};
+        int db = 9;
+        int* res = megfejtes(szamok, db);
+
+        ASSERT_ARRAY_EQ(elvart, res, db);
+        free(res);
+    }
+
+    TEST(Egyuttes, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int szamok[] = {8, 3, 5, 3, 0, 7, 4, 3, -3};
+        int elvart[] = {8, 3, 5, 3, 0, 7, 4, 3, -3};
+        int db = 9;
+        int* res = titkositas(szamok, db);
+        int* res2 = megfejtes(res, db);
+
+        ASSERT_ARRAY_EQ(elvart, res2, db);
+        free(res);
+        free(res2);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

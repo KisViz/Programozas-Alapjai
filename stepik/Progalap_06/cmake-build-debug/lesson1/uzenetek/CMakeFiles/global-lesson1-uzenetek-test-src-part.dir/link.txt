@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libglobal-lesson1-uzenetek-test-src-part.a "CMakeFiles/global-lesson1-uzenetek-test-src-part.dir/src/uzenetek.c.obj"
+C:\MinGW\bin\ranlib.exe libglobal-lesson1-uzenetek-test-src-part.a

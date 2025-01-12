@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libglobal-lesson1-eletkor-test-src-part.a "CMakeFiles/global-lesson1-eletkor-test-src-part.dir/src/eletkor.c.obj"
+C:\MinGW\bin\ranlib.exe libglobal-lesson1-eletkor-test-src-part.a

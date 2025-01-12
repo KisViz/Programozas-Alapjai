@@ -1,0 +1,123 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-kobszamok)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/kobszamok.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/kobszamok.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Eredmeny, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", kob(27, 64), str)
+        ASSERT_STREQ("27\n64\n", str);
+    }
+
+    TEST(Eredmeny, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", kob(10, 30), str)
+        ASSERT_STREQ("27\n", str);
+    }
+
+    TEST(Eredmeny, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", kob(28, 63), str)
+        ASSERT_STREQ("", str);
+    }
+
+    TEST(Eredmeny, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", kob(1, 1001), str)
+        ASSERT_STREQ("1\n8\n27\n64\n125\n216\n343\n512\n729\n1000\n", str);
+    }
+
+    TEST(VisszateresiErtek, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", int res = kob(27, 64), str)
+        ASSERT_EQ(91, res);
+    }
+
+    TEST(VisszateresiErtek, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", int res = kob(10, 30), str)
+        ASSERT_EQ(27, res);
+    }
+
+    TEST(VisszateresiErtek, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", int res = kob(28, 63), str)
+        ASSERT_EQ(0, res);
+    }
+
+    TEST(VisszateresiErtek, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[1000];
+        IO("", int res = kob(1, 1001), str)
+        ASSERT_EQ(3025, res);
+    }
+  learner_created: false
+- name: src/kobszamok.c
+  visible: true
+  placeholders:
+  - offset: 20
+    length: 236
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+
+      int kob(int start, int end) {
+          int osszeg = 0;
+
+          for (int i = 0; i*i*i <= end; i++) {
+              int ertek = i*i*i;
+              if (ertek >= start && ertek <= end) {
+                  printf("%d\n", ertek);
+                  osszeg += ertek;
+              }
+          }
+
+          return osszeg;
+      }
+  text: // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 03 Oct 2023 08:55:21 UTC"
+record: -1
+solution_hidden: true

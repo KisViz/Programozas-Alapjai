@@ -1,0 +1,135 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-szamjegy)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/szamjegy.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/szamjegy.c
+  visible: true
+  placeholders:
+  - offset: 20
+    length: 353
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 20
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int szamjegyek(char fajlnev[]) {
+          FILE* f = fopen(fajlnev, "r");
+          char szoveg[101];
+
+          for (int i = 0;;i++) {
+              int res = fscanf(f, "%c", &szoveg[i]);
+              if (res < 0) {
+                  szoveg[i] = 0;
+                  break;
+              }
+          }
+
+          fclose(f);
+
+          int db = 0;
+          for (int i = 0; szoveg[i] != 0; i++) {
+              if (szoveg[i] >= '0' && szoveg[i] <= '9') {
+                  db++;
+              }
+          }
+
+          return db;
+      }
+  text: |-
+    #include <stdio.h>
+
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/szamjegy.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "cicaaa.txt";
+        writeContentToFile(filename, "medvehagyma");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "cic.txt";
+        writeContentToFile(filename, "vsdjklvnuiondafbbd...bdbdji");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "asd.txt";
+        writeContentToFile(filename, "6346434634673731230995695754");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 28);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "cicaaa.txt";
+        writeContentToFile(filename, "avabvuaszvgas6v7a8svasba8b5asb0adbnsdf ndf9nfd8vasdvsdv8s5vsd5brs78db5sd578bsd5");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 18);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "program.c";
+        writeContentToFile(filename, "cica lo kutya\n\reger");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 0);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "cicaaa.txt";
+        writeContentToFile(filename, "5 kecske\n3 lovacska\n7 mehecske es 11 zsirafocska");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 5);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char filename[] = "cicaaa.txt";
+        writeContentToFile(filename, "uzsdv sd8v\nd sdbs68db sdbsd86b sd b8\nb sd??? sd.-.*gsd *** gsdg 8s6dg sdg6868 6868 sdg6 asd aaaa\n 90");
+        int res = szamjegyek(filename);
+        ASSERT_EQ(res, 19);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 24 Oct 2023 11:25:08 UTC"
+record: -1
+solution_hidden: true

@@ -1,0 +1,104 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-ranglista)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/ranglista.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/ranglista.c
+  visible: true
+  placeholders:
+  - offset: 43
+    length: 196
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 43
+    initialized_from_dependency: false
+    selected: true
+    status: Solved
+    encrypted_possible_answer: |-
+      FILE* f = fopen("ranglista.txt", "r");
+
+          int szam;
+          int i = 1;
+          while (!feof(f)) {
+              fscanf(f, "%d ", &szam);
+              printf("%d. %d\n", i, szam);
+              i++;
+          }
+
+          fclose(f);
+  text: |-
+    #include <stdio.h>
+
+    void ranglista() {
+        // megoldas
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/ranglista.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[1000];
+        writeContentToFile("ranglista.txt", "8 6 5 3 3 1");
+        IO("", ranglista(), res)
+        ASSERT_STREQ(res, "1. 8\n2. 6\n3. 5\n4. 3\n5. 3\n6. 1\n");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[1000];
+        writeContentToFile("ranglista.txt", "5");
+        IO("", ranglista(), res)
+        ASSERT_STREQ(res, "1. 5\n");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[1000];
+        writeContentToFile("ranglista.txt", "8 6 5 3 3 1 5");
+        IO("", ranglista(), res)
+        ASSERT_STREQ(res, "1. 8\n2. 6\n3. 5\n4. 3\n5. 3\n6. 1\n7. 5\n");
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char res[1000];
+        writeContentToFile("ranglista.txt", "122 1 1");
+        IO("", ranglista(), res)
+        ASSERT_STREQ(res, "1. 122\n2. 1\n3. 1\n");
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 28 Oct 2023 13:44:52 UTC"
+record: -1
+solution_hidden: true

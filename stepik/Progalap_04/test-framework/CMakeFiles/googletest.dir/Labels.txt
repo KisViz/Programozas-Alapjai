@@ -1,0 +1,14 @@
+# Target labels
+ googletest
+# Source files and their labels
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/CMakeFiles/googletest
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/CMakeFiles/googletest.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/CMakeFiles/googletest-complete.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-build.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-configure.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-download.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-install.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-patch.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-test.rule
+C:/Users/Albert/CLionProjects/Progalap_04/test-framework/googletest-prefix/src/googletest-stamp/googletest-update.rule

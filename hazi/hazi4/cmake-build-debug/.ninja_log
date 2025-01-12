@@ -1,0 +1,7 @@
+# ninja log v5
+0	351	7196963736862473	CMakeFiles/hazi4.dir/main.c.obj	336e3b9d5b629fb5
+352	516	7196963738482272	hazi4.exe	24d7e5753c9e8cdb
+0	267	7197886755226281	CMakeFiles/feladat.dir/feladat.c.obj	c18bc5d20ad12c1a
+268	389	7197886756412527	feladat.exe	bac67a01b0a8b4ad
+1	90	7197887006545523	CMakeFiles/feladat.dir/feladat.c.obj	c18bc5d20ad12c1a
+91	201	7197887007617134	feladat.exe	bac67a01b0a8b4ad

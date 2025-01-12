@@ -1,0 +1,140 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-tornasor)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/tornasor.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/tornasor.c
+  visible: true
+  placeholders:
+  - offset: 21
+    length: 720
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+
+      /*int comp(const void* a, const void* b) {
+          return *((int*) b) - *((int*) a);
+      }*/
+
+      int torna(int emberek[], int osztalyletszam) {
+          //qsort(emberek, osztalyletszam, sizeof(int), comp);
+
+          for (int i = 0; i < osztalyletszam - 1; i++) {
+              for (int j = i+1; j < osztalyletszam; j++) {
+                  if (emberek[i] < emberek[j]) {
+                      int tmp = emberek[i];
+                      emberek[i] = emberek[j];
+                      emberek[j] = tmp;
+                  }
+              }
+          }
+
+          if (osztalyletszam % 2 != 0) {
+              return emberek[osztalyletszam / 2];
+          } else {
+              return (emberek[osztalyletszam / 2] + emberek[osztalyletszam / 2 - 1]) / 2;
+          }
+      }
+  text: |
+    // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/tornasor.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {100, 150, 140, 155, 160};
+        int db = 5;
+        int eredmeny = 150;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {155, 156, 157, 154, 153, 158, 158};
+        int db = 7;
+        int eredmeny = 156;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {100, 101, 105, 103};
+        int db = 4;
+        int eredmeny = 102;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {157, 150, 166, 170};
+        int db = 4;
+        int eredmeny = 161;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {100, 202};
+        int db = 2;
+        int eredmeny = 151;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {135};
+        int db = 1;
+        int eredmeny = 135;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int emberek[] = {101, 105, 103, 104, 103, 103, 105};
+        int db = 7;
+        int eredmeny = 103;
+
+        ASSERT_EQ(torna(emberek, db), eredmeny);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 09 Oct 2023 14:37:37 UTC"
+record: -1
+solution_hidden: true

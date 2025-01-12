@@ -1,0 +1,152 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-amoba)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/amoba.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/amoba.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 628
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int tictactoe(char str[]) {
+          int options[8][3] = {
+                  {0, 1, 2},
+                  {3, 4, 5},
+                  {6, 7, 8},
+                  {0, 3, 6},
+                  {1, 4, 7},
+                  {2, 5, 8},
+                  {0, 4, 8},
+                  {2, 4, 6}
+          };
+          int nyerok = 8;
+
+          for (int i = 0; i < nyerok; i++) {
+              int o1 = options[i][0];
+              int o2 = options[i][1];
+              int o3 = options[i][2];
+
+              if (str[o1] == str[o2] && str[o1] == str[o3] && str[o1] != 'B') {
+                  if (str[o1] == 'X') {
+                      return 1;
+                  } else {
+                      return 2;
+                  }
+              }
+          }
+
+          return 0;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/amoba.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XXXOXOBOB";
+        ASSERT_EQ(tictactoe(str), 1);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "OXOBBBOOO";
+        ASSERT_EQ(tictactoe(str), 2);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XOOXOXXBB";
+        ASSERT_EQ(tictactoe(str), 1);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "BOXBOBXOX";
+        ASSERT_EQ(tictactoe(str), 2);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XXOOXXXOO";
+        ASSERT_EQ(tictactoe(str), 0);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "OOBXXXOBB";
+        ASSERT_EQ(tictactoe(str), 1);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XXBOOOXBB";
+        ASSERT_EQ(tictactoe(str), 2);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XOOOXBOBX";
+        ASSERT_EQ(tictactoe(str), 1);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "OBOOXOXXO";
+        ASSERT_EQ(tictactoe(str), 2);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XOOOXXOXO";
+        ASSERT_EQ(tictactoe(str), 0);
+    }
+
+    TEST(Teszt, 11) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XOOBOXOXX";
+        ASSERT_EQ(tictactoe(str), 2);
+    }
+
+    TEST(Teszt, 12) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "OXOOXOXOX";
+        ASSERT_EQ(tictactoe(str), 0);
+    }
+
+    TEST(Teszt, 13) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "XXXOOBBBB";
+        ASSERT_EQ(tictactoe(str), 1);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Tue, 07 Nov 2023 12:24:31 UTC"
+record: -1
+solution_hidden: true

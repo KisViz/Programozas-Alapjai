@@ -1,0 +1,9 @@
+title: Progalap_07
+language: English
+summary: pointerek
+programming_language: C/C++
+environment: GoogleTest
+content:
+- lesson1
+mode: Study
+solutions_hidden: true

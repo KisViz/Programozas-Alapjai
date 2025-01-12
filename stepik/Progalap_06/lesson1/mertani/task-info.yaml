@@ -1,0 +1,218 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-mertani)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/mertani.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/mertani.c
+  visible: true
+  placeholders:
+  - offset: 19
+    length: 516
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      double kiszamit(double elso, double masodik, int n) {
+          double q = masodik / elso;
+
+          if (q == 1) {
+             return 0;
+          }
+
+          double aktualis = n == 1 ? elso : masodik;
+
+          if (n > 2) {
+              for (int i = 3; i <= n; i++) {
+                  aktualis = aktualis * q;
+              }
+          } else if (n < 1) {
+              for (int i = 1; i >= n; i--) {
+                  aktualis = aktualis / q;
+              }
+          }
+
+          aktualis = aktualis - (aktualis / q);
+          if (aktualis < 0) {
+              aktualis *= -1;
+          }
+
+          return aktualis;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/mertani.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 2;
+        double masodik = 4;
+        int n = 5;
+        double res = 16;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 5;
+        double masodik = 15;
+        int n = 11;
+        double res = 196830;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 2;
+        double masodik = 5;
+        int n = 2;
+        double res = 3;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 2;
+        double masodik = 6;
+        int n = 1;
+        double res = 4.0/3;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 8.5;
+        double masodik = 8.67;
+        int n = 11;
+        double res = 0.203165737;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 4;
+        double masodik = 8;
+        int n = -2;
+        double res = 0.25;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 10;
+        double masodik = 20;
+        int n = -2;
+        double res = 0.625;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 10;
+        double masodik = 20;
+        int n = 0;
+        double res = 2.5;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 10;
+        double masodik = -20;
+        int n = 11;
+        double res = 15360;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 10;
+        double masodik = -20;
+        int n = -11;
+        double res = 0.003662109;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 11) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 1;
+        double masodik = 1;
+        int n = 2100000000;
+        double res = 0;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+
+    TEST(Teszt, 12) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        double elso = 2;
+        double masodik = 2;
+        int n = -2100000000;
+        double res = 0;
+
+        CHECK_RUNNING_TIME(
+            ASSERT_NEAR(kiszamit(elso, masodik, n), res, 0.0001),
+            0.5);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Thu, 26 Oct 2023 08:05:47 UTC"
+record: -1
+solution_hidden: true

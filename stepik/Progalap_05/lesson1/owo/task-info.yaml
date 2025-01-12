@@ -1,0 +1,154 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-owo)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            test/task.cpp)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/task.cpp
+  visible: false
+  learner_created: false
+- name: src/owo.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 420
+    placeholder_text: |-
+      #include <stdio.h>
+      #include <string.h>
+
+      void owo() {
+          char szoveg[1000];
+
+          char elozo[1000];
+          int db = 1;
+
+          do {
+              gets(szoveg);
+
+              if (strcmp(szoveg, elozo) == 0) {
+                  db++;
+              } else {
+                  db = 1;
+              }
+
+              if (db == 3) {
+                  printf("%s\n", szoveg);
+                  db = 0;
+              }
+
+              strcpy(elozo, szoveg);
+          } while (strlen(szoveg) > 0);
+      }
+    initial_state:
+      length: 412
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      #include <string.h>
+
+      void owo() {
+          char szoveg[];
+
+          char elozo[1000];
+          int db = 1;
+
+          do {
+              gets(szoveg);
+
+              if (strcmp(szoveg, elozo) = 0) {
+                  db++;
+              } else {
+                  db = 1;
+              }
+
+              if (db = 3) {
+                  printf('%s\n', szoveg);
+                  db = 0;
+              }
+
+              strcpy(elozo szoveg);
+          } whale (strlen(szoveg) > 0);
+
+          return 1;
+      }
+  text: |-
+    #include <stdio.h>
+    #include <string.h>
+
+    void owo() {
+        char szoveg[1000];
+
+        char elozo[1000];
+        int db = 1;
+
+        do {
+            gets(szoveg);
+
+            if (strcmp(szoveg, elozo) == 0) {
+                db++;
+            } else {
+                db = 1;
+            }
+
+            if (db == 3) {
+                printf("%s\n", szoveg);
+                db = 0;
+            }
+
+            strcpy(elozo, szoveg);
+        } while (strlen(szoveg) > 0);
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        std::vector<string> errors {
+            "error: array size missing in 'szoveg'",
+            "error: lvalue required as left operand of assignment",
+            "warning: suggest parentheses around assignment used as truth value",
+            "warning: multi-character character constant",
+            "warning: passing argument 1 of 'printf' makes pointer from integer without a cast",
+            "error: expected 'while' before 'whale'",
+            "warning: 'return' with a value, in function returning void",
+            "error: too few arguments to function"
+        };
+
+        CHECK_COMPILER_ERROR_LIMIT("owo", "owo.c", errors, 7, 1);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 23 Oct 2023 10:22:23 UTC"
+record: -1
+solution_hidden: true

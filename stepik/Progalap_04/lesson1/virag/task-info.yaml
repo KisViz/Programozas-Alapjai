@@ -1,0 +1,96 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-virag)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/virag.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/virag.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 117
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      typedef struct {
+          char nev[100];
+          char szin[100];
+          int meret;
+          double fenyigeny;
+          double vizigeny;
+      } Virag;
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <cstring>
+
+    #define main main_0
+    #include "../src/virag.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Virag v;
+        strcpy(v.nev, "halvirag");
+        strcpy(v.szin, "kek");
+        v.meret = 10;
+        v.fenyigeny = 0.5;
+        v.vizigeny = 0.7;
+
+        ASSERT_STREQ(v.nev, "halvirag");
+        ASSERT_STREQ(v.szin, "kek");
+        ASSERT_EQ(v.meret, 10);
+        ASSERT_NEAR(v.fenyigeny, 0.5, 0.0001);
+        ASSERT_NEAR(v.vizigeny, 0.7, 0.0001);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Virag v;
+        strcpy(v.nev, "lotus");
+        strcpy(v.szin, "zold");
+        v.meret = 44;
+        v.fenyigeny = 0.3;
+        v.vizigeny = 0.96;
+
+        ASSERT_STREQ(v.nev, "lotus");
+        ASSERT_STREQ(v.szin, "zold");
+        ASSERT_EQ(v.meret, 44);
+        ASSERT_NEAR(v.fenyigeny, 0.3, 0.0001);
+        ASSERT_NEAR(v.vizigeny, 0.96, 0.0001);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 16 Oct 2023 12:16:33 UTC"
+record: -1
+solution_hidden: true

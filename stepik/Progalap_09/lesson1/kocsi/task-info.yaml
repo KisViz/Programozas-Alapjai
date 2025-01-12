@@ -1,0 +1,138 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-kocsi)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/kocsi.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/kocsi.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 11
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdlib.h>
+      #include <limits.h>
+
+      typedef struct {
+          int ar;
+          int mennyiseg;
+      } Csoki;
+
+      int legolcsobb(const Csoki** csokik, int csomagSzam) {
+          int legjobb = 0;
+          double legjobbErtek = INT_MAX;
+
+          int index = 0;
+          for (int i = 0; i < csomagSzam; i++) {
+              int aktualisAr = 0;
+              int aktualisOsszeg = 0;
+              while (csokik[index] != NULL) {
+                  aktualisAr += csokik[index]->ar;
+                  aktualisOsszeg += csokik[index]->mennyiseg;
+                  index++;
+              }
+
+              index++;
+
+              double ertek = aktualisAr / (aktualisOsszeg + 0.0);
+              if (ertek < legjobbErtek) {
+                  legjobbErtek = ertek;
+                  legjobb = i;
+              }
+          }
+
+          return legjobb;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/kocsi.c"
+    #undef main
+
+    const Csoki cs1 = {10, 20};
+    const Csoki cs2 = {20, 15};
+    const Csoki cs3 = {20, 20};
+    const Csoki cs4 = {30, 40};
+    const Csoki cs5 = {300, 500};
+    const Csoki cs6 = {50, 20};
+    const Csoki cs7 = {100, 10};
+    const Csoki cs8 = {10, 100};
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Csoki* csokik[] = {&cs1, &cs2, NULL, &cs3, &cs4, &cs5, NULL};
+        int darabszam = 2;
+        int elvart = 1;
+        ASSERT_EQ(legolcsobb(csokik, darabszam), elvart);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Csoki* csokik[] = {&cs1, &cs3, NULL, &cs6, &cs2, &cs3, NULL};
+        int darabszam = 2;
+        int elvart = 0;
+        ASSERT_EQ(legolcsobb(csokik, darabszam), elvart);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Csoki* csokik[] = {&cs1, &cs3, NULL, &cs6, &cs2, &cs3, NULL, &cs1, NULL, &cs1, &cs7, &cs4, NULL};
+        int darabszam = 4;
+        int elvart = 2;
+        ASSERT_EQ(legolcsobb(csokik, darabszam), elvart);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Csoki* csokik[100001];
+        for (int i = 0; i < 100000; i++) {
+            csokik[i] = &cs1;
+        }
+        csokik[100000] = NULL;
+
+        int darabszam = 1;
+        int elvart = 0;
+        ASSERT_EQ(legolcsobb(csokik, darabszam), elvart);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        const Csoki* csokik[] = {&cs5, NULL, &cs8, NULL};
+
+        int darabszam = 2;
+        int elvart = 1;
+        ASSERT_EQ(legolcsobb(csokik, darabszam), elvart);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

@@ -1,0 +1,111 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-task1)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC src/pixelek.c)
+
+    # Files from `./test` directory
+    set(TEST test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: macska.pgm
+  visible: false
+  learner_created: false
+- name: tik.pgm
+  visible: false
+  learner_created: false
+- name: src/pixelek.c
+  visible: true
+  placeholders:
+  - offset: 61
+    length: 9
+    placeholder_text: return 0;
+    initial_state:
+      length: 9
+      offset: 61
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      FILE* file = fopen(fajlnev, "r");
+
+          if (file == NULL) {
+              return 0;
+          }
+
+          fscanf(file, "%*c%*c");
+          int oszlopok, sorok;
+          fscanf(file, "%d %d", &oszlopok, &sorok);
+          fclose(file);
+          return oszlopok * sorok;
+  text: |-
+    #include <stdio.h>
+
+    int pixelszam(const char* fajlnev) {
+        return 0;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/pixelek.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int a = pixelszam("../../../lesson1/pixelek/macska.pgm");
+        ASSERT_EQ(a, 749000);
+
+        FILE* f = fopen("../../../lesson1/pixelek/macska.pgm", "r");
+        if (f == NULL) {
+            fprintf(stderr, "Sajnos a teszteleshez szukseges kepfajl nem talalhato. A reset-tel a feladatot az eredeti allapotba visszaallithatod.");
+            FAIL();
+        }
+        fclose(f);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int b = pixelszam("macska.pgm");
+        ASSERT_EQ(b, 0);
+
+        FILE* f = fopen("../../../lesson1/pixelek/macska.pgm", "r");
+        if (f == NULL) {
+            fprintf(stderr, "Sajnos a teszteleshez szukseges kepfajl nem talalhato. A reset-tel a feladatot az eredeti allapotba visszaallithatod.");
+            FAIL();
+        }
+        fclose(f);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int c = pixelszam("../../../lesson1/pixelek/tik.pgm");
+        ASSERT_EQ(c, 336960);
+
+        FILE* f = fopen("../../../lesson1/pixelek/macska.pgm", "r");
+        if (f == NULL) {
+            fprintf(stderr, "Sajnos a teszteleshez szukseges kepfajl nem talalhato. A reset-tel a feladatot az eredeti allapotba visszaallithatod.");
+            FAIL();
+        }
+        fclose(f);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

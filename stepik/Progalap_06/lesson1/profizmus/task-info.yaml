@@ -1,0 +1,297 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-profizmus)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/profizmus.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/profizmus.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 731
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Solved
+    encrypted_possible_answer: |-
+      typedef struct {
+          double a;
+          double b;
+      } FibonacciProSorozat;
+
+      double elemszamit(FibonacciProSorozat sorozat, int n) {
+          if (n == 1) {
+              return sorozat.a;
+          } else if (n == 2) {
+              return sorozat.b;
+          }
+
+          double elso = sorozat.a;
+          double masodik = sorozat.b;
+
+          for (int i = 3; i <= n; i++) {
+              double uj = elso + masodik;
+              elso = masodik;
+              masodik = uj;
+          }
+
+          return masodik;
+      }
+
+      int hatarAtlepes(FibonacciProSorozat sorozatok[], int n, int h) {
+          int db = 0;
+          int i = 0;
+          while (!(sorozatok[i].a == 0 && sorozatok[i].b == 0)) {
+              double res = elemszamit(sorozatok[i], n);
+              if (res > h) {
+                  db++;
+              }
+
+              i++;
+          }
+
+          return db;
+      }
+  text: // megoldas
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/profizmus.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {0, 0}
+        };
+
+        int n = 2;
+        int h = 3;
+
+        int res = 0;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {0, 0}
+        };
+
+        int n = 2;
+        int h = 1;
+
+        int res = 0;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {2, 3},
+                {5, 5},
+                {5, 4},
+                {4, 5},
+                {-3, 3},
+                {-5, 3.5},
+                {2, 2},
+                {0, 1},
+                {0.1, 1},
+                {0.1, 0.1},
+                {0.01, 0.01},
+                {0, 0}
+        };
+
+        int n = 14;
+        int h = 500;
+
+        int res = 5;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {2, 3},
+                {5, 5},
+                {5, 4},
+                {4, 5},
+                {-3, 3},
+                {-5, 3.5},
+                {2, 2},
+                {0, 1},
+                {0.1, 1},
+                {0.1, 0.1},
+                {0.01, 0.01},
+                {0, 0}
+        };
+
+        int n = 31;
+        int h = 6217115;
+
+        int res = 2;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {2, 3},
+                {5, 5},
+                {5, 4},
+                {4, 5},
+                {-3, 3},
+                {-5, 3.5},
+                {2, 2},
+                {0, 1},
+                {0.1, 1},
+                {0.1, 0.1},
+                {0.01, -0.01},
+                {0, 0}
+        };
+
+        int n = 31;
+        int h = -3000;
+
+        int res = 11;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {1, 1},
+                {2, 3},
+                {5, 5},
+                {5, 4},
+                {4, 5},
+                {-3, 3},
+                {-5, 3.5},
+                {2, 2},
+                {0, 1},
+                {0.1, 1},
+                {0.1, 0.1},
+                {0.01, -0.01},
+                {0, 0}
+        };
+
+        int n = 31;
+        int h = -3200;
+
+        int res = 12;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {0, 0.1},
+                {0, -0.1},
+                {0.1, 0},
+                {-0.1, 0},
+                {4.2, 0},
+                {0, 4.2},
+                {0, 0.01},
+                {0, 0}
+        };
+
+        int n = 1;
+        int h = 0;
+
+        int res = 2;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {0, 0.1},
+                {0, -0.1},
+                {0.1, 0},
+                {-0.1, 0},
+                {4.2, 0},
+                {0, 4.2},
+                {0, 0.01},
+                {0, 0}
+        };
+
+        int n = 2;
+        int h = 0;
+
+        int res = 3;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {0, 0.1},
+                {0, -0.1},
+                {0.1, 0},
+                {-0.1, 0},
+                {4.2, 0},
+                {0, 4.2},
+                {0, 0.01},
+                {0, 0}
+        };
+
+        int n = 8;
+        int h = 1;
+
+        int res = 3;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        FibonacciProSorozat p[] {
+                {0, 0}
+        };
+
+        int n = 2000000000;
+        int h = -2100000000;
+
+        int res = 0;
+
+        ASSERT_EQ(hatarAtlepes(p, n, h), res);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 28 Oct 2023 13:56:55 UTC"
+record: -1
+solution_hidden: true

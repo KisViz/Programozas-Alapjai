@@ -1,0 +1,387 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(global-lesson1-qr)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/qr.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/qr.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 12
+    placeholder_text: // haha hihi
+    initial_state:
+      length: 12
+      offset: 0
+    initialized_from_dependency: false
+    selected: false
+    status: Unchecked
+    encrypted_possible_answer: |-
+      #include <stdio.h>
+      #include <stdlib.h>
+      #include <math.h>
+
+      #define MERET 21
+
+      int** createVedett() {
+          int** vedett = (int**) malloc(MERET * sizeof(int*));
+          for (int i = 0; i < MERET; i++) {
+              vedett[i] = (int*) malloc(MERET * sizeof(int));
+          }
+
+          for (int i = 0; i < MERET; i++) {
+              for (int j = 0; j < MERET; j++) {
+                  vedett[i][j] = 0;
+              }
+          }
+
+          // bal felso sarok
+          for (int i = 0; i < 9; i++) {
+              for (int j = 0; j < 9; j++) {
+                  vedett[i][j] = 1;
+              }
+          }
+
+          // jobb felso sarok
+          for (int i = 0; i < 9; i++) {
+              for (int j = MERET - 8; j < MERET; j++) {
+                  vedett[i][j] = 1;
+              }
+          }
+
+          // bal also sarok
+          for (int i = MERET - 8; i < MERET; i++) {
+              for (int j = 0; j < 9; j++) {
+                  vedett[i][j] = 1;
+              }
+          }
+
+          // felso timing pattern
+          for (int j = 0; j < MERET; j++) {
+              vedett[6][j] = 1;
+          }
+
+          // bal timing pattern
+          for (int i = 0; i < MERET; i++) {
+              vedett[i][6] = 1;
+          }
+
+          return vedett;
+      }
+
+      //region masks
+      int mask0(int row, int column) {
+          return ((row * column) % 2) + ((row * column) % 3) == 0;
+      }
+
+      int mask1(int row, int column) {
+          return ((row / 2) + (column / 3)) % 2 == 0;
+      }
+
+      int mask2(int row, int column) {
+          return (((row + column) % 2) + ((row * column) % 3)) % 2 == 0;
+      }
+
+      int mask3(int row, int column) {
+          return (((row * column) % 2) + ((row * column) % 3)) % 2 == 0;
+      }
+
+      int mask4(int row, int column) {
+          return row % 2 == 0;
+      }
+
+      int mask5(int row, int column) {
+          return (row + column) % 2 == 0;
+      }
+
+      int mask6(int row, int column) {
+          return (row + column) % 3 == 0;
+      }
+
+      int mask7(int row, int column) {
+          return column % 3 == 0;
+      }
+
+      int (*masks[])(int,int) = {mask0, mask1, mask2, mask3, mask4, mask5, mask6, mask7};
+      //endregion
+
+      void maskCode(int** code, int mask, int** vedett) {
+          int (*masker)(int,int) = masks[mask];
+          for (int i = 0; i < MERET; i++) {
+              for (int j = 0; j < MERET; j++) {
+                  if (!vedett[i][j] && masker(i, j) == 1) {
+                      code[i][j] = (code[i][j] == 0) ? 1 : 0;
+                  }
+              }
+          }
+      }
+
+      int readBit(int** code, int** vedett, int* i, int* j) {
+          int bit = code[*i][*j];
+
+          int felfele = (*j) % 4 == 0 || (*j) % 4 == 3;
+
+          do {
+              if (((*j) % 2) == 0) {
+                  (*j)--;
+              } else {
+                  (*j)++;
+                  (*i) += felfele ? -1 : 1;
+              }
+
+              if (*i < 0) {
+                  (*i) = 0;
+                  (*j) -= 2;
+                  felfele = !felfele;
+              } else if (*i >= MERET) {
+                  (*i) = MERET - 1;
+                  (*j) -= 2;
+                  felfele = !felfele;
+              }
+          } while (vedett[*i][*j] == 1);
+
+          return bit;
+      }
+
+      char* dekodol(const char* fajlnev) {
+          FILE* f = fopen(fajlnev, "r");
+          fscanf(f, "%*c%*c"); // P2
+
+          int oszlop;
+          int sor;
+          int szinek;
+          fscanf(f, "%d %d %d", &oszlop, &sor, &szinek);
+
+          if (oszlop != 21 || sor != 21) { // nem 1-es verzio
+              return NULL;
+          }
+
+          // lefoglalas
+          int** code = (int**) malloc(sor * sizeof(int*));
+          for (int i = 0; i < sor; i++) {
+              code[i] = (int*) malloc(oszlop * sizeof(int));
+          }
+
+          // pixelek beolvasasa, konvertalas. feher: 0; fekete: 1.
+          for (int i = 0; i < sor; i++) {
+              for (int j = 0; j < oszlop; j++) {
+                  fscanf(f, "%d", &code[i][j]);
+
+                  if (code[i][j] == 0) {
+                      code[i][j] = 1;
+                  } else {
+                      code[i][j] = 0;
+                  }
+              }
+          }
+
+          // specialis mezok
+          int hibajavitas = code[8][0] * 2 + code[8][1];
+          int mask = 4 * code[8][2] + 2 * code[8][3] + code[8][4];
+
+          if (hibajavitas != 3) { // nem L hibajavitas
+              return NULL;
+          }
+
+          int** vedett = createVedett();
+
+          // mask alkalmazasa
+          maskCode(code, mask, vedett);
+
+          int currentRow = MERET - 1;
+          int currentColumn = MERET - 1;
+
+          // egyeb specialis tulajdonsagok meghatarozasa
+          int mode = 0;
+
+          for (int i = 0; i < 4; i++) {
+              mode += (int) pow(2, 3-i) * readBit(code, vedett, &currentRow, &currentColumn);
+          }
+
+          if (mode != 4) {
+              return NULL;
+          }
+
+          int length = 0;
+
+          for (int i = 0; i < 8; i++) {
+              length += (int) pow(2, 7-i) * readBit(code, vedett, &currentRow, &currentColumn);
+          }
+
+          // memoriafoglalas
+          char* szoveg = (char*) malloc((length + 1) * sizeof(char));
+          szoveg[length] = 0;
+
+          // uzenet meghatarozasa
+          for (int charNumber = 0; charNumber < length; charNumber++) {
+              int c = 0;
+              for (int i = 0; i < 8; i++) {
+                  c += (int) pow(2, 7-i) * readBit(code, vedett, &currentRow, &currentColumn);
+              }
+
+              szoveg[charNumber] = (char) c;
+          }
+
+          return szoveg;
+      }
+  text: // haha hihi
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <string>
+
+    using namespace std;
+
+    #define main main_0
+    #include "../src/qr.c"
+    #undef main
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 1 0 0 0 1 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 0 1 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 1 1 1 1 1 1 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 1 1 0 1 0 0 1 0 1 1 0 1 0 1 1 1 0 1 1 0 1 0 0 0 1 0 1 1 1 0 0 1 0 1 1 0 1 1 1 0 0 0 0 0 1 1 0 1 0 1 1 0 1 0 0 1 1 1 0 1 1 1 1 1 0 0 1 0 1 0 1 0 1 1 1 0 1 0 1 0 1 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 0 0 1 0 1 0 1 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 0 0 1 1 1 1 1 0 1 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 1 0 0 1 0 1 0 0 0 1 1 0 1 0 0 1 0 0 0 1 0 1 1 0 0 1 1 1 0 1 1 1 0 0 1 0 1 0 0 0 1 0 1 0 1 1 1 0 1 1 1 0 1 1 1 0 0 1 1 1 1 1 0 1 0 1 1 1 1 1 0 1 1 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 0 1 0 0 0";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, "Cat");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 0 1 1 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 0 0 1 0 1 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 0 1 0 1 0 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 0 0 0 1 1 1 1 1 0 1 1 0 1 0 0 0 0 1 1 1 0 0 0 1 1 1 0 1 1 0 1 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 1 0 0 1 0 1 0 1 0 1 1 0 1 1 1 0 0 1 0 1 0 0 1 0 0 0 0 1 1 1 1 1 0 0 1 0 1 0 1 0 0 1 1 0 1 0 1 1 1 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 1 1 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 0 0 0 1 0 1 1 1 1 1 0 1 0 1 1 1 1 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0 1 0 1 1 1 0 0 1 1 1 1 1 0 1 0 1 0 0 0 1 0 1 1 0 1 1 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 1 1 0 0 1 1 0 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 1 1 1 1 1 0";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, "Karacsony!");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n3 3\n255\n0 0 0 0 0 0 0 0 0";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, nullptr);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n1 1 1 1 1 1 1 0 0 1 1 0 1 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0  0 1 0 0 0 1 0 0 0 0 0 1 1 0 1 1 1 0 1 0 1 0 1 1 1 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 1  0 1 0 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 1 1 0 1 1 0 1 0 1 1 1 0 1 1 0 0 0 0 0 1 0 1 1 0 0 1 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1  0 0 0 0 0 0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 0 1 1 1 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 1 1 1 0 0 1 0 1 0 0 1 0 1 0 1 0 0 1 1 1 1 0 0 1 1 1 1 1 0 1 0 0 1 0 0 0 0 1 1 1 1 1 0 1 0 0 1 0 0 1 0 1 0 0 1 0 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 1 1 1 1 1 0 0 1 0 1 1 1 1 1 1 1 1 0 0 0 1 0 1 0 1 1 0 1 0 1 0 1 0 0 0 0 0 1 0 1 0 1 1 1 1 1 0 0 1 1 0 1 1 0 1 1 1 0 1 0 1 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 1 1 0 1 0 1 1 1 0 1 0 0 1 1 0 1 0 0 1 0 1 1 1 0 1 0 1 1 1 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 1 0 0 1 1 1 1 1 1 1 0 1 0 1 1 0 1 0 1 1 0 0 1 0";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, nullptr);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 1 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 0 1 1 0 1 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 1 0 1 1 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 1 0 0 0 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 0 0 0 1 0 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 1 0 1 0 1 0 0 1 0 1 1 1 1 1 1 1 1 0 1 1 0 1 1 0 1 0 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 1 1 1 1 0 1 0 0 1 0 1 1 1 1 0 0 0 0 0 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 1 1 0 1 1 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 0 1 1 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 1 0 1 0 1 1 0 0 1 0 1 1 0 1 0 0 0 1 0 1 0 1 1 0 1 0 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 0 0 1 1 1 1 1 0 0 0 1 1 0 0 0 0 0 0 0 1 0 0 1 0 1 0 1 0 0 1 1 0 1";
+        writeContentToFile("info.pgm", s);
+        char* res = dekodol("info.pgm");
+
+        ASSERT_STREQ(res, "macska");
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 1 1 0 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 0 0 0 1 0 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 0 1 0 1 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 0 1 1 0 0 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 1 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 0 0 1 1 1 0 0 1 0 1 0 1 0 1 0 0 1 1 1 1 1 0 0 1 1 1 1 1 1 0 0 1 1 0 0 1 0 0 0 1 0 0 1 1 0 0 0 0 1 1 0 1 1 1 0 1 1 0 0 0 1 0 1 0 0 0 0 1 0 0 1 1 1 1 0 0 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 0 0 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 1 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 1 1 1 0 0 1 0 1 1 1 1 1 0 1 1 1 1 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 0 1 0 0 0 1 0 1 0 0 1 1 1 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 0 0 1 0 0 0 1 1 1 0 0 1 1 0 1 1 1 1 1 0 1 0 1 1 1 0 0 1 1 1 0 0 1 1 0 0 0 0 0 0 0 1 0 1 0 0 1 1 0 0 1 1 1 0 1";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, "ez easy feladat");
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 1 0 1 1 0 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 1 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 1 1 0 1 0 1 0 1 0 0 1 1 0 0 0 1 0 0 1 0 1 0 0 1 1 0 1 0 0 1 0 1 0 0 0 1 1 0 1 1 0 1 1 1 0 1 0 0 1 1 1 0 1 0 1 1 0 0 0 1 0 1 1 0 1 1 1 1 0 1 0 1 1 1 1 0 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 0 0 1 1 1 0 1 0 1 1 0 0 0 0 0 0 0 1 1 1 1 0 1 1 1 1 0 1 0 1 1 0 1 1 1 1 1 0 1 1 0 0 1 1 0 1 0 0 0 0 1 0 0 1 0 0 0 1 0 1 1 1 0 1 1 1 1 1 0 0 0 0 1 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1";
+        writeContentToFile("titkos.pgm", s);
+        char* res = dekodol("titkos.pgm");
+
+        ASSERT_STREQ(res, "gonosz gyakvez");
+    }
+
+    TEST(Teszt, 08) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n255\n0 0 0 0 0 0 0 255 0 0 255 255 0 255 0 0 0 0 0 0 0 0 255 255 255 255 255 0 255 255 0 255 255 0 255 0 255 255 255 255 255 0 0 255 0 0 0 255 0 255 0 255 0 255 0 255 0 255 0 0 0 255 0 0 255 0 0 0 255 0 255 0 255 255 0 255 255 0 255 0 0 0 255 0 0 255 0 0 0 255 0 255 0 0 0 0 255 255 0 255 0 0 0 255 0 0 255 255 255 255 255 0 255 255 255 255 255 255 255 0 255 255 255 255 255 0 0 0 0 0 0 0 0 255 0 255 0 255 0 255 0 0 0 0 0 0 0 255 255 255 255 255 255 255 255 255 0 0 0 0 255 255 255 255 255 255 255 255 0 0 0 0 255 255 0 255 0 255 0 255 0 0 255 255 0 0 0 255 0 0 255 0 255 0 0 255 255 0 255 0 0 255 0 255 0 0 0 255 255 0 255 255 0 255 255 255 0 255 0 0 255 255 255 0 255 0 255 255 0 0 0 255 0 255 255 0 255 255 255 255 0 255 0 255 255 255 255 0 0 255 255 0 255 0 0 255 0 255 0 255 0 0 0 0 0 0 0 0 255 255 255 0 255 255 255 255 255 255 255 255 255 0 255 255 0 0 255 255 255 0 255 0 255 255 0 0 0 0 0 0 0 255 255 255 255 0 255 255 255 255 0 255 0 255 255 0 255 255 255 255 255 0 255 255 0 0 255 255 0 255 0 0 0 0 255 0 0 255 0 0 0 255 0 255 255 255 0 255 255 255 255 255 0 0 0 0 255 0 255 0 0 0 255 0 255 0 255 0 0 0 0 255 0 255 0 0 0 255 0 255 0 0 0 255 0 255 0 0 0 0 0 0 255 255 255 0 255 255 255 0 255 255 255 255 255 0 255 0 255 255 255 0 0 0 0 0 255 255 255 0 0 0 0 0 0 0 0 255 0 0 255 255 0 0 0 255 0 0 0 255 255";
+        writeContentToFile("info.pgm", s);
+        char* res = dekodol("info.pgm");
+
+        ASSERT_STREQ(res, "gonosz gyakvez");
+    }
+
+    TEST(Teszt, 09) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n1 1 1 1 1 1 1 0 0 1 0 0 1 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 1 0 1 0 0 1 0 0 0 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 1 0 0 1 0 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 0 0 1 1 1 0 1 0 1 1 1 0 1 1 0 0 0 0 0 1 0 1 1 1 0 1 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 1 1 1 0 0 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 0 0 1 0 0 0 1 1 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0 0 1 0 1 0 1 1 0 0 0 0 0 0 1 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 1 1 0 1 1 1 0 0 1 1 1 1 1 1 1 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 0 0 0 0 0 1 0 0 1 1 1 1 1 1 1 1 0 1 0 1 1 0 1 1 1 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 1 1 0 1 1 1 0 1 0 1 0 1 0 1 0 0 0 1 1 1 1 0 1 0 1 1 1 0 1 0 1 0 1 1 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 0 0 1 0 1 0";
+        writeContentToFile("titkos.pgm", s);
+        char* res = dekodol("titkos.pgm");
+
+        ASSERT_STREQ(res, nullptr);
+    }
+
+    TEST(Teszt, 10) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n255\n0 0 0 0 0 0 0 255 0 0 255 255 0 255 0 0 0 0 0 0 0 0 255 255 255 255 255 0 255 255 0 255 255 0 255 0 255 255 255 255 255 0 0 255 0 0 0 255 0 255 0 255 0 255 0 255 0 255 0 0 0 255 0 0 255 0 0 0 255 0 255 0 255 255 0 255 255 0 255 0 0 0 255 0 0 255 0 0 0 255 0 255 0 0 0 255 255 255 0 255 0 0 0 255 0 0 255 255 255 255 255 0 255 255 255 255 255 255 255 0 255 255 255 255 255 0 0 0 0 0 0 0 0 255 0 255 0 255 0 255 0 0 0 0 0 0 0 255 255 255 255 255 255 255 255 255 0 0 255 255 255 255 255 255 255 255 255 255 0 0 0 0 255 255 0 255 0 255 0 255 255 0 255 255 0 0 0 255 0 0 0 0 0 0 255 255 0 0 255 255 255 0 255 255 255 0 255 0 0 0 0 255 0 0 0 255 0 0 255 0 0 255 0 255 0 0 255 0 0 0 0 255 255 255 0 0 255 255 255 255 255 0 255 0 0 255 0 0 0 255 0 255 255 255 0 255 0 0 0 255 255 0 255 0 255 255 255 0 255 255 255 255 255 255 255 255 255 255 255 255 255 0 0 255 255 255 0 255 255 0 255 0 0 255 0 0 0 0 0 0 0 255 255 255 255 255 255 0 0 0 0 0 0 255 255 0 255 255 255 255 255 0 255 255 0 0 0 0 0 0 0 255 0 0 255 255 0 255 0 0 0 255 0 255 255 255 255 0 255 255 0 0 0 0 0 255 255 0 255 0 0 0 255 0 255 0 0 0 255 255 0 255 255 255 0 255 0 255 0 255 0 0 0 255 0 255 0 0 255 0 255 0 255 255 255 0 255 255 255 0 255 255 255 255 255 0 255 0 255 0 0 0 255 0 0 255 255 255 255 0 0 0 0 0 0 0 0 255 0 0 0 0 0 255 255 255 0 255 0 255 255";
+        writeContentToFile("elso.pgm", s);
+        char* res = dekodol("elso.pgm");
+
+        ASSERT_STREQ(res, "progalap");
+    }
+
+    TEST(Teszt, 11) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n10\n0 0 0 0 0 0 0 10 10 0 0 0 0 10 0 0 0 0 0 0 0 0 10 10 10 10 10 0 10 10 0 10 0 10 10 0 10 10 10 10 10 0 0 10 0 0 0 10 0 10 10 0 10 10 10 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 0 0 0 0 10 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 0 10 0 0 0 10 0 10 0 0 0 10 0 0 10 10 10 10 10 0 10 10 10 0 10 0 10 0 10 10 10 10 10 0 0 0 0 0 0 0 0 10 0 10 0 10 0 10 0 0 0 0 0 0 0 10 10 10 10 10 10 10 10 10 0 0 0 0 10 10 10 10 10 10 10 10 0 0 10 10 10 0 0 0 10 0 10 10 0 10 10 10 0 0 10 10 10 10 10 0 0 0 10 10 0 10 10 0 10 0 10 0 10 0 0 0 0 10 10 10 0 0 10 10 0 10 10 0 0 0 10 0 10 10 0 10 0 0 10 0 10 0 10 0 0 10 0 10 10 0 10 10 10 10 10 0 0 0 0 0 10 10 10 0 10 0 0 0 0 0 10 10 10 10 0 10 10 0 10 0 0 10 10 10 10 10 10 10 10 0 0 10 0 0 0 0 10 10 0 0 0 0 0 0 0 0 0 0 0 10 0 0 0 10 0 10 0 0 10 0 0 0 10 0 10 10 10 10 10 0 10 0 10 10 0 0 0 10 0 10 0 0 10 10 0 10 0 0 0 10 0 10 10 0 10 10 0 10 10 0 0 0 10 0 10 0 10 0 0 0 10 0 10 10 0 10 10 0 10 10 10 0 10 0 10 10 0 10 0 0 0 10 0 10 10 0 10 10 10 10 0 10 0 0 0 0 0 0 10 10 10 10 10 0 10 0 10 0 10 10 10 10 0 10 0 0 10 10 0 0 0 0 0 0 0 10 0 10 10 0 10 0 10 0 0 10 10 0 10";
+        writeContentToFile("qr.pgm", s);
+        char* res = dekodol("qr.pgm");
+
+        ASSERT_STREQ(res, "stepik");
+    }
+
+    TEST(Teszt, 12) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n10\n0 0 0 0 0 0 0 10 0 0 0 0 0 10 0 0 0 0 0 0 0 0 10 10 10 10 10 0 10 0 0 10 0 0 10 0 10 10 10 10 10 0 0 10 0 0 0 10 0 10 10 0 0 0 10 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 10 0 10 0 0 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 0 10 10 10 0 10 0 10 0 0 0 10 0 0 10 10 10 10 10 0 10 0 10 0 10 10 10 0 10 10 10 10 10 0 0 0 0 0 0 0 0 10 0 10 0 10 0 10 0 0 0 0 0 0 0 10 10 10 10 10 10 10 10 0 0 0 0 10 10 10 10 10 10 10 10 10 0 0 0 10 10 0 0 10 0 0 0 0 0 0 0 0 0 10 10 0 0 0 0 0 0 10 10 10 10 10 0 10 10 10 10 10 10 10 0 10 0 10 0 10 10 0 0 0 0 10 0 10 0 10 10 10 0 10 10 0 0 10 0 10 10 0 10 10 10 10 10 10 0 0 10 0 10 10 10 0 0 10 0 0 10 10 10 10 0 10 0 0 0 0 0 10 10 10 0 10 10 0 0 0 0 10 10 10 10 10 10 10 10 0 10 0 0 10 0 0 10 10 0 10 0 10 0 0 0 0 0 0 0 10 10 10 0 0 0 0 10 0 0 10 0 10 0 0 10 10 10 10 10 0 10 0 0 0 0 10 0 0 0 0 0 10 10 0 0 10 0 0 0 10 0 10 10 0 0 0 0 0 0 0 10 10 0 10 0 0 10 0 0 0 10 0 10 10 0 0 10 10 10 10 10 10 10 10 10 10 0 10 0 0 0 10 0 10 0 0 0 10 10 10 0 10 0 0 0 0 0 0 10 10 10 10 10 0 10 0 10 10 10 0 10 10 0 10 0 10 10 10 0 0 0 0 0 0 0 10 0 0 10 10 10 10 0 0 10 0 0 10 0";
+        writeContentToFile("mennifogeznyugi.pgm", s);
+        char* res = dekodol("mennifogeznyugi.pgm");
+
+        ASSERT_STREQ(res, "STEPIK");
+    }
+
+    TEST(Teszt, 13) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n10\n0 0 0 0 0 0 0 10 10 0 10 0 0 10 0 0 0 0 0 0 0 0 10 10 10 10 10 0 10 0 0 10 0 10 10 0 10 10 10 10 10 0 0 10 0 0 0 10 0 10 0 0 10 10 0 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 10 0 10 0 10 10 0 10 0 0 0 10 0 0 10 0 0 0 10 0 10 0 10 10 10 0 10 0 10 0 0 0 10 0 0 10 10 10 10 10 0 10 0 10 10 0 0 10 0 10 10 10 10 10 0 0 0 0 0 0 0 0 10 0 10 0 10 0 10 0 0 0 0 0 0 0 10 10 10 10 10 10 10 10 0 0 0 0 0 10 10 10 10 10 10 10 10 0 0 10 0 10 10 0 0 10 0 0 10 10 10 0 0 0 10 0 0 10 0 10 10 0 0 0 10 10 0 0 10 10 10 10 0 0 10 0 0 0 0 10 10 0 10 0 0 0 0 10 10 0 10 0 0 10 10 10 10 10 10 0 10 10 0 0 0 10 10 10 0 0 0 0 10 10 10 10 10 0 10 10 0 10 0 10 10 10 0 0 10 10 0 10 10 0 10 0 10 0 10 10 10 0 10 10 10 10 10 10 10 10 0 0 10 0 10 10 10 0 10 0 0 10 0 0 0 0 0 0 0 0 10 0 10 10 10 10 0 10 0 0 10 10 0 10 0 10 10 10 10 10 0 10 10 0 10 0 0 0 10 0 0 10 10 10 0 0 10 0 0 0 10 0 10 10 0 0 0 10 10 0 0 0 0 10 10 0 0 10 0 0 0 10 0 10 0 0 0 0 10 10 10 0 0 10 10 0 0 0 10 0 0 0 10 0 10 10 0 10 10 0 10 10 0 0 0 10 10 0 0 10 10 10 10 10 0 10 0 10 0 10 10 0 0 0 10 10 10 10 10 0 0 0 0 0 0 0 10 0 10 0 0 0 10 10 0 0 10 10 0 10";
+        writeContentToFile("mennifogeznyugi.pgm", s);
+        char* res = dekodol("mennifogeznyugi.pgm");
+
+        ASSERT_STREQ(res, "ajksvna");
+    }
+
+    TEST(Teszt, 14) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n21 21\n1\n0 0 0 0 0 0 0 1 1 0 1 1 0 1 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 0 1 1 0 1 1 0 1 1 1 1 1 0 0 1 0 0 0 1 0 1 1 0 1 1 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 0 1 1 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 1 1 1 0 0 0 1 0 1 0 0 0 1 0 0 1 1 1 1 1 0 1 0 0 0 1 0 1 0 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 0 1 0 1 0 1 1 0 1 1 0 0 0 0 1 1 0 1 0 0 1 1 0 1 0 1 0 1 1 0 0 1 1 1 0 1 0 1 0 0 1 0 1 0 0 1 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 0 1 1 1 0 0 1 0 1 1 0 1 0 0 0 1 1 1 1 1 1 1 1 0 0 1 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 1 1 1 1 1 0 1 1 1 1 1 0 1 1 1 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 1 0 1 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 1 0 1 1 0 1 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 0 1 0 1 1 0 0 0 1 1 0 1 1 1 1 1 0 1 0 0 0 1 1 1 1 0 0 1 0 1 1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 1 1 0 0 0 0 1";
+        writeContentToFile("mennifogeznyugi.pgm", s);
+        char* res = dekodol("mennifogeznyugi.pgm");
+
+        ASSERT_STREQ(res, "<3");
+    }
+
+    TEST(Teszt, 15) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char s[] = "P2\n25 25\n1\n1 1 1 1 1 1 1 0 1 1 1 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 0 1 1 1 0 0 0 0 0 1 0 1 0 0 0 0 0 1 1 0 1 1 1 0 1 0 1 0 1 1 0 1 0 1 1 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 1 1 0 1 0 0 1 1 1 0 1 0 1 1 1 0 1 1 0 1 1 1 0 1 0 0 0 0 0 0 1 1 0 1 0 1 0 1 1 1 0 1 1 0 0 0 0 0 1 0 1 0 0 1 1 1 1 1 0 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 0 1 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 0 0 0 0 1 0 1 1 1 1 0 0 1 0 1 1 1 1 0 1 0 0 1 0 0 1 0 1 1 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 1 0 0 0 1 1 1 0 0 1 1 1 1 1 0 0 1 1 1 0 1 0 0 0 1 0 0 1 1 0 1 0 0 1 1 0 1 0 1 1 0 1 0 0 0 1 0 1 1 0 0 1 1 1 1 1 0 0 1 0 1 1 0 0 0 1 1 1 0 1 1 1 0 1 0 1 1 0 1 0 1 0 1 0 0 0 1 1 0 1 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 1 0 0 1 0 0 0 0 0 1 0 1 0 1 1 1 0 0 0 0 0 0 0 0 0 1 0 1 1 0 1 0 1 0 0 0 0 1 1 0 1 0 0 1 1 0 1 1 0 1 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 1 0 0 0 1 1 0 1 0 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 0 1 0 0 0 0 0 1 0 1 1 1 1 0 1 0 1 1 0 0 0 1 0 1 0 1 1 0 1 1 1 0 1 0 1 1 0 0 1 1 0 0 1 1 1 1 1 0 1 0 0 1 0 1 1 1 0 1 0 0 1 1 0 0 1 1 1 0 0 1 1 0 0 0 0 1 1 0 1 1 1 0 1 0 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 1 0 1 0 0 0 0 0 1 0 1 1 0 0 1 0 1 1 1 0 1 1 0 0 1 1 0 1 1 1 1 1 1 1 0 1 1 0 1 0 1 1 1 1 0 0 0 1 0 1 1 1";
+        writeContentToFile("mennifogeznyugi.pgm", s);
+        char* res = dekodol("mennifogeznyugi.pgm");
+
+        ASSERT_STREQ(res, nullptr);
+    }
+  learner_created: false
+status: Unchecked
+record: -1
+solution_hidden: true

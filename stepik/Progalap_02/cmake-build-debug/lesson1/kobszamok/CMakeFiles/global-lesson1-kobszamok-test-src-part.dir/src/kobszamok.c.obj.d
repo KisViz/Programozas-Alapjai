@@ -1,0 +1,13 @@
+lesson1/kobszamok/CMakeFiles/global-lesson1-kobszamok-test-src-part.dir/src/kobszamok.c.obj: \
+ C:\Users\Albert\CLionProjects\Progalap_02\lesson1\kobszamok\src\kobszamok.c \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/stdio.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/corecrt.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/_mingw.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/_mingw_off_t.h \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl \
+ C:/PROGRA~1/JETBRA~1/CLION2~1.5/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h

@@ -1,0 +1,314 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-totaliskatasztrofa)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            test/task.cpp)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/task.cpp
+  visible: false
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #include "../../tools.cpp"
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        std::vector<string> errors {
+            "warning: overflow in conversion",
+            "warning: division by zero",
+            "warning: incompatible implicit declaration of built-in function",
+            "warning: return type defaults to 'int'",
+            "warning: excess elements in struct initializer",
+            "warning: array 'globaltomb' assumed to have one element",
+            "warning: control reaches end of non-void function",
+            "warning: \"MAKRO\" redefined",
+            "warning: unused variable 'a'",
+            "warning: 'return' with a value, in function returning void",
+            "warning: return type of 'main' is not 'int'",
+            "warning: extra tokens at end of #include directive",
+            "warning: character constant too long for its type",
+            "warning: passing argument 1 of 'printf' makes pointer from integer without a cast",
+            "warning: implicit declaration of function",
+            "warning: returning 'void *' from a function with return type 'int' makes integer from pointer without a cast",
+            "warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int'",
+            "warning: label 'vege' defined but not used",
+            "warning: value computed is not used",
+            "warning: too many arguments for format",
+            "warning: format '%d' expects a matching 'int' argument",
+            "error: size of array 't' is negative",
+            "error: unknown type name 'Macska'",
+            "error: expected identifier or '(' before '[' token",
+            "error: return type is an incomplete type",
+            "error: expected ';' before '}' token",
+            "error: variable 'm' has initializer but incomplete type",
+            "error: storage size of 'm' isnot known",
+            "error: expected ')' before 'return'",
+            "error: unknown type name 'intike'",
+            "error: expected ';', ',' or ')' before 'tomb'",
+            "error: array type has incomplete element type 'int[]'",
+            "error: assignment to expression with array type",
+            "error: subscripted value is neither array nor pointer nor vector",
+            "error: called object 'a' is not a function or function pointer",
+            "error: expected '=', ',', ';', 'asm' or '__attribute__' before ':' token",
+            "error: redefinition of 'kkk'",
+            "error: invalid suffix \"a\" on integer constant",
+            "error: conflicting types for 'dupla'",
+            "error: expected expression before 'int'",
+            "error: expected identifier or '*' before 'goto'",
+            "error: expected identifier or '(' before numeric constant",
+            "error: incompatible types when initializing",
+            "error: invalid operands to binary * (have 'int' and 'char *')",
+            "error: 'i' undeclared",
+            "error: two or more data types in declaration specifiers",
+            "error: 'q' redeclared as different kind of symbol",
+            "error: too many arguments to function",
+            "error: macro \"S\" requires 2 arguments, but only 1 given"
+        };
+
+
+        CHECK_COMPILER_ERROR_LIMIT("totaliskatasztrofa", "katasztrofa.c", errors, 47, 1);
+    }
+  learner_created: false
+- name: src/katasztrofa.c
+  visible: true
+  placeholders:
+  - offset: 0
+    length: 2433
+    placeholder_text: // barmit irhatsz ide
+    initial_state:
+      length: 21
+      offset: 0
+    initialized_from_dependency: false
+    selected: true
+    status: Solved
+    encrypted_possible_answer: |-
+      struct {
+          int a;
+      } Macska;
+
+      Macska eredmeny() {}
+
+      void main() {
+          int aaaaaa();
+          int[100] tomb;
+      }
+
+      struct Macska m(int a, int b) {
+          return a + b
+      }
+
+      int res() {
+          struct Macska m = eredmeny();
+          int a = 55;
+          int t[-2];
+          valami:
+          int aaa = 3;
+          http://www.asd.com
+          a:b:c:
+      }
+
+      #include "stdio.h";
+
+      int sss() {
+          printf('KUTYA', 56
+          return this;
+      }
+
+      void macsku() {
+          int a;
+          a++;
+          return a;
+      }
+
+      void a() {
+          int beka();
+          printf("BEKA");
+      }
+
+      intike k;
+
+      valos(char[100] tomb) {}
+      int fgv2(int masik[][]) {return masik[2][3][4];}
+
+      int q() {
+          int a[2][3];
+          a[1] = 2;
+          a[2][3][4] = 30;
+          a(3)(5)(7) = 5;
+      }
+
+      int a2(int a) {
+          return a1(a);
+      }
+
+      int a1(int a) {
+          return NULL;
+      }
+
+      int b1() { return b2(); }
+      int b2() { return b1(); }
+
+      int orok() {
+          while (1);
+          if (1);
+          if (0);
+          return 1;
+          printf("MACSKA");
+      }
+
+      void lkm() {
+          egyeb:
+          printf("%s", (int)(*orok)());
+          vege:
+      }
+
+          haha:
+      void iss() {
+          if (5 = 3) {
+              goto egyeb;
+          }
+
+          int a = 3;
+          if (a = 5);
+      }
+
+      while (1);
+
+      void kkk() {}
+      void kkk() {}
+
+      void nemletezik();
+
+      int dupla(int a) {
+          return 2a;
+      }
+
+      int dupla(int a, int b) {
+          return 2ab;
+      }
+
+      int mklanv() {
+          printf("A") - printf("B");
+          printf("A", 5);
+          printf("%d 5");;;;;{{{{{{{{{{{{{}}}}}}}}}}}}}
+          printf(7);
+      };
+
+      ;;;;;
+
+      int globaltomb[];
+
+      int albmamb(){
+          forr (int i = 0; i < 100; i++) {
+              prnitf("A");
+          }
+
+          whale(if (5 == 2)) {
+              return true;
+          }
+
+          if (6 == 5) {} else {}
+          goto start;
+          goto goto;
+          goto:
+          while:
+
+          strcpy("5", "7");
+
+          int t[200000000000000];
+          int a = 400000000000000000;
+          int b = "macska";
+
+          double eredmeny = 5,6;
+      }
+
+      int utolsofgv() {
+          int a = 5;
+          char tomb[5];
+          double d = tomb - a;
+          tomb = 2 * tomb;
+          tomb = tomb + tomb;
+          tomb = tomb * tomb;
+          tomb = tomb - tomb;
+          tomb = tomb / tomb;
+      }
+
+      double fvasvasgv() {
+          double res = 7 / 2;
+          scanf("%lf", res);
+
+          int m = 5 / 0;
+          sqrt(7);
+          return 6 / 4;
+      }
+
+      void asdgksln(void) {
+          for (i = 0; i < 10; i++);
+              printf(%d, i);
+      }
+
+      struct foo  int q;  function(){
+          asdgksln(5);
+          struct foo boo = {5.5};
+          return boo;
+      }
+
+      void skdanvaovaion() {
+          int s = "s";
+
+      }
+
+      goto glob;
+
+      *
+       *
+       *
+       */
+
+      #define MAKRO a
+      #define MAKRO b
+      #undef MAKRO
+      #undef MAKRO
+      #undef if
+      #define main main_0
+      #define if for
+      #define for if
+
+      #define S(a, b) a+b
+
+      void janvjkdfn() {
+          if (5 == 4);
+          S(5);
+      }
+  text: // barmit irhatsz ide
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 28 Oct 2023 16:02:28 UTC"
+record: -1
+solution_hidden: true

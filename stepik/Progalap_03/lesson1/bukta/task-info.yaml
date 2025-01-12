@@ -1,0 +1,115 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-bukta)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/bukta.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/bukta.c
+  visible: true
+  placeholders:
+  - offset: 75
+    length: 119
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 75
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      while (pontszamok[i] != -1) {
+              if (pontszamok[i] < 40) {
+                  bukott++;
+              }
+
+              i++;
+          }
+  text: |-
+    int eredmenyek(int pontszamok[]) {
+        int i = 0;
+        int bukott = 0;
+
+        // megoldas
+
+        return bukott;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/bukta.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {39, 39, 35, 0, 30, -1};
+        int res = 5;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {52, 57, 90, 100, -1};
+        int res = 0;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {45, 49, 41, 40, 39, -1};
+        int res = 1;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 04) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {100, 100, 100, 100, 0, 0, 0, 1, 5, 40, -1};
+        int res = 5;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 05) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 100, 1, -1};
+        int res = 21;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 06) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {40, 40, 40, 40, 40, 40, 40, 40, -1};
+        int res = 0;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+
+    TEST(Teszt, 07) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        int t[] = {-1};
+        int res = 0;
+        ASSERT_EQ(eredmenyek(t), res);
+    }
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Wed, 04 Oct 2023 14:49:08 UTC"
+record: -1
+solution_hidden: true

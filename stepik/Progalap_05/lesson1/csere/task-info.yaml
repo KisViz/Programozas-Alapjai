@@ -1,0 +1,94 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-csere)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/eltolas.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: src/eltolas.c
+  visible: true
+  placeholders:
+  - offset: 34
+    length: 101
+    placeholder_text: |-
+      int i == 0;
+          while (szoveg(i) != 0) {
+              szoveg(i)++;
+              i++;
+          }
+
+          return szoveg;
+    initial_state:
+      length: 100
+      offset: 34
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      int i = 0;
+          while (szoveg[i] != 0) {
+              szoveg[i]++;
+              i++;
+          }
+  text: |-
+    void eltolas(char szoveg[]) {
+        int i == 0;
+        while (szoveg(i) != 0) {
+            szoveg(i)++;
+            i++;
+        }
+
+        return szoveg;
+    }
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+
+    #define main main_0
+    #include "../src/eltolas.c"
+    #undef main
+
+    TEST(Teszt, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str[] = "Macska";
+        eltolas(str);
+        ASSERT_STREQ(str, "Nbdtlb");
+    }
+
+    TEST(Teszt, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str2[] = "123456";
+        eltolas(str2);
+        ASSERT_STREQ(str2, "234567");
+    }
+
+    TEST(Teszt, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        char str3[] = "";
+        eltolas(str3);
+        ASSERT_STREQ(str3, "");
+    }
+  learner_created: false
+status: Solved
+record: -1
+solution_hidden: true

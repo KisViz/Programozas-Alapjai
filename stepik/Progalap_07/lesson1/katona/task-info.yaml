@@ -1,0 +1,157 @@
+type: edu
+files:
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.16)
+
+    project(global-lesson1-katona)
+
+    set(CMAKE_CXX_STANDARD 14)
+
+    # Files from `./src` directory
+    set(SRC
+            src/katona.c)
+
+    # Files from `./test` directory
+    set(TEST
+            test/test.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+
+    # Running tests
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    configure_test_target(${PROJECT_NAME}-test ${SRC} ${TEST})
+  learner_created: false
+- name: test/test.cpp
+  visible: false
+  text: |-
+    #include <gtest/gtest.h>
+    #include <cstdlib>
+    #include <climits>
+
+    #define main main_0
+    #include "../src/katona.c"
+    #undef main
+
+    TEST(tamadas, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Katona k1 = {100, 4};
+        Katona k2 = {50, 6};
+
+        tamadas(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 46);
+        ASSERT_EQ(k2.sebzes, 6);
+
+        tamadas(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 42);
+        ASSERT_EQ(k2.sebzes, 6);
+
+        tamadas(&k2, &k1);
+        ASSERT_EQ(k1.eletero, 94);
+        ASSERT_EQ(k1.sebzes, 4);
+
+        const Katona k3 = {4, 2};
+        tamadas(&k3, &k1);
+        ASSERT_EQ(k1.eletero, 92);
+        ASSERT_EQ(k1.sebzes, 4);
+
+        k1.eletero = 0;
+        k1.sebzes = 40;
+
+        tamadas(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 42);
+        ASSERT_EQ(k2.sebzes, 6);
+
+        k1.eletero = 1;
+        k1.sebzes = 40;
+
+        tamadas(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 2);
+        ASSERT_EQ(k2.sebzes, 6);
+
+        k1.sebzes = 3;
+        tamadas(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 0);
+
+        k1.eletero = -1;
+        ASSERT_EQ(k1.eletero, UINT_MAX);
+    }
+
+    TEST(harc, 01) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Katona k1 = {40, 2};
+        Katona k2 = {33, 2};
+        Katona* k3 = harc(&k1, &k2);
+        ASSERT_EQ(k2.eletero, 0);
+        ASSERT_EQ(k2.sebzes, 2);
+        ASSERT_EQ(k1.eletero, 8);
+        ASSERT_EQ(k1.sebzes, 2);
+        ASSERT_EQ(k3, &k1);
+    }
+
+    TEST(harc, 02) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Katona k4 = {100, 5};
+        Katona k5 = {50, 10};
+        Katona* k6 = harc(&k4, &k5);
+        ASSERT_EQ(k4.eletero, 10);
+        ASSERT_EQ(k5.eletero, 0);
+        ASSERT_EQ(k6, &k4);
+    }
+
+    TEST(harc, 03) { // NOLINT(cert-err58-cpp) suppress for initialization static field in generated class
+        Katona k7 = {100, 5};
+        Katona k8 = {51, 10};
+        Katona* k9 = harc(&k7, &k8);
+        ASSERT_EQ(k7.eletero, 0);
+        ASSERT_EQ(k8.eletero, 1);
+        ASSERT_EQ(k9, &k8);
+    }
+  learner_created: false
+- name: src/katona.c
+  visible: true
+  placeholders:
+  - offset: 80
+    length: 902
+    placeholder_text: // megoldas
+    initial_state:
+      length: 11
+      offset: 79
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+    encrypted_possible_answer: |-
+      void tamadas(const Katona* ki, Katona* kit) {
+          if (ki->eletero == 0) {
+              return;
+          }
+
+          if (kit->eletero < ki->sebzes) {
+              kit->eletero = 0;
+          } else {
+              kit->eletero -= ki->sebzes;
+          }
+      }
+
+      Katona* harc(Katona* k1, Katona* k2) {
+          while (k1->eletero != 0 && k2->eletero != 0) {
+              tamadas(k1, k2);
+              tamadas(k2, k1);
+          }
+          return k1->eletero == 0 ? k2 : k1;
+      }
+  text: |-
+    typedef struct {
+        unsigned int eletero;
+        unsigned int sebzes;
+    } Katona;
+
+    // megoldas
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sun, 19 Nov 2023 13:58:47 UTC"
+record: -1
+solution_hidden: true
