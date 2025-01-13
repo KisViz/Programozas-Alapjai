@@ -1,6 +1,12 @@
 # Programozas-Alapjai
 Basics of Programming
 
-This repository contains (nearly) all the solutions for the homewors int the 2023-2024/1 semester, and for most of the stepik exercises.
+Ez a repository tartalmazza (majdnem) az összes házi feladat megoldását a 2023/2024/1 félévből, és a megoldott Stepikes feladatok nagy részét.
 
-ps. I don'k know where is the first homework's solution, i couldn't find it no matter where i've looked.
+PS: Nem tudom, hova tűnt az első házi feladat megoldása; akárhol kerestem, nem találtam.
+
+-----------------------------------------------------------------
+
+This repository contains (nearly) all the solutions for the homework assignments in the 2023-2024/1 semester, as well as most of the Stepik exercises.
+
+PS: I don't know where the first homework solution went; I couldn't find it no matter where I looked.
